@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+    integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+  <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+  <title>Document</title>
+  <script>
+    $(document).ready(function () {
+      $("#myTable").DataTable();
+    });
+  </script>
+</head>
+<style>
+  /* -----------------a--- */
+  * {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  :root {
+    --orange: #f47c00;
+    --white: #fff;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+  }
+
+  body {
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  .container-fluid {
+    position: relative;
+    width: 100%;
+  }
+
+  .navigations {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--orange);
+    border-left: 10px solid var(--orange);
+    transition: 0.5s;
+    overflow: hidden;
+  }
+
+  .navigations.actives {
+    width: 80px;
+  }
+
+  .navigations ul {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  .navigations ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    /* border-top-left-radius: 30px; */
+    /* border-bottom-left-radius: 30px; */
+    border-radius: 25px;
+  }
+
+  .navigations ul li:hover,
+  .navigations ul li.hovered {
+    background-color: var(--white);
+  }
+
+  .navigations ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+  }
+
+  .navigations ul li a {
+    position: relative;
+    display: block;
+    width: 100%;
+    display: flex;
+    text-decoration: none;
+    color: var(--white);
+  }
+
+  .navigations ul li:hover a,
+  .navigations ul li.hovered a {
+    color: var(--orange);
+  }
+
+  .navigations ul li a .icon {
+    position: relative;
+    display: block;
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+  }
+
+  .navigations ul li a .icon ion-icon {
+    font-size: 1.75rem;
+  }
+
+  .navigations ul li a .title {
+    position: relative;
+    display: block;
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    text-align: start;
+    white-space: nowrap;
+  }
+
+
+  .navigations ul li:hover a::after,
+  .navigations ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    /* box-shadow: 35px -35px 0 10px var(--white); */
+    pointer-events: none;
+  }
+
+  .main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+  }
+
+  .main.actives {
+    width: calc(100% - 80px);
+    left: 80px;
+  }
+
+  .topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+  }
+
+  .toggles {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+
+  .search {
+    position: relative;
+    width: 400px;
+    margin: 0 10px;
+  }
+
+  .search label {
+    position: relative;
+    width: 100%;
+  }
+
+  .search label input {
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    padding-left: 35px;
+    font-size: 18px;
+    outline: none;
+    border: 1px solid var(--black2);
+  }
+
+  .search label ion-icon {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    font-size: 1.2rem;
+  }
+
+
+  @media (max-width: 991px) {
+    .navigations {
+      left: -300px;
+    }
+
+    .navigations.actives {
+      width: 300px;
+      left: 0;
+    }
+
+    .main {
+      width: 100%;
+      left: 0;
+    }
+
+    .main.actives {
+      left: 300px;
+    }
+
+  }
+
+  #mychart {
+    width: 500px;
+    height: 300px;
+  }
+
+
+
+  @media (max-width: 480px) {
+
+    .user {
+      min-width: 40px;
+    }
+
+    .navigations {
+      width: 100%;
+      left: -100%;
+      z-index: 1000;
+    }
+
+    .navigations.actives {
+      width: 100%;
+      left: 0;
+    }
+
+    .toggles {
+      z-index: 10001;
+    }
+
+    .main.actives .toggles {
+      color: #fff;
+      position: fixed;
+      right: 0;
+      left: initial;
+    }
+  }
+
+  /* ----------------- */
+  #datatable {
+    width: 79%;
+    height: auto;
+    margin-left: 21%;
+  }
+
+  #myTable thead tr {
+    background-color: #f47c00;
+    color: #fff;
+  }
+
+  #myTable tbody tr:nth-child(even) {
+    background-color: #F6A36A;
+    /* Alternate background color for even rows */
+    color: #FFF;
+    /* Text color for even rows */
+  }
+
+  #myTable tbody tr:nth-child(odd) {
+    background-color: #FFF;
+    /* Background color for odd rows */
+    color: #f47c00;
+    /* Text color for odd rows */
+  }
+
+  button:nth-child(even) {
+    background-color: Red;
+    color: #f47c00;
+    border: none;
+    padding: 5px 10px;
+  }
+
+  button:nth-child(odd) {
+    background-color: #f47c00;
+    color: #FFF;
+    border: none;
+    padding: 5px 10px;
+  }
+
+  img {
+    height: 50px;
+    width: 50px;
+    margin: 10px;
+
+  }
+</style>
+
+<body>
+  <!-- navigation -->
+  <div class="container-fluid">
+    <div class="navigations">
+      <ul>
+          <li>
+          
+
+              <a href="#">
+                  <span class="icon">
+                    <!-- <img src="./images/16-sanskar.png" alt="#" style="width: 100px; height: 60px;" align="center"> -->
+                  </span>
+                  <span class="title">16-Sanskar</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="/admin_dash">
+                  <span class="icon">
+                      <ion-icon name="home-outline"></ion-icon>
+                  </span>
+                  <span class="title">Dashboard</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="/adminLogin/user_details">
+                  <span class="icon">
+                      <ion-icon name="people-outline"></ion-icon>
+                  </span>
+              <span class="title">Customers</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="/adminLogin/orders">
+                  <span class="icon">
+                      <ion-icon name="layers-outline"></ion-icon>                        </span>
+                 <span class="title">Orders</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="/adminLogin/vendor_details">
+                  <span class="icon">
+                      <ion-icon name="person-outline"></ion-icon>                
+                          </span>
+                 <span class="title">Vendors</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="/adminLogin/Added_product">
+                  <span class="icon">
+                      <ion-icon name="download-outline"></ion-icon> 
+                                         </span>
+                 <span class="title">Added Product</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="#">
+                  <span class="icon">
+                      <ion-icon name="lock-closed-outline"></ion-icon>
+                  </span>
+                  <span class="title">Password</span>
+              </a>
+          </li>
+
+          <li>
+              <a href="#">
+                  <span class="icon">
+                      <ion-icon name="log-out-outline"></ion-icon>
+                  </span>
+                  <span class="title">Sign Out</span>
+              </a>
+          </li>
+      </ul>
+  </div>
+    <!-------------------------------------------->
+    <center>
+      <h1 style="color: #f47c00;margin-left:400px;">Vendor Details</h1>
+    </center>
+    <div id="datatable">
+      <div class="toggles">
+        <ion-icon name="menu-outline"></ion-icon>
+      </div>
+    <table id="myTable" class="display nowrap" style="width:100%">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Address</th>
+          <th>Contact No.</th>
+          <th>Aadhar No.</th>
+          <th>GST No.</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="table">
+          <td>1</td>
+          <td>Tiger Nixon</td>
+          <td>TigerNixon@gmail.com</td>
+          <td>Vijaynagar</td>
+          <td>9856987659</td>
+          <td>4582 8956 2569</td>
+          <td>787LOI456</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Garrett Winters</td>
+          <td>GarrettWinters@gmail.com</td>
+          <td>South tukoganj</td>
+          <td>6576236985</td>
+          <td>5689 3265 6985</td>
+          <td>GUY74848</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Ashton Cox</td>
+          <td>AshtonCox@gmail.com</td>
+          <td>Aptc</td>
+          <td>6656598563</td>
+          <td>2546 3256 4598</td>
+          <td>154JKL2</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Cedric Kelly</td>
+          <td>CedricKelly@gmail.com</td>
+          <td>Hawabangla</td>
+          <td>2236845698</td>
+          <td>3218 8974 6589</td>
+          <td>SDT4545</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Airi Satou</td>
+          <td>AiriSatou@gmail.com</td>
+          <td>Khajrana</td>
+          <td>3398625896</td>
+          <td>4582 8956 2569</td>
+          <td>787LOI456</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Brielle Williamson</td>
+          <td>BrielleWilliamson@gmail.com</td>
+          <td>Aptc</td>
+          <td>6189857658</td>
+          <td>5874 6598 2156</td>
+          <td>lKO8784</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Herrod Chandler</td>
+          <td>HerrodChandler@gmail.com</td>
+          <td>Foothikothi</td>
+          <td>8952369895</td>
+          <td>4582 8956 2569</td>
+          <td>787LOI456</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Rhona Davidson</td>
+          <td>RhonaDavidson@gmail.com</td>
+          <td>Nipania</td>
+          <td>9856321475</td>
+          <td>5689 3265 6985</td>
+          <td>GUY74848</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>Colleen Hurst</td>
+          <td>ColleenHurst@gmail.com</td>
+          <td>Bhawarkua</td>
+          <td>856974231</td>
+          <td>4582 8956 2569</td>
+          <td>787LOI456</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Sonya Frost</td>
+          <td>SonyaFrost@gmail.com</td>
+          <td>Vijaynagar</td>
+          <td>985674554</td>
+          <td>2365 8685 8798</td>
+          <td>GST875844</td>
+          <td><button class="custom-button">Deactivate</button></td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <script>
+      // add hovered class to selected list item
+      let list = document.querySelectorAll(".navigations li");
+
+      function activeLink() {
+        list.forEach((item) => {
+          item.classList.remove("hovered");
+        });
+        this.classList.add("hovered");
+      }
+
+      list.forEach((item) => item.addEventListener("mouseover", activeLink));
+
+      // Menu toggles
+      let toggles = document.querySelector(".toggles");
+      let navigations = document.querySelector(".navigations");
+      let main = document.querySelector(".main");
+
+      toggles.onclick = function () {
+        navigations.classList.toggle("actives");
+        main.classList.toggle("actives");
+      };
+
+    </script>
+
+    <!-- ====== ionicons ======= -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
