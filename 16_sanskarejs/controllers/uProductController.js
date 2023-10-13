@@ -1,11 +1,18 @@
 import UserRegistration from "../model/indexModal.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-const SECRET_KEY ="NOTESAPI";
 import { productmodels } from "../model/vendorModal.js";
+import crypto from "crypto";
+import dotenv from "dotenv";
+const SECRET_KEY =process.env.JWT_SECRET||crypto.randomBytes(32).toString('hex'); 
+dotenv.config();
+const maxAge =3*24*60*60;
+
+export default jwt;
+let payload={};
+let token;
 
 const uProductController = (req, res) => {
-
     
     productmodels.find({})
 
@@ -30,10 +37,12 @@ const uprofileController=(req,res)=>{
     res.render('pages/user_profile');
 }
 export {uprofileController}
-const uloginController=(req,res)=>{
-    res.render('pages/user_login');
-}
-export {uloginController}
+
+// const uloginController=(req,res)=>{
+//     res.render('pages/user_login');
+// }
+
+// export {uloginController}
 
 
 
@@ -41,15 +50,13 @@ export {uloginController}
 const userRegistrationController= async (req,res,next)=>{
     try {
         console.log("-------registration------");
-        console.log(req.body.role);
-        const {role,firstname,lastname,email,password,confirmpassword,contact,street,city,state,zipcode} = req.body
+        const {firstname,lastname,email,password,confirmpassword,contact,street,city,state,zipcode} = req.body
         const existingUser = await UserRegistration.findOne({email:email});
         if(existingUser){
            return res.status(400).json({message:"user already exists"});
         }
         const hashedPassword = await bcrypt.hash(password,10); 
-        const doc= new UserRegistration({
-            role:role,
+        const result= new UserRegistration({
             firstname:firstname,
             lastname:lastname,
             email:email,
@@ -62,46 +69,80 @@ const userRegistrationController= async (req,res,next)=>{
             zipcode:zipcode
 
         })
-         const result =  await doc.save()
-         console.log(result);
+        await result.save()
+        console.log(result);
+        payload.result=result;
+        const expireTime ={
+             expiresIn:'1d'
+        }
          console.log("Data inserted Successfully");
-         const token = jwt.sign({email:result.email,id:result._id},SECRET_KEY);
-        //  res.status(201).json({user:result,token:token});
-         console.log(token);
-         next()
-        //  res.redirect("pages/userProduct");
+         token = jwt.sign(payload,SECRET_KEY,expireTime);
+         res.cookie('jwt',token,{httpOnly: true,maxAge:maxAge});
+         if(!token){
+            res.json({message:"Error occured with token"})
+         }else{
+            console.log(token);
+            res.redirect("userRegistrationToken");
+         }
         
       } catch (error) {
         console.log("Error"+error);
-        // res.status(500).json({message:"Something went wrong"});
       }
 }
 export{userRegistrationController}
 
-const userLoginController = async(req,res)=>{
-    console.log("Login Success");
-    console.log(req.body.email);
-    console.log(req.body.password);
+const userLoginController = async(req,res,next)=>{
     const {email,password} =req.body;
     try {
+      console.log("check");
       const existingUser = await UserRegistration.findOne({email:email});
+      payload.result=existingUser;
+      const expireTime ={
+          expiresIn: '1d'
+      }
       if(!existingUser){
-         res.render("pages/user_login",{msg:"user not found"});
-        // return res.status(400).json({message:"user already exists"});
+        // return res.status(400).json({message:"user not registered yet ,please registered here "});
+        res.render('pages/user_login',{msg:"user not registered yet ,please registered here "});
      }else{
      const matchPassword = await bcrypt.compare(password,existingUser.password);
      if(!matchPassword){
-         res.render("login",{msg:"password not match"});
-        // return res.status(400).json({message:"Invalid Credentials"});
+        return         res.render('pages/user_login',{msg:"Password Not matched.....Please Enter correct Password "});
+    }else{
+        token = jwt.sign(payload,SECRET_KEY,expireTime);
+        res.cookie('jwt',token,{httpOnly: true,maxAge:maxAge});
+        if(!token){
+           res.json({message:"Error occured with token"})
+        }else 
+         res.redirect("userToken");
+
      }
-     const token = jwt.sign({email:existingUser.email,id:existingUser._id},SECRET_KEY);
-     res.render("pages/userProduct");
     }
-    } catch (error) {
+    }catch (error) {
       console.log("Error"+error);
     }
 }
-export{userLoginController}
+export{userLoginController}     
+
+export const authenticateJWT = (request, response, next) => {
+    console.log("authenticateJWT : ");
+    const token = request.cookies.jwt;
+    if (!token) {
+        response.json({ message: "Error Occured while dealing with Token inside authenticateJWT" });
+    }
+    jwt.verify(token, SECRET_KEY, (err, payload) => {
+        if (err)
+        res.render('pages/user_login',{msg:"Token is not valid "});
+        request.payload = payload;
+        next();
+    });
+}
+
+export const authorizeUser = (request, response, next) => {
+    console.log("5", request.payload.result.email);
+     next();
+}
+export{jwt,SECRET_KEY}
+
 
 
 

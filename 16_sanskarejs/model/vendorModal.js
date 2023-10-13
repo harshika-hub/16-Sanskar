@@ -5,19 +5,19 @@ import mongoose from "mongoose";
 // Defining Schema
 const registration = new mongoose.Schema({
 
-    role:{type:String,required:true,trim:true},
-    name:{type:String,required:true,trim:true},
+    role:{type:String,trim:true},
+    name:{type:String,trim:true},
     email:{type:String,unique:true,required:true,trim:true},
     password:{type:String,required:true,trim:true},
-    confirmpassword:{type:String,required:true,trim:true},
-    contact:{type:Number,minlength:10,required:true,trim:true},
-    street:{type:String,required:true,trim:true},
-    city:{type:String,required:true,trim:true},
-    pin_code:{type:Number,minlength:10,required:true,trim:true},
-    state:{type:String,required:true,trim:true},
-    gst_number:{type:String,minlength:15,required:true,trim:true},
-    aadhar_number:{type:Number,minlength:12,required:true,trim:true},
-    category:{type:String,required:true,trim:true},
+    confirmpassword:{type:String,trim:true},
+    contact:{type:Number,minlength:10,trim:true},
+    street:{type:String,trim:true},
+    city:{type:String,trim:true},
+    pin_code:{type:Number,minlength:10,trim:true},
+    state:{type:String,trim:true},
+    gst_number:{type:String,minlength:15,trim:true},
+    aadhar_number:{type:Number,minlength:12,trim:true},
+    category:{type:String,trim:true},
 
 });
 const Registration = mongoose.model("registration",registration);
@@ -42,6 +42,10 @@ let productSchemas = new mongoose.Schema({
     vproduct_imag:{type:String,require:true},
     user_id: Number,
     vendor_categoryid: Number,
+    vproduct_status:{
+        type:String,
+        default:"Activated"
+    },
 
 });
-export let productmodels = new mongoose.model('vendorproducts', productSchemas);
+export const productmodels = new mongoose.model('vendorproducts', productSchemas);

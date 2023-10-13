@@ -1,3 +1,7 @@
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,7 +18,7 @@
     $(document).ready(function () {
       $("#myTable").DataTable();
     });
-  </script>
+  </script>   
 </head>
 <style>
   /* -------------------------- */
@@ -218,7 +222,7 @@
     }
 
     .toggles {
-      z-index: 10001;
+      z-index: 1000;
     }
 
     .main.actives .toggles {
@@ -230,14 +234,17 @@
   }
 
   #datatable {
-    width: 79%;
+    width: 100%;
     height: auto;
-    margin-left: 21%;
+    margin-top: 20px;
+    padding: 8px;
+    /* margin-left: 21%; */
   }
 
   #myTable thead tr {
     background-color: #f47c00;
     color: #fff;
+    padding: 10px;
   }
 
   #myTable tbody tr:nth-child(even) {
@@ -272,188 +279,54 @@
 <body>
   <!-- navigation -->
   <div class="container-fluid">
-    <div class="navigations">
-      <ul>
-          <li>
-          
+    <%- include('../partials/adminav.ejs')%>
 
-              <a href="#">
-                  <span class="icon">
-                    <!-- <img src="./images/16-sanskar.png" alt="#" style="width: 100px; height: 60px;" align="center"> -->
-                  </span>
-                  <span class="title">16-Sanskar</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="/admin_dash">
-                  <span class="icon">
-                      <ion-icon name="home-outline"></ion-icon>
-                  </span>
-                  <span class="title">Dashboard</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="/adminLogin/user_details">
-                  <span class="icon">
-                      <ion-icon name="people-outline"></ion-icon>
-                  </span>
-              <span class="title">Customers</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="/adminLogin/orders">
-                  <span class="icon">
-                      <ion-icon name="layers-outline"></ion-icon>                        </span>
-                 <span class="title">Orders</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="/adminLogin/vendor_details">
-                  <span class="icon">
-                      <ion-icon name="person-outline"></ion-icon>                
-                          </span>
-                 <span class="title">Vendors</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="/adminLogin/Added_product">
-                  <span class="icon">
-                      <ion-icon name="download-outline"></ion-icon> 
-                                         </span>
-                 <span class="title">Added Product</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="#">
-                  <span class="icon">
-                      <ion-icon name="lock-closed-outline"></ion-icon>
-                  </span>
-                  <span class="title">Password</span>
-              </a>
-          </li>
-
-          <li>
-              <a href="#">
-                  <span class="icon">
-                      <ion-icon name="log-out-outline"></ion-icon>
-                  </span>
-                  <span class="title">Sign Out</span>
-              </a>
-          </li>
-      </ul>
-  </div>
-    <!-- ---------------------------------------- -->
-
-    <center>
-    <h1 style="color: #f47c00;margin-left:400px;">User Details</h1>
-    </center>
-    <div id="datatable">
-      <div class="toggles">
-        <ion-icon name="menu-outline"></ion-icon>
+    <div class="main">
+      <div class="topbar">
+        <div class="toggles">
+          <ion-icon name="menu-outline"></ion-icon>
+        </div>
       </div>
-      <table id="myTable" class="display nowrap" style="width:100%;">
-        <thead>
-          <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Address</th>
-            <th>Contact No.</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="table">
-            <td>1</td>
-            <td>Tiger Nixon</td>
-            <td>TigerNixon@gmail.com</td>
-            <td>Vijaynagar</td>
-            <td>9856987659</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>Garrett Winters</td>
-            <td>GarrettWinters@gmail.com</td>
-            <td>South tukoganj</td>
-            <td>6576236985</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>3</td>
-            <td>Ashton Cox</td>
-            <td>AshtonCox@gmail.com</td>
-            <td>Aptc</td>
-            <td>6656598563</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>4</td>
-            <td>Cedric Kelly</td>
-            <td>CedricKelly@gmail.com</td>
-            <td>Hawabangla</td>
-            <td>2236845698</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>5</td>
-            <td>Airi Satou</td>
-            <td>AiriSatou@gmail.com</td>
-            <td>Khajrana</td>
-            <td>3398625896</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>6</td>
-            <td>Brielle Williamson</td>
-            <td>BrielleWilliamson@gmail.com</td>
-            <td>Aptc</td>
-            <td>6189857658</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>7</td>
-            <td>Herrod Chandler</td>
-            <td>HerrodChandler@gmail.com</td>
-            <td>Foothikothi</td>
-            <td>8952369895</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>8</td>
-            <td>Rhona Davidson</td>
-            <td>RhonaDavidson@gmail.com</td>
-            <td>Nipania</td>
-            <td>9856321475</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>9</td>
-            <td>Colleen Hurst</td>
-            <td>ColleenHurst@gmail.com</td>
-            <td>Bhawarkua</td>
-            <td>856974231</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-          <tr>
-            <td>10</td>
-            <td>Sonya Frost</td>
-            <td>SonyaFrost@gmail.com</td>
-            <td>Vijaynagar</td>
-            <td>985674554</td>
-            <td><button class="custom-button">Deactivate</button></td>
-          </tr>
-        </tbody>
-      </table>
+       <center>
+      <h1 style="color: #f47c00;">User Details</h1>
+
+    </center>
+     
+        <div id="datatable">
+          
+          <table id="myTable" class="display nowrap" style="width:100%;">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Address</th>
+                <th>Contact No.</th>
+                <th>ZipCode</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% userrecord.forEach((user)=> {%>
+              <tr class="table">
+                <td><%= user.firstname%>  <%= user.lastname%></td>
+                <td><%= user.email%></td>
+                <td><%= user.street%>,<%= user.city%>,<%= user.state%></td>
+                <td><%= user.contact%></td>
+                <td><%= user.zipcode%></td>
+                <td> <form method="POST" action="/adminLogin/deactivateUser/<%= user.email %>">
+                  <button type="submit" class="custom-button"><%= user.status%></button>
+              </form></td>
+              </tr>
+              <%})%>
+            </tbody>
+          </table>
+        </div>
     </div>
   </div>
 
+    <!-- ---------------------------------------- -->
+
+  
     <script>
       // add hovered class to selected list item
       let list = document.querySelectorAll(".navigations li");

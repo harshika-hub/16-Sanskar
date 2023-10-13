@@ -55,10 +55,10 @@
       background: red;
 
       /* Chrome 10-25, Safari 5.1-6 */
-      background: -webkit-linear-gradient(to right, rgb(240,148,77), rgb(240,148,77));
+      background-image: linear-gradient( #FF6900, #FFC80E);
 
       /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-      background: linear-gradient(to right, rgb(240,148,77), rgb(240,148,77))
+      background-image: linear-gradient( #FF6900, #FFC80E);
     }
 
     .bg-indigo {
@@ -178,15 +178,6 @@
                           <h3 class="fw-normal mb-5" style="color: #f47c00;">User Registration Form</h3>
                           <div class="row">
                             <div class="col-md-6 pb-3">
-                              <select class="select" name="role"  style="color: #f47c00;">
-                                <option selected >Role</option>
-                                <option  value="admin">Admin</option>
-                                <option  value="vendor">Vendor</option>
-                                <option  value="customer">Customer</option>
-                              </select>
-                            </div>
-    
-                            <div class="col-md-6 pb-3">
                             </div>
                           </div>
     
@@ -221,8 +212,7 @@
                           </div>
     
                           <div class="row">
-                            <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0">
-    
+                            <div class="col-md-6 mb-4 pb-2 mb-md-0 pb-md-0"> 
                               <div class="form-outline">
                                 <input type="password" id="password" name="password" onkeyup="return passwordValidate()" class="form-control form-control-lg" />
                                 <label class="form-label" id="passwordValid" for="form3Examplev5">Password</label>
@@ -238,7 +228,7 @@
     
                             </div>
                           </div>
-    
+
                         </div>
                       </div>
                       <div class="col-lg-6 bg-indigo text-white">
@@ -284,6 +274,12 @@
                                 <label class="form-label1" for="form3Examplea5">Zip Code</label>
                               </div>
     
+                            </div>
+                          </div>
+
+                          <div class="my-4 pb-2 text-center">
+                            <div class="form-outline w-50 border h-25 bg-dark " style="">
+                              <a href="/userProduct/sendOtp"class="align-items-center text-decoration-none text-white"> Send otp to Verify</a>
                             </div>
                           </div>
                           <div class="form-check d-flex justify-content-start mb-4 pb-3">

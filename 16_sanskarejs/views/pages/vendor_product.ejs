@@ -15,7 +15,7 @@
 
   <!-- /* *********************to prevent back button action************ */ -->
 
-  <!-- <script type="text/javascript">
+  <script type="text/javascript">
 
     function preventBack() {
         window.history.forward(); 
@@ -24,15 +24,15 @@
     setTimeout("preventBack()", 0);
       
     window.onunload = function () { null };
-</script> -->
+</script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
   $('form').submit(function(e){
       e.preventDefault(); // prevents page reloading
      // api request
      return false;
   });
-</script>
+</script> -->
   <style>
     
 
@@ -252,7 +252,7 @@
               <!-- <a class="nav-link text-white" href="#addDataModal">Add Product<i class="fa fa-sign-in" aria-hidden="true"></i></a> -->
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="/vendor_product">Logout<i class="fa fa-user"
+              <a class="nav-link text-white" href="/vendor_registration/vendorlogout">Logout<i class="fa fa-user"
                   aria-hidden="true"></i></a>
             </li>
           </ul>
@@ -287,8 +287,8 @@
                   <button type='button' data-bs-toggle='modal' data-bs-target='#exampleModal-2' class='btn btn-success'
                     style="width: 49%;border: none; background-color:#f47c00;"><a href="/vendor_registration/editVendorproduct/<%=data.vproduct_id%>" class="text-white text-decoration-none ">Edit</a></button>
 
-                  <button type='button' class='btn btn-danger'
-                    style="width: 49%;border: none;background-color:black">Delete</button>
+                 <a href="/vendor_registration/deleteVendorproduct/<%=data._id%>"> <button type='button' class='btn btn-danger'
+                    style="width: 49%;border: none;background-color:black">Delete</button></a>
                 </div>
               </div>
             </div>
@@ -377,7 +377,7 @@
               <small id="error-msg" class="error-message" style="color: red;"></small>
             </div>
             <div class="form-group mt-2">
-              <input type="file" class="form-control" id="productImage" name="productImage"  >
+              <input type="file" class="form-control" id="productImage" name="productImage">
               <small id="image-error-msg" class="error-message" style="color: red;"></small>
             </div>
 
@@ -407,7 +407,7 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/vendor_registration/updateVendorproduct/<%=edit._id%>" method="post">
+          <form action="/vendor_registration/updateVendorproduct/<%=edit._id%>/<%=edit.vproduct_imag%>" method="post" enctype="multipart/form-data">
             <div class="form-group">
               <div id="image-div"></div>
               <label for="exampleFormControlInput1" style="color: #f47c00;">Product Id -</label>
@@ -430,8 +430,9 @@
                 rows="3">"<%=edit.vproduct_description%></textarea>
             </div>
             <div class="form-group mt-2">
+              <img src="/uploads/<%=edit.vproduct_imag%>" alt="" style="width: 80%; height:25vh;"><br>
               <label for="exampleFormControlSelect1" style="color: #f47c00;">Product - Image -</label>
-              <input type="file" class="form-control" id="image-edit">
+              <input type="file" class="form-control" id="productImages" name="productImage">
             </div>
             <div class="modal-footer">
               <button type="submit" class="btn btn-success w-100" style="background-color: #f47c00; border: none;"
