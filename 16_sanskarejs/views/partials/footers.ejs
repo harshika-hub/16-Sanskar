@@ -1,0 +1,723 @@
+<footer class="footer col-,d-12 d-flex jusstify-content-between align-item-center">
+    <div class="col-md-3 col-sm-12 contactimg">
+
+        <img src="images/footer.JPG" alt="#" style="height: 100%;">
+    </div>
+
+    <div class="col-md-9 col-sm-12">
+        <div class="col-md-9 input">
+            <!-- Your E-Mail -->
+            <button>Subscribe</button>
+        </div>
+
+
+        <div class="col-md-9 col-sm-12 d-flex jusstify-content-between align-item-center  footerlink">
+
+            <div class="col-md-3 col-sm-12 mt-4">
+
+                <h4 style="color: white;margin-left: 25px;">Contact Us</h4>
+                <ul class="footerul">
+                    <li><a href="#"><i class="fa fa-phone">&nbsp;&nbsp;</i>Mobile Nu.</a></li>
+                    <li><a href="#"> <i class="fa fa-envelope" aria-hidden="true">&nbsp;&nbsp;</i>E-mail</a></li>
+                    <li><a href="#"><i class="fa fa-facebook-square" aria-hidden="true">&nbsp;&nbsp;</i>Facebook</a>
+                    </li>
+                </ul>
+
+
+            </div>
+            <div class="col-lg-3 col-md-12 mt-4">
+
+                <h4 style="color: white; margin-left: 25px;">Partnership</h4>
+                <ul class="footerul">
+                    <li><a href="#"><i class="fa fa-globe" aria-hidden="true">&nbsp;&nbsp;</i>Website</a></li>
+                    <li><a href="#">Social Media</a></li>
+                    <li><a href="#">Branding</a></li>
+                </ul>
+
+
+            </div>
+            <div class="col-lg-3 col-md-12 mt-4">
+
+                <h4 style="color: white;margin-left: 25px;">About</h4>
+                <ul class="footerul">
+                    <li><a href="#">Our-Project</a></li>
+
+                </ul>
+
+
+            </div>
+            <div class="col-lg-3 col-md-12 mt-4">
+
+                <h4 style="color: white; margin-left: 25px;">Support</h4>
+                <ul class="footerul">
+                    <li><a href="#">Support Request</a></li>
+                    <li><a href="#">Conmtact</a></li>
+                </ul>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+
+#nav-ediv {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* height: 20vh; */
+  z-index: 1;
+  background-color: #f47c00;
+}
+    .navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      /* justify-content: space-between; */
+    }
+
+    .navbar-nav {
+      gap: 8vw;
+    }
+             @media screen and (min-width: 768px) {
+  .navbar-brand img {
+    width: 100px;
+  }
+  .navbar-brand {
+    margin-right: 0;
+    padding: 0 1em;
+}
+             }
+      
+      .reg-form {
+        display: flex;
+        height: 100vh;
+        background: linear-gradient(180deg, white, transparent);
+      }
+      
+      .form {
+        margin: auto;
+        padding: 1rem;
+        /* border: 1px solid; */
+        border-radius: 0.5rem;
+        background-image: url('/images/registration1.jpg') ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: auto; 
+        filter: drop-shadow(2px 4px 6px #333);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 40%;
+      }
+      
+      .title, .action-btn {
+        text-align: center;
+        margin-bottom: 1.25rem;
+        color: #fff;
+      }
+      
+      .form-input {
+        width: 18.75rem;
+        padding: 0.80rem;
+        position: relative;
+        margin:auto;
+      }
+      
+      .floating-label {
+        font-size: 13px;
+        position: absolute;
+        left: 25px;
+        top: 26px;
+        pointer-events: none;
+        padding: 0 0.25rem;
+        background: white;
+        color: black;
+        transition: 0.3s ease all;
+      }
+      
+      .floating-input {
+        font-size: 13px;
+        font-weight: 600;
+        display: block;
+        width: 100%;
+        height: 2.25rem;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        border: 1px solid #272727;
+        border-radius: 6px;
+        background: white;
+        color: black;
+        outline: none;
+      }
+      
+      .floating-input:focus {
+        border: 1px solid black;
+      }
+      
+      .floating-input:focus + .floating-label,
+      .floating-input:not(:placeholder-shown) + .floating-label {
+        top: 9px;
+        font-size: 11px;
+        color:orange;
+      }
+      
+      .term-and-condition {
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+      }
+      
+      .term-and-condition span {
+        color:black;
+        cursor: pointer;
+      }
+      
+      .radio-input {
+        cursor: pointer;
+        filter: invert(1);
+      }
+      
+      .btn-reg {
+        height: 2rem;
+        padding: 0 0.75rem;
+        border-radius: 6px;
+        line-height: 1.6;
+        margin-top: 1.25rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        background:black;
+        color: #fff;
+      }
+      
+      .btn-reg:hover {
+        background: #0a0a0a;
+        border: 1px solidblack;
+        transition: 0.3s ease all;
+      }
+      
+      .login-redirect {
+        font-size: 14px;
+        color: #fff;
+        margin-left: 200px;
+      }
+      
+      .login-redirect a {
+        color: black;
+      }
+     </style>
+     <%- include ('../partials/head'); %>
+</head>
+<body>
+    <div id="nav-ediv">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+              <a class=" navbar-brand d-md-none" href="/" align="center"><img src="/images/16-sanskar.png" alt="" 
+                  style="width: 120px; height: 50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+              <ul class="navbar-nav">
+      
+                <li class="nav-item dropdown ">
+                  <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Sanskar's-List
+                  </a>
+                  <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">1. Garbhadhaan</a></li>
+                    <li><a class="dropdown-item" href="#">2. Punsavan
+                      </a></li>
+                    <li><a class="dropdown-item" href="#">3. Simantonayan</a></li>
+                    <li><a class="dropdown-item" href="#">4. Jatkarma</a></li>
+      
+                    <li><a class="dropdown-item" href="#">5. Naamkaran</a></li>
+      
+                    <li><a class="dropdown-item" href="#">6. Nishkramana</a></li>
+      
+                    <li><a class="dropdown-item" href="#">7. Annprashan</a></li>
+      
+                    <li><a class="dropdown-item" href="#">8. Chaul</a></li>
+      
+                    <li><a class="dropdown-item" href="#">9. Vidyarambh</a></li>
+      
+                    <li><a class="dropdown-item" href="#">10. Karnavedh</a></li>
+      
+                    <li><a class="dropdown-item" href="#">11. Upnayan</a></li>
+      
+                    <li><a class="dropdown-item" href="#">12. Vedarambha</a></li>
+      
+                    <li><a class="dropdown-item" href="#">13. Keshani Samskar</a></li>
+      
+                    <li><a class="dropdown-item" href="#">14. Samavartan</a></li>
+      
+                    <li><a class="dropdown-item" href="#">15. Vivah</a></li>
+      
+                    <li><a class="dropdown-item" href="#">16. Antyesthi</a></li>
+      
+                  </ul>
+                </li>
+      
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="/Blogs">Blog  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </li>
+      
+              </ul>
+      
+              <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/16-sanskar.png" 
+                style="width: 120px; height: 50px;"></a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+              <ul class="navbar-nav">
+                <li><a class="dropdown-item text-white " href="/About"> <i class="fa fa-users text-white " aria-hidden="true"></i>
+                    About</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/userProduct">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div> 
+
+<!-- --------------------- -->
+    <div class="reg-form">
+        <form action="" class="form">
+            <div class="form-group col-sm-12">
+                <div class="title">
+                    <h1>User <span style="color: white;">Registration</span></h1>
+                </div>
+
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="id" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Id</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="name" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Name</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="street" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Street</label>
+                </div>
+                <div class="form-input col-sm-9">
+                  <input class="floating-input" id="city" type="text" placeholder="" required>
+                  <label for="" class="floating-label">City</label>
+              </div>
+              <div class="form-input col-sm-9">
+                <select name="states" class="form-select" id="state" style="border: solid 1px black;" aria-label="Default select example">
+                  <option selected>States</option>
+                  <option value="1">Andhra Pradesh</option>
+                  <option value="2">Arunachal Pradesh</option>
+                  <option value="3">Assam</option>
+                  <option value="4">Bihar</option>
+                  <option value="5">Chhattisgarh</option>
+                  <option value="6"> Goa</option>
+                  <option value="7">Gujarat</option>
+                  <option value="8">Haryana</option>
+                  <option value="9">Himachal Pradesh</option>
+                  <option value="10">Jharkhand</option>
+                  <option value="11">Karnataka</option>
+                  <option value="12">Kerala</option>
+                  <option value="13">Madhya Pradesh</option>
+                  <option value="14">Maharashtra</option>
+                  <option value="15">Manipur</option>
+                  <option value="16">Meghalaya</option>
+                  <option value="17">Mizoram</option>
+                  <option value="18">Nagaland</option>
+                  <option value="19">Odisha</option>
+                  <option value="20">Punjab</option>
+                  <option value="21">Rajasthan</option>
+                  <option value="22">Sikkim</option>
+                  <option value="23">Tamil Nadu</option>
+                  <option value="24">Telangana</option>
+                  <option value="25">Tripura</option>
+                  <option value="26">Uttar Pradesh</option>
+                  <option value="27">Uttarakhand</option>
+                  <option value="28">West Bengal</option>
+                </select>
+                <span id="languageValid" style="color:red"></span>
+            </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="pincode" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Pin Code</label>
+                  </div>
+                  <div class="form-input col-sm-9">
+                      <input class="floating-input" id="contact" type="text" placeholder="" required>
+                      <label for="" class="floating-label">Contact no.</label>
+                  </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="email" type="email" placeholder="" required>
+                    <label for="" class="floating-label">Email</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="password" type="password" placeholder="" required>
+                    <label for="" class="floating-label">Password</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="confirmpassword" type="password" placeholder="" required>
+                    <label for="" class="floating-label">Confirm Password</label>
+                </div>
+                <div class="term-and-condition col-sm-12">
+                    <input type="checkbox" class="radio-input" id="tandc" required>
+                    <label for="tandc" class="radio-label">
+                        I agree to the <span>Terms of Service</span> and <span>Privacy Policy</span>
+                    </label>
+                </div>
+                <div class="action-btn">
+                    <button class="btn-reg" type="submit">Sign-up</button>
+                </div>
+                <div class="login-redirect">
+                    Already a member? <a href="#">Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+
+
+<!-- Old user registration -->
+
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Form</title>
+    <style>
+
+#nav-ediv {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  /* height: 20vh; */
+  z-index: 1;
+  background-color: #f47c00;
+}
+    .navbar-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      /* justify-content: space-between; */
+    }
+
+    .navbar-nav {
+      gap: 8vw;
+    }
+             @media screen and (min-width: 768px) {
+  .navbar-brand img {
+    width: 100px;
+  }
+  .navbar-brand {
+    margin-right: 0;
+    padding: 0 1em;
+}
+             }
+      
+      .reg-form {
+        display: flex;
+        height: 100vh;
+        background: linear-gradient(180deg, white, transparent);
+      }
+      
+      .form {
+        margin: auto;
+        padding: 1rem;
+        /* border: 1px solid; */
+        border-radius: 0.5rem;
+        background-image: url('/images/registration1.jpg') ;
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: auto; 
+        filter: drop-shadow(2px 4px 6px #333);
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 40%;
+      }
+      
+      .title, .action-btn {
+        text-align: center;
+        margin-bottom: 1.25rem;
+        color: #fff;
+      }
+      
+      .form-input {
+        width: 18.75rem;
+        padding: 0.80rem;
+        position: relative;
+        margin:auto;
+      }
+      
+      .floating-label {
+        font-size: 13px;
+        position: absolute;
+        left: 25px;
+        top: 26px;
+        pointer-events: none;
+        padding: 0 0.25rem;
+        background: white;
+        color: black;
+        transition: 0.3s ease all;
+      }
+      
+      .floating-input {
+        font-size: 13px;
+        font-weight: 600;
+        display: block;
+        width: 100%;
+        height: 2.25rem;
+        padding: 0 1rem;
+        box-sizing: border-box;
+        border: 1px solid #272727;
+        border-radius: 6px;
+        background: white;
+        color: black;
+        outline: none;
+      }
+      
+      .floating-input:focus {
+        border: 1px solid black;
+      }
+      
+      .floating-input:focus + .floating-label,
+      .floating-input:not(:placeholder-shown) + .floating-label {
+        top: 9px;
+        font-size: 11px;
+        color:orange;
+      }
+      
+      .term-and-condition {
+        font-size: 12px;
+        text-align: center;
+        color: #fff;
+      }
+      
+      .term-and-condition span {
+        color:black;
+        cursor: pointer;
+      }
+      
+      .radio-input {
+        cursor: pointer;
+        filter: invert(1);
+      }
+      
+      .btn-reg {
+        height: 2rem;
+        padding: 0 0.75rem;
+        border-radius: 6px;
+        line-height: 1.6;
+        margin-top: 1.25rem;
+        border: 1px solid transparent;
+        cursor: pointer;
+        background:black;
+        color: #fff;
+      }
+      
+      .btn-reg:hover {
+        background: #0a0a0a;
+        border: 1px solidblack;
+        transition: 0.3s ease all;
+      }
+      
+      .login-redirect {
+        font-size: 14px;
+        color: #fff;
+        margin-left: 200px;
+      }
+      
+      .login-redirect a {
+        color: black;
+      }
+     </style>
+     <%- include ('../partials/head'); %>
+</head>
+<body>
+    <div id="nav-ediv">
+        <nav class="navbar navbar-expand-lg navbar-light">
+          <div class="container-fluid">
+              <a class=" navbar-brand d-md-none" href="/" align="center"><img src="/images/16-sanskar.png" alt="" 
+                  style="width: 120px; height: 50px;"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+              <ul class="navbar-nav">
+      
+                <li class="nav-item dropdown ">
+                  <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    Sanskar's-List
+                  </a>
+                  <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="#">1. Garbhadhaan</a></li>
+                    <li><a class="dropdown-item" href="#">2. Punsavan
+                      </a></li>
+                    <li><a class="dropdown-item" href="#">3. Simantonayan</a></li>
+                    <li><a class="dropdown-item" href="#">4. Jatkarma</a></li>
+      
+                    <li><a class="dropdown-item" href="#">5. Naamkaran</a></li>
+      
+                    <li><a class="dropdown-item" href="#">6. Nishkramana</a></li>
+      
+                    <li><a class="dropdown-item" href="#">7. Annprashan</a></li>
+      
+                    <li><a class="dropdown-item" href="#">8. Chaul</a></li>
+      
+                    <li><a class="dropdown-item" href="#">9. Vidyarambh</a></li>
+      
+                    <li><a class="dropdown-item" href="#">10. Karnavedh</a></li>
+      
+                    <li><a class="dropdown-item" href="#">11. Upnayan</a></li>
+      
+                    <li><a class="dropdown-item" href="#">12. Vedarambha</a></li>
+      
+                    <li><a class="dropdown-item" href="#">13. Keshani Samskar</a></li>
+      
+                    <li><a class="dropdown-item" href="#">14. Samavartan</a></li>
+      
+                    <li><a class="dropdown-item" href="#">15. Vivah</a></li>
+      
+                    <li><a class="dropdown-item" href="#">16. Antyesthi</a></li>
+      
+                  </ul>
+                </li>
+      
+                <li class="nav-item">
+                  <a class="nav-link text-white" href="/Blogs">Blog  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                </li>
+      
+              </ul>
+      
+              <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/16-sanskar.png" 
+                style="width: 120px; height: 50px;"></a>
+            </div>
+            <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+              <ul class="navbar-nav">
+                <li><a class="dropdown-item text-white " href="/About"> <i class="fa fa-users text-white " aria-hidden="true"></i>
+                    About</a></li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/userProduct">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </div> 
+
+<!-- --------------------- -->
+    <div class="reg-form">
+        <form action="" class="form">
+            <div class="form-group col-sm-12">
+                <div class="title">
+                    <h1>User <span style="color: white;">Registration</span></h1>
+                </div>
+
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="id" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Id</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="name" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Name</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="street" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Street</label>
+                </div>
+                <div class="form-input col-sm-9">
+                  <input class="floating-input" id="city" type="text" placeholder="" required>
+                  <label for="" class="floating-label">City</label>
+              </div>
+              <div class="form-input col-sm-9">
+                <select name="states" class="form-select" id="state" style="border: solid 1px black;" aria-label="Default select example">
+                  <option selected>States</option>
+                  <option value="1">Andhra Pradesh</option>
+                  <option value="2">Arunachal Pradesh</option>
+                  <option value="3">Assam</option>
+                  <option value="4">Bihar</option>
+                  <option value="5">Chhattisgarh</option>
+                  <option value="6"> Goa</option>
+                  <option value="7">Gujarat</option>
+                  <option value="8">Haryana</option>
+                  <option value="9">Himachal Pradesh</option>
+                  <option value="10">Jharkhand</option>
+                  <option value="11">Karnataka</option>
+                  <option value="12">Kerala</option>
+                  <option value="13">Madhya Pradesh</option>
+                  <option value="14">Maharashtra</option>
+                  <option value="15">Manipur</option>
+                  <option value="16">Meghalaya</option>
+                  <option value="17">Mizoram</option>
+                  <option value="18">Nagaland</option>
+                  <option value="19">Odisha</option>
+                  <option value="20">Punjab</option>
+                  <option value="21">Rajasthan</option>
+                  <option value="22">Sikkim</option>
+                  <option value="23">Tamil Nadu</option>
+                  <option value="24">Telangana</option>
+                  <option value="25">Tripura</option>
+                  <option value="26">Uttar Pradesh</option>
+                  <option value="27">Uttarakhand</option>
+                  <option value="28">West Bengal</option>
+                </select>
+                <span id="languageValid" style="color:red"></span>
+            </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="pincode" type="text" placeholder="" required>
+                    <label for="" class="floating-label">Pin Code</label>
+                  </div>
+                  <div class="form-input col-sm-9">
+                      <input class="floating-input" id="contact" type="text" placeholder="" required>
+                      <label for="" class="floating-label">Contact no.</label>
+                  </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="email" type="email" placeholder="" required>
+                    <label for="" class="floating-label">Email</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="password" type="password" placeholder="" required>
+                    <label for="" class="floating-label">Password</label>
+                </div>
+                <div class="form-input col-sm-9">
+                    <input class="floating-input" id="confirmpassword" type="password" placeholder="" required>
+                    <label for="" class="floating-label">Confirm Password</label>
+                </div>
+                <div class="term-and-condition col-sm-12">
+                    <input type="checkbox" class="radio-input" id="tandc" required>
+                    <label for="tandc" class="radio-label">
+                        I agree to the <span>Terms of Service</span> and <span>Privacy Policy</span>
+                    </label>
+                </div>
+                <div class="action-btn">
+                    <button class="btn-reg" type="submit">Sign-up</button>
+                </div>
+                <div class="login-redirect">
+                    Already a member? <a href="#">Login</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
