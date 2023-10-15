@@ -4,7 +4,6 @@ import multer from 'multer';
 import path from 'path';
 import {vendorcreate, vregController,vproductController,vprofileController,vAddproductController,vEditproductController,vUpdatproductController,vDeleteproductController,authenticateJWT,authorizeUser,jwt,SECRET_KEY, vendoreloginController } from '../controllers/sellerController.js'
 
-
 var storage=multer.diskStorage({
     destination:'./public/uploads'
     ,
@@ -16,17 +15,16 @@ var storage=multer.diskStorage({
   export var upload=multer({storage:storage}).single('productImage');
 
 router.get('/', vregController)
-router.get('/vendor_product', vproductController)
-
-router.get('/Vendor_profile', vprofileController)
-router.post('/addVendorproduct',upload,vAddproductController)
-router.get('/editVendorproduct/:vproduct_id', vEditproductController)
-router.post('/updateVendorproduct/:id/:vproduct_img',upload, vUpdatproductController)
-router.post('/vendoradd',vendorcreate,vproductController)
-router.get('/deleteVendorproduct/:id', vDeleteproductController)
+router.get('/vendor_product', vproductController);
+router.get('/Vendor_profile', vprofileController);
+router.post('/addVendorproduct',upload,vAddproductController,vproductController);
+router.get('/editVendorproduct/:id', vEditproductController,vproductController);
+router.post('/updateVendorproduct',upload, vUpdatproductController);
+router.post('/vendoradd',vendorcreate,vproductController);
+router.get('/deleteVendorproduct/:id', vDeleteproductController);
 router.post('/vendorlogin',vendoreloginController);
-router.get('/vendorRegistrationToken',authenticateJWT,authorizeUser,vproductController)
-router.get('/vendorToken',authenticateJWT,authorizeUser,vproductController)
+router.get('/vendorRegistrationToken',authenticateJWT,authorizeUser,vproductController);
+router.get('/vendorToken',authenticateJWT,authorizeUser,vproductController);
 
 router.get('/vendor_login',(req, res,next) => {
   // var role = req.params.role;
@@ -57,6 +55,7 @@ router.get('/vendor_login',(req, res,next) => {
 router.get('/vendorlogout', (req, res) => {
   console.log("logout")
   res.cookie('jwt', '', { httpOnly: true, maxAge: 1 });
+  res.clearCookie('vendor');
   res.render('pages/vendor_login', {msg:"LogOut Succefully"});
   console.log("after msg")
 });

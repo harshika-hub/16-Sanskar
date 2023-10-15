@@ -22,7 +22,7 @@ const aboutController=(req,res)=>{
 export{aboutController}
 
 const registrationController=(req,res)=>{
-    res.render('pages/Registration');
+    res.render('pages/Registration',{msg:""});
 }
 export{registrationController}
 

@@ -5,11 +5,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Vendor Products</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
     integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
   <link rel="icon" href="img/tab-bar-icon.png">
 
@@ -48,7 +48,6 @@
       margin-top: -8%;
 
     }
-
     .navbar-nav {
       gap: 16vw;
     }
@@ -218,7 +217,7 @@
   <%- include('../partials/head'); %>
 </head>
 
-<body>
+<body onloadeddata="showModal()">
 
   <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -261,8 +260,6 @@
     </nav>
   </div>
 
-
-
   <div class="container card-body-all mt-5">
     <div class="card-container d-flex flex-wrap" id="curd-table">
 
@@ -273,7 +270,8 @@
             <div class='p-3'>
               <div class='card d-flex card-all'>
                 <div class='card-body' style=" height: 11rem; width: 16rem;">
-                  <h5 class='card-title text-center'><strong>Item No.-</strong> <%=data.vproduct_id%></h5>
+                  <span id="ids" class="d-none"><%=data._id%></span>
+                  <h5 class='card-title text-center' ><strong>Item No.-</strong> <%=data.vproduct_id%></h5>
                   <img src="/uploads/<%=data.vproduct_imag%>" class="card-img-top" alt='Image' style=" height: 10rem; width: 14rem;">
                 </div>
                 <ul class='list-group list-group-flush'>
@@ -284,8 +282,8 @@
 
                 <div class='card-body text-center'>
 
-                  <button type='button' data-bs-toggle='modal' data-bs-target='#exampleModal-2' class='btn btn-success'
-                    style="width: 49%;border: none; background-color:#f47c00;"><a href="/vendor_registration/editVendorproduct/<%=data.vproduct_id%>" class="text-white text-decoration-none ">Edit</a></button>
+                  <button onclick="showContent('<%=data._id%>')" type='button' data-bs-toggle='modal' data-bs-target='#exampleModal-2' class='btn btn-success'
+                    style="width: 49%;border: none; background-color:#f47c00;">Edit</button>
 
                  <a href="/vendor_registration/deleteVendorproduct/<%=data._id%>"> <button type='button' class='btn btn-danger'
                     style="width: 49%;border: none;background-color:black">Delete</button></a>
@@ -315,7 +313,6 @@
           <form onsubmit="return validateProductForm()" action="/vendor_registration/addVendorproduct" method="post" enctype="multipart/form-data">
             <div class="row">
               
-
             <div class="form-group col-6">
               <input type="text" class="form-control" id="productId"  name="productId"  placeholder="Enter product Id"  
                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
@@ -355,6 +352,30 @@
                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
               <small id="error-msg" class="error-message" style="color: red;"></small>
             </div>
+            <!-- <div class="row my-4">
+              <div class="form-group">
+                <label for="selectedEvents">Product Suitable For?</label>
+                <select class="form-select" name="selectedEvents" id="selectedEvents">
+                  <option value="Garbhadhaan">1. Garbhadhaan</option>
+                  <option value="Punsavan">2. Punsavan</option>
+                  <option value="Simantonayan">3. Simantonayan</option>
+                  <option value="Jatkarma">4. Jatkarma</option>
+                  <option value="Naamkaran">5. Naamkaran</option>
+                  <option value="Nishkramana">6. Nishkramana</option>
+                  <option value="Annprashan">7. Annprashan</option>
+                  <option value="Chudakaran">8. Chudakaran</option>
+                  <option value="Vidyarambh">9. Vidyarambh</option>
+                  <option value="Karnavedh">10. Karnavedh</option>
+                  <option value="Upnayan">11. Upnayan</option>
+                  <option value="Vedarambha">12. Vedarambha</option>
+                  <option value="Keshani Samskar">13. Keshani Samskar</option>
+                  <option value="Samavartan">14. Samavartan</option>
+                  <option value="Vivah">15. Vivah</option>
+                  <option value="Antyesthi">16. Antyesthi</option>
+                </select>
+              </div>
+            </div> -->
+
             <div class="row">
             <div class="form-group mt-2 col-6">
               <small>Manufacturing Date</small>
@@ -395,10 +416,8 @@
   </div>
     <!-- Add Module End -->
     <script src="/validation/productv.js"></script>
+  <!-- edit Module start -->
 
-
-
-  <!-- Edit Module Start -->
   <div class="modal fade" id="exampleModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" id="form">
@@ -407,30 +426,34 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form action="/vendor_registration/updateVendorproduct/<%=edit._id%>/<%=edit.vproduct_imag%>" method="post" enctype="multipart/form-data">
+          <form action="/vendor_registration/updateVendorproduct" method="post" enctype="multipart/form-data">
+            <!-- data input crenditial for retriving -->
+            <input class="d-none" type="text" value="" id="did" name="did">
+            <input class="d-none" type="text" value="" id="dimg" name="dimg">
+
             <div class="form-group">
               <div id="image-div"></div>
               <label for="exampleFormControlInput1" style="color: #f47c00;">Product Id -</label>
-              <input type="text" class="form-control" id="id-edit" aria-label="Sizing example input" value="<%=edit.vproduct_id%>"
+              <input type="text" class="form-control" id="id-edit" aria-label="Sizing example input" value=" "
                 aria-describedby="inputGroup-sizing-default" readonly>
             </div>
             <div class="form-group mt-2">
               <label for="exampleFormControlSelect1" style="color: #f47c00;">Name -</label>
-              <input type="text" class="form-control" id="name-edit" placeholder="Enter Product name" name="productName"  value="<%=edit.vproduct_name%>"
+              <input type="text" class="form-control" id="name-edit" placeholder="Enter Product name" name="productName"  value=""
                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="form-group mt-2">
               <label for="exampleFormControlSelect1" style="color: #f47c00;">Price -</label>
-              <input type="text" class="form-control" id="price-edit" placeholder="Enter Product Price" name="productPrice" value="<%=edit.vproduct_price%>"
+              <input type="text" class="form-control" id="price-edit" placeholder="Enter Product Price" name="productPrice" value=""
                 aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="form-group mt-2">
               <label for="exampleFormControlTextarea1" style="color: #f47c00;">Description -</label>
               <textarea class="form-control h-25" id="description-edit" placeholder="Enter Description of Product" name="productDescription"
-                rows="3">"<%=edit.vproduct_description%></textarea>
+                rows="3"></textarea>
             </div>
             <div class="form-group mt-2">
-              <img src="/uploads/<%=edit.vproduct_imag%>" alt="" style="width: 80%; height:25vh;"><br>
+              <img src="" alt="" style="width: 80%; height:25vh;" id="img-edit"><br>
               <label for="exampleFormControlSelect1" style="color: #f47c00;">Product - Image -</label>
               <input type="file" class="form-control" id="productImages" name="productImage">
             </div>
@@ -444,14 +467,48 @@
       </div>
     </div>
   </div>
+
   <!-- Edit Module End -->
 
-  <!-- Add Module End -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
     crossorigin="anonymous"></script>
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <script src="script/script.js"></script>
+
+  <script>
+   
+  async function  showContent(pid)
+   {
+    // const pid=document.getElementById('ids').innerHTML;
+    const id=document.getElementById('id-edit');
+    const pname=document.getElementById('name-edit');
+    const pprice=document.getElementById('price-edit');
+    const pdesc=document.getElementById('description-edit');
+    const pimg=document.getElementById('img-edit'); 
+    // data in the place of params
+    const did=document.getElementById('did');
+    const dimg=document.getElementById('dimg');
+
+    await fetch(`/vendor_registration/editVendorproduct/${pid}`,{mehod:'GET'})
+    .then(async (res)=>await res.json())
+    .then( (data)=>{
+      console.log(data);
+      id.value=data.data.vproduct_id;
+      pname.value=data.data.vproduct_name;
+      pprice.value=data.data.vproduct_price;
+      pdesc.innerHTML=data.data.vproduct_description;
+      pimg.src=`/uploads/${data.data.vproduct_imag}`;
+      did.value=pid;
+      dimg.value=data.data.vproduct_imag;
+
+    })
+    .catch((err)=>{
+      console.log('error in vendor script'+err+"error occures..............")
+    });
+console.log(pid)
+   }
+  </script>
 </body>
 
 </html>

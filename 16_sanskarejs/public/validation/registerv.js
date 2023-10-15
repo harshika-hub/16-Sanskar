@@ -1,4 +1,10 @@
-function allValidate() {
+function showOtp(){
+  var otpInput=document.getElementById('otp');
+  otpInput.style.display="block";
+
+
+}
+function allValidate(e) {
     var fnamestatus = firstNameValidate();
     var lnamestatus = lastNameValidate();
     var emailstatus = mailValidate();
@@ -42,7 +48,7 @@ function allValidate() {
         }
       }
     
-    } return true;
+    }
   
   }
   
@@ -69,7 +75,7 @@ function allValidate() {
         }
       }
     }
-      return true;
+      
   }
   function aadharCardValidate() {
     var aadhar = document.getElementById("aadharcard");
@@ -85,7 +91,7 @@ function allValidate() {
       if (reg.test(aadhar.value)) {
         aadharValid.innerHTML ="Aadhar number";
         aadharValid.style.color = "";
-        return true;
+        // return true;
       }
       else {
         aadharValid.innerHTML = "aadhar number is incorrect";
@@ -142,7 +148,7 @@ function allValidate() {
              }
   
     }
-    return true;
+    
   }
   
   function togglePassword() {
@@ -235,7 +241,7 @@ function allValidate() {
       if (reg.test(contact.value)) {
         contactValid.innerHTML ="Gst No.";
         contactValid.style.color = "";
-        return true;
+        // return true;
       }
       else {
         contactValid.innerHTML = "aadhar number is incorrect";
@@ -243,7 +249,7 @@ function allValidate() {
         return false;
       }
     }
-   return true;
+  //  return true;
   }
   function streetValidate(street) {
     // alert("helooo");
@@ -269,5 +275,5 @@ function allValidate() {
         }
       }
     }
-      return true;
+      // return true;
   }

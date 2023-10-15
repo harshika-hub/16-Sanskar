@@ -172,7 +172,7 @@
 <!-- --------------------- -->
  
 
-    <form action="/vendor_registration/vendoradd" method="post" onsubmit="return allValidate()">
+    <form action="/vendor_registration/vendoradd" method="post" onsubmit="return allValidate(event)">
       <section class="h-100 h-custom gradient-custom-2">
         <div class="container py-5 h-100">
           <div class="row d-flex justify-content-center align-items-center h-100">
@@ -212,7 +212,7 @@
   
                             <div class="mb-4 pb-2">
                               <div class="form-outline"  >
-                                <input type="email" id="email" name="email" onkeyup="return  mailValidate(email)"
+                                <input type="email" id="email" name="email" onkeyup="return mailValidate(email)"
                                   class="form-control form-control-lg" />
                                 <label class="form-label" id="mailValid" for="form3Examplev4">Email</label>
                               </div>
@@ -341,6 +341,18 @@
   
                           </div>
                         </div>
+
+                        <div class="mb-4 pb-2">
+                          <div class="form-outline form-white text-center">
+                            <button class="text-center bg-primary" onclick="showOtp()" id="otp-btn">Send otp to Verify</button>
+                          </div>
+                        </div>
+                        <div class="mb-4 pb-2 text-center d-flex justify-content-center">
+                          <div class="form-outline form-white w-50 text-center" >
+                            <input type="text" id="otp" name="otp" placeholder="Enter Otp" class="text-center form-control" style="display: none;" />
+                          </div>
+                        </div>
+                      
                         <div class="form-check d-flex justify-content-start mb-4 pb-3">
                           <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
                           <label class="form-check-label text-white" for="form2Example3">
@@ -350,6 +362,7 @@
                         </div>
                         <input type="submit"  class="btn btn-light btn-lg" data-mdb-ripple-color="dark" value="Register">
                       </div>
+                      <span style="color: red;"><%=msg%></span>
                     </div>
                   </div>
                 </div>
@@ -359,6 +372,7 @@
         </div>
       </section>
      </form>
-  
+     <script src="/validation/registerv.js"></script>
+
 </body>
 </html>

@@ -40,7 +40,7 @@ let productSchemas = new mongoose.Schema({
     vproduct_description: String,
     vproduct_totalqty: String,
     vproduct_imag:{type:String,require:true},
-    user_id: Number,
+    user_id: Object,
     vendor_categoryid: Number,
     vproduct_status:{
         type:String,

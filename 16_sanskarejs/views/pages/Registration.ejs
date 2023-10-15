@@ -234,7 +234,6 @@
                       <div class="col-lg-6 bg-indigo text-white">
                         <div class="p-5">
                           <h3 class="fw-normal mb-5">Contact Details</h3>
-    
                           <div class="mb-4 pb-2">
                             <div class="form-outline form-white">
                               <input type="text" id="contact" name="contact" onkeyup="return contactValidate(this)" class="form-control form-control-lg" />
@@ -276,12 +275,22 @@
     
                             </div>
                           </div>
-
-                          <div class="my-4 pb-2 text-center">
-                            <div class="form-outline w-50 border h-25 bg-dark " style="">
-                              <a href="/userProduct/sendOtp"class="align-items-center text-decoration-none text-white"> Send otp to Verify</a>
+                          <div class="mb-4 pb-2">
+                            <div class="form-outline form-white text-center">
+                              <button class="text-center bg-primary" onclick="showOtp()" id="otp-btn">Send otp to Verify</button>
                             </div>
                           </div>
+                          <div class="mb-4 pb-2 text-center d-flex justify-content-center">
+                            <div class="form-outline form-white w-50 text-center" >
+                              <input type="text" id="otp" name="otp" placeholder="Enter Otp" class="text-center form-control" style="display: none;" />
+                            </div>
+                          </div>
+                          
+                          <!-- <div class="my-4 pb-2 text-center">
+                            <div class="form-outline w-50 border h-25 bg-dark " style="">
+                              <a href="/userProduct/sendOtp"class="align-items-center text-decoration-none text-white"><button>Send otp to Verify</button> </a>
+                            </div>
+                          </div> -->
                           <div class="form-check d-flex justify-content-start mb-4 pb-3">
                             <input class="form-check-input me-3" type="checkbox" value="" id="form2Example3c" />
                             <label class="form-check-label text-white" for="form2Example3">
@@ -289,8 +298,10 @@
                               site.
                             </label>
                           </div>
-                          <input type="submit"  class="btn btn-light btn-lg" data-mdb-ripple-color="dark" value="Register">
+                          <input type="submit" class="btn btn-light btn-lg" data-mdb-ripple-color="dark" value="Register">
                         </div>
+                        <span style="color: red;"><%=msg%></span>
+
                       </div>
                     </div>
                   </div>
