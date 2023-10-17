@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import { productmodels } from "../model/vendorModal.js";
 import UserRegistration from "../model/indexModal.js";
 import { send } from '../model/mail.model.js'
+import { userReview } from "../model/userModel.js";
 
 
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
@@ -37,16 +38,76 @@ const ucartController = (req, res) => {
 }
 export { ucartController }
 
-const uprofileController = (req, res) => {
-    res.render('pages/user_profile');
+// const uprofileController = (req, res) => {
+//     res.render('pages/user_profile');
+// }
+// export { uprofileController }
+const uprofileController= async (req,res)=>{
+    
+    try {
+        var email = req.cookies.customer.email
+        console.log(email);
+        const result = await UserRegistration.findOne({ email: req.cookies.customer.email });
+        //  console.log(result);
+        res.render('pages/user_profile', { data: result })
+
+    }
+    catch (error) {
+        console.log(error)
+
+    }
+
 }
-export { uprofileController }
+export {uprofileController}
+
+const edituserprofile = async (req, res) => {
+    try {
+        const email = req.query.email;
+        //    console.log("url email"+email);
+        const userData = await UserRegistration.findOne({ email: email });
+        if (userData) {
+            res.render('pages/user_update', { userData: userData })
+        }
+        else {
+            res.redirect('pages/user_profile', { data: "" });
+        }
+    }
+    catch (error) {
+        console.log(error)
+
+    }
+}
+export { edituserprofile }
+
+const updateuserprofile = async (req, res) => {
+    try {
+        // console.log(req.body)
+        const userUpdateData =await UserRegistration.findByIdAndUpdate({ _id: req.body.customer_id }, { $set: { firstname: req.body.firstname, lastname: req.body.lastname, email: req.body.email,contact: req.body.contact,category: req.body.category,street: req.body.street, city: req.body.city, state: req.body.state,zipcode:req.body.zipcode } })
+        // console.log("DATA : "+vendorUpdateData);
+        const UserData = await UserRegistration.findOne({ email: req.body.email });
+        //  console.log(vendorData);
+        //  res.redirect('vendor_profile')
+        res.render('pages/user_profile', { data: UserData});
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+export { updateuserprofile }
+
+const userCancelController = (req, res)=>{
+    
+    res.redirect('/userProduct');
+}
+export {userCancelController};
+
 
 // const uloginController=(req,res)=>{
 //     res.render('pages/user_login');
 // }
 
 // export {uloginController}
+
 
 
 
@@ -108,6 +169,13 @@ const userRegistrationController = async (req, res, next) => {
                 res.json({ message: "Error occured with token" })
             } else {
                 console.log(token);
+                const customer = {
+                    email:email,
+                    // password:hashedPassword,
+                    role:"customer"
+                }
+                res.cookie("customer",customer);
+
                 res.redirect("userRegistrationToken");
             }
         }
@@ -139,8 +207,15 @@ const userLoginController = async (req, res, next) => {
                 res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
                 if (!token) {
                     res.json({ message: "Error occured with token" })
-                } else
+                } else{
+                    const customer = {
+                        email:email,
+                        role:"customer"
+                    }
+                    res.cookie("customer",customer);
                     res.redirect("userToken");
+
+                }
 
             }
         }
@@ -169,6 +244,32 @@ export const authorizeUser = (request, response, next) => {
     next();
 }
 export { jwt, SECRET_KEY }
+
+export const ureviewController =(request,response)=>{
+    var email = request.cookies.customer.email
+    console.log(email);        
+}
+export const ureviewProductController = async (request,response)=>{
+   console.log("==================")
+   try {
+       const {productId,review} = request.body;
+       console.log(request.body);
+       const email = request.cookies.customer.email;
+       console.log(email)
+       const result = new userReview({
+           productId:productId,
+           email:email,
+           review:review
+       })
+       const items=await productmodels.find()
+       console.log(result);
+       await result.save();
+       console.log("Data inserted Successfully");
+       response.render("pages/userproduct",{item:items});
+   } catch (error) {
+       console.log("Error"+error);
+   }
+}
 
 
 

@@ -2,7 +2,7 @@ import express from 'express'
 const router=express.Router()
 import multer from 'multer';
 import path from 'path';
-import {vendorcreate, vregController,vproductController,vprofileController,vAddproductController,vEditproductController,vUpdatproductController,vDeleteproductController,authenticateJWT,authorizeUser,jwt,SECRET_KEY, vendoreloginController } from '../controllers/sellerController.js'
+import {vendorcreate, vregController,vproductController,vprofileController,vendorprofileController,editprofile,updateprofile,cancelVendorContrller,vAddproductController,vEditproductController,vUpdatproductController,vDeleteproductController,authenticateJWT,authorizeUser,jwt,SECRET_KEY, vendoreloginController } from '../controllers/sellerController.js'
 
 var storage=multer.diskStorage({
     destination:'./public/uploads'
@@ -16,12 +16,17 @@ var storage=multer.diskStorage({
 
 router.get('/', vregController)
 router.get('/vendor_product', vproductController);
-router.get('/Vendor_profile', vprofileController);
+// router.get('/Vendor_profile', vprofileController);
+router.get('/vendor_profile', vendorprofileController)
+router.get('/update',editprofile)
+router.post('/saveupdate',updateprofile);
+router.get('/cancelVendor',cancelVendorContrller);
+
 router.post('/addVendorproduct',upload,vAddproductController,vproductController);
-router.get('/editVendorproduct/:id', vEditproductController,vproductController);
-router.post('/updateVendorproduct',upload, vUpdatproductController);
+router.get('/editVendorproduct/:id', vEditproductController);
+router.post('/updateVendorproduct',upload, vUpdatproductController,vproductController);
 router.post('/vendoradd',vendorcreate,vproductController);
-router.get('/deleteVendorproduct/:id', vDeleteproductController);
+router.get('/deleteVendorproduct/:id', vDeleteproductController,vproductController);
 router.post('/vendorlogin',vendoreloginController);
 router.get('/vendorRegistrationToken',authenticateJWT,authorizeUser,vproductController);
 router.get('/vendorToken',authenticateJWT,authorizeUser,vproductController);

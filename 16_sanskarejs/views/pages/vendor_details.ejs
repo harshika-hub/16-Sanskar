@@ -258,9 +258,8 @@
 
   /* ----------------- */
   #datatable {
-    width: 79%;
+    width: 100%;
     height: auto;
-    margin-left: 21%;
   }
 
   #myTable thead tr {
@@ -307,131 +306,135 @@
 <body>
   <!-- navigation -->
   <div class="container-fluid">
-   <%- include('../partials/adminav.ejs')%>
+    <%- include('../partials/adminav.ejs')%>
+
+    <!-- <div class="navigations">
+      <ul>
+        <li>
+          <a href="#">
+            <span class="icon">
+            </span>
+            <span class="title">16-Sanskar</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="home-outline"></ion-icon>
+            </span>
+            <span class="title">Dashboard</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/Admin_dash/User_details">
+            <span class="icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </span>
+            <span class="title">Customers</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/Admin_dash/Orders">
+            <span class="icon">
+              <ion-icon name="layers-outline"></ion-icon> </span>
+            <span class="title">Orders</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/Admin_dash/Vendor_details">
+            <span class="icon">
+              <ion-icon name="person-outline"></ion-icon>
+            </span>
+            <span class="title">Vendors</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="/Admin_dash/Added_product">
+            <span class="icon">
+              <ion-icon name="download-outline"></ion-icon>
+            </span>
+            <span class="title">Added Product</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="lock-closed-outline"></ion-icon>
+            </span>
+            <span class="title">Password</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#">
+            <span class="icon">
+              <ion-icon name="log-out-outline"></ion-icon>
+            </span>
+            <span class="title">Sign Out</span>
+          </a>
+        </li>
+      </ul>
+    </div> -->
     <!-------------------------------------------->
-    <center>
+    <!-- <center>
       <h1 style="color: #f47c00;margin-left:400px;">Vendor Details</h1>
-    </center>
-    <div id="datatable">
+    </center> -->
+    <div class="main">
+
+    <div class="topbar">
       <div class="toggles">
         <ion-icon name="menu-outline"></ion-icon>
       </div>
-    <table id="myTable" class="display nowrap" style="width:100%">
+      </div>
+    <div id="datatable">
+      
+    <table id="myTable" class="display nowrap mt-2" style="width:100%" >
       <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Address</th>
-          <th>Contact No.</th>
-          <th>Aadhar No.</th>
-          <th>GST No.</th>
-          <th>Status</th>
+        <tr class="row">
+          <th class="col-1">Id</th>
+          <th class="col-1">Name</th>
+          <th class="col-1">Email</th>
+          <th class="col-1">Contact No.</th>
+          <th class="col-1">Street</th>
+          <th class="col-1">City</th>
+          <th class="col-1">Pin Code</th>
+          <th class="col-1">State</th>
+          <th class="col-1">GST No.</th>
+          <th class="col-1">Aadhar No.</th>
+          <th class="col-1">Category</th>
         </tr>
       </thead>
       <tbody>
-        <tr class="table">
-          <td>1</td>
-          <td>Tiger Nixon</td>
-          <td>TigerNixon@gmail.com</td>
-          <td>Vijaynagar</td>
-          <td>9856987659</td>
-          <td>4582 8956 2569</td>
-          <td>787LOI456</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Garrett Winters</td>
-          <td>GarrettWinters@gmail.com</td>
-          <td>South tukoganj</td>
-          <td>6576236985</td>
-          <td>5689 3265 6985</td>
-          <td>GUY74848</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Ashton Cox</td>
-          <td>AshtonCox@gmail.com</td>
-          <td>Aptc</td>
-          <td>6656598563</td>
-          <td>2546 3256 4598</td>
-          <td>154JKL2</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>Cedric Kelly</td>
-          <td>CedricKelly@gmail.com</td>
-          <td>Hawabangla</td>
-          <td>2236845698</td>
-          <td>3218 8974 6589</td>
-          <td>SDT4545</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>Airi Satou</td>
-          <td>AiriSatou@gmail.com</td>
-          <td>Khajrana</td>
-          <td>3398625896</td>
-          <td>4582 8956 2569</td>
-          <td>787LOI456</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>Brielle Williamson</td>
-          <td>BrielleWilliamson@gmail.com</td>
-          <td>Aptc</td>
-          <td>6189857658</td>
-          <td>5874 6598 2156</td>
-          <td>lKO8784</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>Herrod Chandler</td>
-          <td>HerrodChandler@gmail.com</td>
-          <td>Foothikothi</td>
-          <td>8952369895</td>
-          <td>4582 8956 2569</td>
-          <td>787LOI456</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>Rhona Davidson</td>
-          <td>RhonaDavidson@gmail.com</td>
-          <td>Nipania</td>
-          <td>9856321475</td>
-          <td>5689 3265 6985</td>
-          <td>GUY74848</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>Colleen Hurst</td>
-          <td>ColleenHurst@gmail.com</td>
-          <td>Bhawarkua</td>
-          <td>856974231</td>
-          <td>4582 8956 2569</td>
-          <td>787LOI456</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>Sonya Frost</td>
-          <td>SonyaFrost@gmail.com</td>
-          <td>Vijaynagar</td>
-          <td>985674554</td>
-          <td>2365 8685 8798</td>
-          <td>GST875844</td>
-          <td><button class="custom-button">Deactivate</button></td>
-        </tr>
+        <% var i=1 %>
+        <% data.forEach((item)=>{%>
+         <% if(item.role=="vendor") {%>
+
+          <tr class="table raw">
+            <td class="col-1"><%= i++ %></td>
+            <td class="col-1"><%= item.name %></td>
+            <td class="col-1"><%= item.email %></td>
+            <td class="col-1"><%= item.contact %></td>
+            <td class="col-1"><%= item.street %></td>
+            <td class="col-1"><%= item.city %></td>
+            <td class="col-1"><%= item.pin_code %></td>
+            <td class="col-1"><%= item.state %></td>
+            <td class="col-1"><%= item.gst_number %></td>
+            <td class="col-1"><%= item.aadhar_number %></td>
+            <td class="col-1"><%= item.category %></td>            
+          </tr>
+        <% } %>
+        <% }) %>
+       
       </tbody>
     </table>
+    </div>
+    </div>
     </div>
     <script>
       // add hovered class to selected list item
@@ -459,7 +462,6 @@
     </script>
 
     <!-- ====== ionicons ======= -->
-  </div>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

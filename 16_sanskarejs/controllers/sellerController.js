@@ -41,7 +41,7 @@ const vproductController = async (req, res) => {
             if (err) {
                 console.log(err + "error occures..............");
             } else {
-                console.log("vproduct " + data)
+                // console.log("vproduct " + data)
                 res.render('pages/vendor_product', { item: data, edit: '' })
             }
         });
@@ -136,12 +136,10 @@ const vendoreloginController = async (req, res) => {
         }
         if (!existingUser) {
             res.render("pages/vendor_login", { msg: "user not found" });
-            // return res.status(400).json({message:"user already exists"});
         } else {
             const matchPassword = await bcrypt.compare(password, existingUser.password);
             if (!matchPassword) {
                 res.render("pages/vendor_login", { msg: "password not match" });
-                // return res.status(400).json({message:"Invalid Credentials"});
             } else {
                 token = jwt.sign(payload, SECRET_KEY, expireTime);
                 res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
@@ -238,28 +236,28 @@ export const vAddproductController = async (req, res, next) => {
 
 }
 //Edit details;
-export const vEditproductController = async (req, res, next) => {
+export const vEditproductController = async (req, res, ) => {
     var vproduct_id = req.params.id;
     await productmodels.find({ _id: vproduct_id }).then(async (datas, err) => {
         if (err) {
             console.log("Error********************* " + err + "error occures..............");
         }
         else {
-            next();
-            //  await productmodels.find({ vproduct_status: "Activated" })
+            // next();
+             await productmodels.find({ vproduct_status: "Activated" })
 
-            //         .then((data, errs) => {
-            //             if (errs) {
-            //                 console.log(errs + "error occures..............");
-            //             }
-            //             // res.render('pages/vendor_product', { item: data, edit: datas[0] });
-            //             res.json({data: datas[0]});
-            //         })
+                    .then((data, errs) => {
+                        if (errs) {
+                            console.log(errs + "error occures..............");
+                        }
+                        // res.render('pages/vendor_product', { item: data, edit: datas[0] });
+                        res.json({data: datas[0]});
+                    })
         }
     });
 }
 
-export const vUpdatproductController = async (req, res) => {
+export const vUpdatproductController = async (req, res,next) => {
     console.log(req.body)
 
     try {
@@ -281,15 +279,15 @@ export const vUpdatproductController = async (req, res) => {
     } catch (err) {
         console.log("error while updating " + err);
     }
+    next();
+    // productmodels.find({ vproduct_status: "Activated" })
 
-    productmodels.find({ vproduct_status: "Activated" })
-
-        .then((data, errs) => {
-            if (errs) {
-                console.log(errs + "error occures..............");
-            }
-            res.render('pages/vendor_product', { item: data, edit: "" });
-        })
+    //     .then((data, errs) => {
+    //         if (errs) {
+    //             console.log(errs + "error occures..............");
+    //         }
+    //         res.render('pages/vendor_product', { item: data, edit: "" });
+    //     })
 
 
     //    res.redirect('pages/vendor_product')
@@ -297,7 +295,7 @@ export const vUpdatproductController = async (req, res) => {
 
 }
 
-export const vDeleteproductController = async (req, res) => {
+export const vDeleteproductController = async (req, res,next) => {
     console.log(req.params.id)
     try {
         const result = await productmodels.findOneAndUpdate({ _id: req.params.id }, {
@@ -307,18 +305,63 @@ export const vDeleteproductController = async (req, res) => {
     } catch (err) {
         console.log("error while deactivating product" + err);
     }
-
-    productmodels.find({ vproduct_status: "Activated" })
-
-        .then((data, errs) => {
-            if (errs) {
-                console.log(errs + "error occures..............");
-            }
-            res.render('pages/vendor_product', { item: data, edit: "" });
-        })
+    next();
+   }
 
 
-    //    res.redirect('pages/vendor_product')
-    //    res.render('pages/vendor_product',{item: data,edit:datas[0]});
-
+   const vendorprofileController = async (req, res) => {
+    try {
+        var email = req.cookies.vendor.email
+        console.log(email);
+        const result = await Registration.findOne({ email: req.cookies.vendor.email });
+        //  console.log(result);
+        res.render('pages/vendor_profile', { data: result })
+    }
+    catch (error) {
+        console.log(error)
+    }
 }
+export { vendorprofileController }
+
+const editprofile = async (req, res) => {
+    try {
+        const email = req.query.email;
+        //    console.log("url email"+email);
+        const vendorData = await Registration.findOne({ email: email });
+        if (vendorData) {
+            res.render('pages/vendor_update', { vendorData: vendorData })
+        }
+        else {
+            res.redirect('pages/vendor_profile', { data: "" });
+        }
+    }
+    catch (error) {
+        console.log(error)
+
+    }
+}
+export { editprofile }
+
+const updateprofile = async (req, res) => {
+
+    try {
+        // console.log(req.body)
+        
+        const vendorUpdateData =await Registration.findByIdAndUpdate({ _id: req.body.vendor_id }, { $set: { name: req.body.name, email: req.body.email,contact: req.body.contact,category: req.body.category,street: req.body.street, city: req.body.city, state: req.body.state, gst_number: req.body.gst_number, aadhar_number: req.body.aadhar_number } })
+        // console.log("DATA : "+vendorUpdateData);
+        const vendorData = await Registration.findOne({ email: req.body.email });
+        //  console.log(vendorData);
+        //  res.redirect('vendor_profile')
+        res.render('pages/vendor_profile', { data: vendorData });
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
+export { updateprofile }
+
+const cancelVendorContrller =(req,res)=>
+{
+    res.redirect('vendor_product')
+}
+export{cancelVendorContrller}

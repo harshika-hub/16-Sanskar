@@ -183,3 +183,20 @@ export const aLogOutController = (req, res) => {
     res.render('pages/admin_login', { msg: "LogOut Succefully" });
 }
 
+
+const adminvendorController=async(req,res)=>{
+ 
+    try
+    {
+        const result = await Registration.find()
+        //  console.log(result);
+        res.render('pages/vendor_details',{data:result})
+
+    }
+    catch(error)
+    { 
+        console.log(error)
+
+    }
+}
+export{adminvendorController}
