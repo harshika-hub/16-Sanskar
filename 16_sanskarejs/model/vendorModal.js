@@ -15,7 +15,8 @@ const registration = new mongoose.Schema({
     city:{type:String,trim:true},
     pin_code:{type:Number,minlength:10,trim:true},
     state:{type:String,trim:true},
-    gst_number:{type:String,minlength:15,trim:true},
+    gst_type:String,
+    gst_number:{type:String,minlength:6,maxlength:15,trim:true},
     aadhar_number:{type:Number,minlength:12,trim:true},
     category:{type:String,trim:true},
 
@@ -46,6 +47,8 @@ let productSchemas = new mongoose.Schema({
         type:String,
         default:"Activated"
     },
+    vproduct_type:String,
+    sanskar:String,
 
 });
 export const productmodels = new mongoose.model('vendorproducts', productSchemas);

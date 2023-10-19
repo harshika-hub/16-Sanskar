@@ -11,7 +11,7 @@ import { userReview } from "../model/userModel.js";
 
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 dotenv.config();
-const maxAge = 3 * 24 * 60 * 60;
+const maxAge = (8 * 24 * 60 * 60);
 
 export default jwt;
 let payload = {};
@@ -270,9 +270,30 @@ export const ureviewProductController = async (request,response)=>{
        console.log("Error"+error);
    }
 }
+export const ucomboController= async(req,res)=>{
+    try{
+        const data=await productmodels.find({$and:[{vproduct_type:'combo'},{vproduct_status:'Activated'}]});
+        res.render('pages/userProduct',{item:data});
 
+    }catch(err){
+        console.log("Error while fetching combo "+err );
+    }
 
+}
 
+export const usanskarController=async(req,res)=>{
+    try{
+        var sanskar=req.params.sanskar;
+        var data=await productmodels.find({sanskar:sanskar});
+        res.render('pages/userProduct',{item:data});
+
+    }catch(err){
+        console.log("Error while fetching specific sanskars products"+err);
+
+    }
+    
+
+}
 
 
 

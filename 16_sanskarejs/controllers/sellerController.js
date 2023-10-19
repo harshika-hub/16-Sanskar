@@ -9,9 +9,10 @@ import crypto from "crypto";
 import { upload } from '../routes/sellerRoute.js'
 import { send } from '../model/mail.model.js'
 import { productmodels, Registration } from '../model/vendorModal.js';
+import { NONAME } from 'dns';
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 dotenv.config();
-const maxAge = 3 * 24 * 60 * 60;
+const maxAge = (8 * 24 * 60 * 60);
 export default jwt;
 let payload = {};
 let token;
@@ -57,14 +58,29 @@ var votp = '';
 
 const vendorcreate = async (req, res, next) => {
     try {
-        const { name, email, password, confirmpassword, contact, street, city, pin_code, state, gst_number, aadhar_number, category, otp } = req.body
+        var lg='';
+        var gst_type=''
+        const { name, email, password, confirmpassword, contact, street, city, pin_code, state,gst_select, gst_number,license_number, aadhar_number, category, otp } = req.body
+        if(gst_select=='GST')
+        {
+            gst_type='GST';
+            lg=gst_number;
+        }else if(gst_select=='license_number'){
+            gst_type='license Number';
+            lg=license_number
+            console.log(lg);
+        }else{
+            gst_type='none';
+            lg='later';
+        }
+
         const existingvendore = await Registration.findOne({ email: email });
         if (existingvendore) {
             return res.render('pages/vendor_registration', { msg: "user already exist" });
         }
         if (!otp) {
             votp = await otpGen(); // '344156'  (OTP length is 6 digit by default)
-            console.log(otp);
+            console.log(votp);
             const mdata = {
                 "from": "harshika.p3.hp@gmail.com",
                 "to": email,
@@ -92,7 +108,8 @@ const vendorcreate = async (req, res, next) => {
                 city: city,
                 pin_code: pin_code,
                 state: state,
-                gst_number: gst_number,
+                gst_type:gst_type,
+                gst_number: lg,
                 aadhar_number: aadhar_number,
                 category: category
             })
@@ -189,9 +206,20 @@ export { jwt, SECRET_KEY }
 
 export const vAddproductController = async (req, res, next) => {
     var vid = '';
+    var type=''
     console.log("vendor cookie" + req.cookies.vendor.email);
-    var { productId, productName, productPrice, productPerqty, productTotalqty, productBrandname, productCategory, productMfd, productExpirydate, productDescription } = req.body;
+    var { productId, productName, productPrice, productPerqty,qty_unit, productTotalqty,qty_units, productBrandname, productCategory, productMfd, productExpirydate, productDescription,sanskar } = req.body;
+    productPerqty+=' '+qty_unit;
+    productTotalqty+=' '+qty_units;
+    console.log("value in add  ");
     console.log(req.body);
+    if(sanskar=='select')
+    {
+        type='single';
+        sanskar='any';
+    }else{
+        type='combo';
+    }
     await Registration.findOne({ email: req.cookies.vendor.email }).then((data) => {
         console.log('vendor details in add product ' + data._id);
         vid = data._id;
@@ -200,14 +228,7 @@ export const vAddproductController = async (req, res, next) => {
     })
 
 
-    //  productmodels.find({vproduct_status:"Activated"})
-
-    // .then((data, err)=>{
-    //     if(err){
-    //         console.log(err+"error occures..............");
-    //     }
-    //     res.render('pages/vendor_product',{item: data,edit:''})
-    // })
+    
     console.log(req.file.filename + " file");
     try {
         const product = await productmodels.create({
@@ -223,7 +244,9 @@ export const vAddproductController = async (req, res, next) => {
             vproduct_description: productDescription,
             vproduct_imag: req.file.filename,
             user_id: vid,
-            vendor_categoryid: 100
+            vendor_categoryid: 100,
+            vproduct_type:type,
+            sanskar:sanskar,
 
         });
         await product.save();

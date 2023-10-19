@@ -3,39 +3,24 @@
 
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Vendor Products</title>
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
-    integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="icon" href="img/tab-bar-icon.png">
 
   <!-- /* *********************to prevent back button action************ */ -->
 
   <script type="text/javascript">
 
     function preventBack() {
-        window.history.forward(); 
+      window.history.forward();
     }
-      
+
     setTimeout("preventBack()", 0);
-      
+
     window.onunload = function () { null };
-</script>
+  </script>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js">
-  $('form').submit(function(e){
-      e.preventDefault(); // prevents page reloading
-     // api request
-     return false;
-  });
-</script> -->
+
   <style>
-    
-
     body {
       font-family: sans-serif;
       background-color: #e2e2e2;
@@ -48,9 +33,11 @@
       margin-top: -8%;
 
     }
+
     .navbar-nav {
       gap: 16vw;
     }
+
     .navbar-center {
       position: absolute;
       left: 50%;
@@ -77,6 +64,7 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     /* ------------------------------------------- */
     .card {
       background-color: #fff;
@@ -96,6 +84,7 @@
       }
     }
 
+    /* 
     @media(max-width:734px) {
       .search-bar {
         width: 24rem !important;
@@ -156,7 +145,7 @@
       border-radius: 4px;
       width: auto;
       border: 1px solid rgb(194, 194, 194);
-    }
+    } */
 
     .form-control {
       margin-top: 10px;
@@ -217,7 +206,7 @@
   <%- include('../partials/head'); %>
 </head>
 
-<body onloadeddata="showModal()">
+<body>
 
   <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
@@ -231,7 +220,8 @@
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-white" href="/vendor_registration/vendor_profile">Vendor profile <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+              <a class="nav-link text-white" href="/vendor_registration/vendor_profile">Vendor profile <i
+                  class="fa fa-pencil-square-o" aria-hidden="true"></i>
               </a>
             </li>
             <li class="nav-item">
@@ -245,10 +235,23 @@
         </div>
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
           <ul class="navbar-nav">
-            <li class="nav-item">
-              <button type='button' data-bs-toggle='modal' data-bs-target='#addDataModal'
-              style="width: 100%; border:none; color: #fff; margin-top: 7px; background-color:#f47c00;">Add Product<i class="fa fa-sign-in" aria-hidden="true"></i></button>
-              <!-- <a class="nav-link text-white" href="#addDataModal">Add Product<i class="fa fa-sign-in" aria-hidden="true"></i></a> -->
+
+
+            <li class="nav-item dropdown">
+              <a class="nav-link text-white dropdown-toggle  text-white" href="#" id="navbarDropdown" role="button"
+                data-bs-toggle="dropdown" aria-expanded="false">
+                Add Products<i class="fa fa-sign-in" aria-hidden="true"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item">
+                    <button onclick="hideCombo()" type='button' data-bs-toggle='modal'
+                      data-bs-target='#addDataModal'>Single Product</button>
+                  </a></li>
+                <li><a class="dropdown-item">
+                    <button onclick="showCombo()" type='button' data-bs-toggle='modal'
+                      data-bs-target='#addDataModal'>Combo Product</button>
+                  </a></li>
+              </ul>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="/vendor_registration/vendorlogout">Logout<i class="fa fa-user"
@@ -263,37 +266,51 @@
   <div class="container card-body-all mt-5">
     <div class="card-container d-flex flex-wrap" id="curd-table">
 
-  <%item.forEach((data)=>{%>
+      <%if(item){ item.forEach((data)=>{%>
 
         <div class='row gx-2'>
           <div class='col-4'>
             <div class='p-3'>
               <div class='card d-flex card-all'>
                 <div class='card-body' style=" height: 11rem; width: 16rem;">
-                  <span id="ids" class="d-none"><%=data._id%></span>
-                  <h5 class='card-title text-center' ><strong>Item No. :- </strong> <%=data.vproduct_id%></h5>
-                  <img src="/uploads/<%=data.vproduct_imag%>" class="card-img-top" alt='Image' style=" height: 10rem; width: 14rem;">
+                  <span id="ids" class="d-none">
+                    <%=data._id%>
+                  </span>
+                  <h5 class='card-title text-center'><strong>Item No. :- </strong>
+                    <%=data.vproduct_id%>
+                  </h5>
+                  <img src="/uploads/<%=data.vproduct_imag%>" class="card-img-top" alt='Image'
+                    style=" height: 10rem; width: 14rem;">
                 </div>
                 <ul class='list-group list-group-flush'>
-                  <li class='list-group-item'><strong>Product :- </strong><%=data.vproduct_name%> </li>
-                  <li class='list-group-item 'style=" height: 10vh;"><strong>Description :- </strong> <%=data.vproduct_description%> </li>
-                  <li class='list-group-item'><strong>Price :- </strong><%=data.vproduct_price%></li>
+                  <li class='list-group-item'><strong>Product :- </strong>
+                    <%=data.vproduct_name%>
+                  </li>
+                  <li class='list-group-item ' style=" height: 10vh;"><strong>Description :- </strong>
+                    <%=data.vproduct_description%>
+                  </li>
+                  <li class='list-group-item'><strong>Price :- </strong>
+                    <%=data.vproduct_price%>
+                  </li>
                 </ul>
 
                 <div class='card-body text-center'>
 
-                  <button onclick="showContent('<%=data._id%>')" type='button' data-bs-toggle='modal' data-bs-target='#exampleModal-2' class='btn btn-success'
+                  <button onclick="showContent('<%=data._id%>')" type='button' data-bs-toggle='modal'
+                    data-bs-target='#exampleModal-2' class='btn btn-success'
                     style="width: 49%;border: none; background-color:#f47c00;">Edit</button>
 
-                 <a href="/vendor_registration/deleteVendorproduct/<%=data._id%>"> <button type='button' class='btn btn-danger'
-                    style="width: 49%;border: none;background-color:black">Delete</button></a>
+                  <a href="/vendor_registration/deleteVendorproduct/<%=data._id%>"> <button type='button'
+                      class='btn btn-danger' style="width: 49%;border: none;background-color:black">Delete</button></a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-    
-      <%})%>
+
+        <%})}else{%>
+          <h1>Your Added Product Will Display Here</h1>
+          <%}%>
 
     </div>
     <div class="card-container d-flex flex-wrap" id="sort-table"></div>
@@ -310,52 +327,120 @@
         </div>
         <div class="modal-body">
 
-          <form onsubmit="return validateProductForm()" action="/vendor_registration/addVendorproduct" method="post" enctype="multipart/form-data">
+          <form onsubmit="return validateProductForm()" action="/vendor_registration/addVendorproduct" method="post"
+            enctype="multipart/form-data">
             <div class="row">
-              
-            <div class="form-group col-6">
-              <input type="text" class="form-control" id="productId"  name="productId"  placeholder="Enter product Id"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
-            </div>
-            <div class="form-group col-6">
-              <input type="text" class="form-control" id="productName" name="productName" placeholder="Enter Product name"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
-            </div>
-          </div>
-          <div class="row">
 
-            <div class="form-group mt-2 col-6">
-              <input type="text" class="form-control" id="productPrice" name="productPrice" placeholder="Enter Product Price"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
+              <!-- <div class="form-group col-6">
+                <input type="text" class="form-control" id="productId" name="productId" placeholder="Enter product Id"
+                  aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div> -->
+              <div class="form-group col-6">
+                <input type="text" class="form-control" id="productName" name="productName"
+                  placeholder="Enter Product name" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div>
+
+              <div class="form-group col-6">
+                <input type="text" class="form-control" id="productCategory" name="productCategory"
+                  placeholder="Enter Product Category" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div>
             </div>
-            <div class="form-group mt-2 col-6">
-              <input type="text" class="form-control" id="productPerqty" name="productPerqty" placeholder="Enter Per Product Quantity"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="price-error-msg" class="error-message" style="color: red;"></small>
+            <div class="row">
+
+              <div class="form-group mt-2 col-6">
+                <input type="text" class="form-control" id="productPrice" name="productPrice"
+                  placeholder="Enter Product Price" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div>
+              <div class="form-group mt-2 col-6">
+                <input type="text" class="form-control" id="productBrandname" name="productBrandname"
+                  placeholder="Enter Product Brand Name" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div>
+
             </div>
+            <div class="row g-0 ">
+
+              <div class="mt-2 col-6">
+                <input type="text" class="form-control" id="productPerqty" name="productPerqty"
+                  placeholder="Enter Per Product Quantity" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="price-error-msg" class="error-message" style="color: red;"></small>
+              </div>
+              <div class="mt-3 col-6 w-50">
+
+                <select id="qty-unit" name="qty_unit" class="form-select">
+                  <option value="">Select Unit</option>
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                  <option value="lb">lb</option>
+                  <option value="oz">oz</option>
+                  <option value="liter">liter</option>
+                  <option value="milliliter">milliliter</option>
+                  <option value="meter">meter</option>
+                  <option value="quart">quart</option>
+                  <option value="gallon">gallon</option>
+                  <option value="piece">piece</option>
+                  <option value="dozen">dozen</option>
+                  <option value="pack">pack</option>
+                  <option value="set">set</option>
+                  <option value="box">box</option>
+                  <option value="bag">bag</option>
+                  <option value="bottle">bottle</option>
+                  <option value="can">can</option>
+                </select>
+                <small id="price-error-msg" class="error-message" style="color: red;"></small>
+              </div>
             </div>
-            <div class="form-group mt-2">
-              <input type="text" class="form-control" id="productTotalqty" name="productTotalqty" placeholder="Enter Product Total Quantity"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="price-error-msg" class="error-message" style="color: red;"></small>
+
+            <div class="row g-0">
+              <div class="form-group mt-2 col-6">
+                <input type="text" class="form-control" id="productTotalqty" name="productTotalqty"
+                  placeholder="Enter Product Total Quantity" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="price-error-msg" class="error-message" style="color: red;"></small>
+              </div>
+              <div class="form-group mt-3 col-6 w-50">
+
+                <select id="qty-units" name="qty_units" class="form-select">
+                  <option value="">Select Unit</option>
+                  <option value="kg">kg</option>
+                  <option value="g">g</option>
+                  <option value="lb">lb</option>
+                  <option value="oz">oz</option>
+                  <option value="liter">liter</option>
+                  <option value="milliliter">milliliter</option>
+                  <option value="fluid ounce">fluid ounce</option>
+                  <option value="quart">quart</option>
+                  <option value="gallon">gallon</option>
+                  <option value="piece">piece</option>
+                  <option value="dozen">dozen</option>
+                  <option value="pack">pack</option>
+                  <option value="set">set</option>
+                  <option value="box">box</option>
+                  <option value="bag">bag</option>
+                  <option value="bottle">bottle</option>
+                  <option value="can">can</option>
+                </select>
+                <small id="price-error-msg" class="error-message" style="color: red;"></small>
+              </div>
             </div>
-            <div class="form-group mt-2">
-              <input type="text" class="form-control" id="productBrandname" name="productBrandname" placeholder="Enter Product Brand Name"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
-            </div>
-            <div class="form-group mt-2">
-              <input type="text" class="form-control" id="productCategory" name="productCategory" placeholder="Enter Product Category"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
-            </div>
-            <!-- <div class="row my-4">
+
+
+
+
+            <div class="row my-4" style="display: none;" id="combo">
               <div class="form-group">
                 <label for="selectedEvents">Product Suitable For?</label>
-                <select class="form-select" name="selectedEvents" id="selectedEvents">
+                <select class="form-select" name="sanskar" id="selectedEvents">
+                  <option value="select">Select Sanskar</option>
                   <option value="Garbhadhaan">1. Garbhadhaan</option>
                   <option value="Punsavan">2. Punsavan</option>
                   <option value="Simantonayan">3. Simantonayan</option>
@@ -364,37 +449,39 @@
                   <option value="Nishkramana">6. Nishkramana</option>
                   <option value="Annprashan">7. Annprashan</option>
                   <option value="Chudakaran">8. Chudakaran</option>
-                  <option value="Vidyarambh">9. Vidyarambh</option>
-                  <option value="Karnavedh">10. Karnavedh</option>
-                  <option value="Upnayan">11. Upnayan</option>
-                  <option value="Vedarambha">12. Vedarambha</option>
-                  <option value="Keshani Samskar">13. Keshani Samskar</option>
-                  <option value="Samavartan">14. Samavartan</option>
-                  <option value="Vivah">15. Vivah</option>
+                  <option value="Karnavedh">9. Karnavedh</option>
+                  <option value="Upnayan">10. Upnayan</option>
+                  <option value="Vedarambha">11. Vedarambha</option>
+                  <option value="Samavartan">12. Samavartan</option>
+                  <option value="Vivah">13. Vivah</option>
+                  <option value="vanaprasth">14.vanaprasth</option>
+                  <option value="sanyas">15. Sanyas</option>
                   <option value="Antyesthi">16. Antyesthi</option>
                 </select>
               </div>
-            </div> -->
+            </div>
 
             <div class="row">
-            <div class="form-group mt-2 col-6">
-              <small>Manufacturing Date</small>
-              <input type="date" class="form-control" id="productMfd" name="productMfd" placeholder="Enter Product Manufacturing Date"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
-            </div>
-            <div class="form-group mt-2 col-6">
-              <small>Expiry Date</small>
+              <div class="form-group mt-2 col-6">
+                <small>Manufacturing Date</small>
+                <input type="date" class="form-control" id="productMfd" name="productMfd"
+                  placeholder="Enter Product Manufacturing Date" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div>
+              <div class="form-group mt-2 col-6">
+                <small>Expiry Date</small>
 
-              <input type="date" class="form-control" id="productExpirydate" name="productExpirydate" placeholder="Enter Product Expiry Date"  
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-              <small id="error-msg" class="error-message" style="color: red;"></small>
+                <input type="date" class="form-control" id="productExpirydate" name="productExpirydate"
+                  placeholder="Enter Product Expiry Date" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-default">
+                <small id="error-msg" class="error-message" style="color: red;"></small>
+              </div>
             </div>
-          </div>
-           
+
             <div class="form-group mt-2">
-              <textarea class="form-control h-25" id="productDescription" name="productDescription"  placeholder="Enter Product Description"  
-                rows="3" ></textarea>
+              <textarea class="form-control h-25" id="productDescription" name="productDescription"
+                placeholder="Enter Product Description" rows="3"></textarea>
               <small id="error-msg" class="error-message" style="color: red;"></small>
             </div>
             <div class="form-group mt-2">
@@ -402,20 +489,21 @@
               <small id="image-error-msg" class="error-message" style="color: red;"></small>
             </div>
 
-          
-            <button type="submit"  style="background-color: #f47c00;" class="btn submitButton w-100" id="submitdata">Add</button>
+
+            <button type="submit" style="background-color: #f47c00;" class="btn submitButton w-100"
+              id="submitdata">Add</button>
           </form>
 
         </div>
         <div class="modal-footer">
 
-       
+
         </div>
       </div>
     </div>
   </div>
-    <!-- Add Module End -->
-    <script src="/validation/productv.js"></script>
+  <!-- Add Module End -->
+  <script src="/validation/productv.js"></script>
   <!-- edit Module start -->
 
   <div class="modal fade" id="exampleModal-2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -439,18 +527,19 @@
             </div>
             <div class="form-group mt-2">
               <label for="exampleFormControlSelect1" style="color: #f47c00;">Name -</label>
-              <input type="text" class="form-control" id="name-edit" placeholder="Enter Product name" name="productName"  value=""
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" id="name-edit" placeholder="Enter Product name" name="productName"
+                value="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="form-group mt-2">
               <label for="exampleFormControlSelect1" style="color: #f47c00;">Price -</label>
-              <input type="text" class="form-control" id="price-edit" placeholder="Enter Product Price" name="productPrice" value=""
-                aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+              <input type="text" class="form-control" id="price-edit" placeholder="Enter Product Price"
+                name="productPrice" value="" aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-default">
             </div>
             <div class="form-group mt-2">
               <label for="exampleFormControlTextarea1" style="color: #f47c00;">Description -</label>
-              <textarea class="form-control h-25" id="description-edit" placeholder="Enter Description of Product" name="productDescription"
-                rows="3"></textarea>
+              <textarea class="form-control h-25" id="description-edit" placeholder="Enter Description of Product"
+                name="productDescription" rows="3"></textarea>
             </div>
             <div class="form-group mt-2">
               <img src="" alt="" style="width: 80%; height:25vh;" id="img-edit"><br>
@@ -463,51 +552,58 @@
             </div>
           </form>
         </div>
-      
+
       </div>
     </div>
   </div>
 
   <!-- Edit Module End -->
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
-    crossorigin="anonymous"></script>
+
   <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
   <script src="script/script.js"></script>
 
   <script>
-   
-  async function  showContent(pid)
-   {
-    // const pid=document.getElementById('ids').innerHTML;
-    const id=document.getElementById('id-edit');
-    const pname=document.getElementById('name-edit');
-    const pprice=document.getElementById('price-edit');
-    const pdesc=document.getElementById('description-edit');
-    const pimg=document.getElementById('img-edit'); 
-    // data in the place of params
-    const did=document.getElementById('did');
-    const dimg=document.getElementById('dimg');
+    function showCombo() {
+      combo = document.getElementById('combo');
+      combo.style.display = 'block';
 
-    await fetch(`/vendor_registration/editVendorproduct/${pid}`,{mehod:'GET'})
-    .then(async (res)=>await res.json())
-    .then( (data)=>{
-      console.log(data);
-      id.value=data.data.vproduct_id;
-      pname.value=data.data.vproduct_name;
-      pprice.value=data.data.vproduct_price;
-      pdesc.innerHTML=data.data.vproduct_description;
-      pimg.src=`/uploads/${data.data.vproduct_imag}`;
-      did.value=pid;
-      dimg.value=data.data.vproduct_imag;
+    }
+    function hideCombo() {
+      combo = document.getElementById('combo');
+      combo.style.display = 'none';
 
-    })
-    .catch((err)=>{
-      console.log('error in vendor script'+err+"error occures..............")
-    });
-console.log(pid)
-   }
+    }
+
+    async function showContent(pid) {
+      // const pid=document.getElementById('ids').innerHTML;
+      const id = document.getElementById('id-edit');
+      const pname = document.getElementById('name-edit');
+      const pprice = document.getElementById('price-edit');
+      const pdesc = document.getElementById('description-edit');
+      const pimg = document.getElementById('img-edit');
+      // data in the place of params
+      const did = document.getElementById('did');
+      const dimg = document.getElementById('dimg');
+
+      await fetch(`/vendor_registration/editVendorproduct/${pid}`, { mehod: 'GET' })
+        .then(async (res) => await res.json())
+        .then((data) => {
+          console.log(data);
+          id.value = data.data.vproduct_id;
+          pname.value = data.data.vproduct_name;
+          pprice.value = data.data.vproduct_price;
+          pdesc.innerHTML = data.data.vproduct_description;
+          pimg.src = `/uploads/${data.data.vproduct_imag}`;
+          did.value = pid;
+          dimg.value = data.data.vproduct_imag;
+
+        })
+        .catch((err) => {
+          console.log('error in vendor script' + err + "error occures..............")
+        });
+      console.log(pid)
+    }
   </script>
 </body>
 

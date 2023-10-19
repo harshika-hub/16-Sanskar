@@ -180,6 +180,7 @@ export { aDeactivateUserController }
 export const aLogOutController = (req, res) => {
     console.log("Admin logout")
     res.cookie('jw', '', { httpOnly: true, maxAge: 1 });
+    res.cookie('adminLogin','');
     res.render('pages/admin_login', { msg: "LogOut Succefully" });
 }
 

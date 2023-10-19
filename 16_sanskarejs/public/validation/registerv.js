@@ -1,7 +1,65 @@
 function showOtp(){
   var otpInput=document.getElementById('otp');
-  otpInput.style.display="block";
+  var r_btn=document.getElementById('r-btn');
 
+  otpInput.style.display="block";
+  r_btn.style.display="block";
+
+
+
+}
+
+function gstclick(){
+        
+
+
+  var select = document.getElementById("gstselect");
+
+  var selectedOption = select.options[select.selectedIndex];
+  var selectedValue = selectedOption.value;
+
+  var license_number = document.getElementById('license_number');
+  var gst = document.getElementById('gst_number');
+  var gstNO =document.getElementById('gstNoValid');
+  var LicenseValid =document.getElementById('LicenseValid');
+
+
+  // var selectedOption = dropdown.options[dropdown.selectedIndex];
+
+
+if(selectedValue=='GST')
+{
+
+gst.style.display="block";
+license_number.style.display="none";
+gstNO.style.display="block";
+LicenseValid.style.display="none";
+
+
+
+}
+else if(selectedValue=='license_number')
+{
+
+license_number.style.display="block";
+gst.style.display="none";
+LicenseValid.style.display="block";
+gstNO.style.display="none";
+}
+else if(selectedValue=='letter')
+{
+  gst.style.display="none";
+  gstNO.style.display="none";
+  license_number.style.display="none";
+  LicenseValid.style.display="none";
+}
+else if(selectedValue=='')
+{
+  gst.style.display="none";
+  gstNO.style.display="none";
+  license_number.style.display="none";
+  LicenseValid.style.display="none";
+}
 
 }
 function allValidate(e) {
@@ -14,6 +72,7 @@ function allValidate(e) {
     var streetstatus = streetValidate();
     var citystatus = cityValidate();
     var statestatus = stateValidate();
+    var statestatus = zipcodeValidate();
     
   
     // var nameValid = document.getElementById("firstNameValid");
@@ -39,7 +98,8 @@ function allValidate(e) {
       for (i = 0; i < data.length; i++) {
         if ((data.charAt(i) < 'A' || data.charAt(i) > 'Z') && (data.charAt(i) < 'a' || data.charAt(i) > 'z')) {
           nameValid.innerHTML = "name is incorrect";
-          nameValid.style.color = "black";
+          nameValid.style.color = "red";
+          nameValid.style.fontWeight="bold";
           return false;
         }
         else {
@@ -66,7 +126,8 @@ function allValidate(e) {
       for (i = 0; i < data.length; i++) {
         if ((data.charAt(i) < 'A' || data.charAt(i) > 'Z') && (data.charAt(i) < 'a' || data.charAt(i) > 'z')) {
           nameValid.innerHTML = "name is incorrect";
-          nameValid.style.color = "black";
+          nameValid.style.color = "red";
+          nameValid.style.fontWeight="bold";
           return false;
         }
         else {
@@ -91,11 +152,13 @@ function allValidate(e) {
       if (reg.test(aadhar.value)) {
         aadharValid.innerHTML ="Aadhar number";
         aadharValid.style.color = "";
+       
         // return true;
       }
       else {
         aadharValid.innerHTML = "aadhar number is incorrect";
-        aadharValid.style.color = "black";
+        aadharValid.style.color = "red";
+        nameValid.style.fontWeight="bold";
         return false;
       }
     }
@@ -118,24 +181,25 @@ function allValidate(e) {
         return true;
       }
       else {
-        gstValid.innerHTML = "aadhar number is incorrect";
-        gstValid.style.color = "black";
+        gstValid.innerHTML = "GST number is incorrect";
+        gstValid.style.color = "red";
+        nameValid.style.fontWeight="bold";
         return false;
       }
     }
   }
   function mailValidate(email) {
-    var emails = document.getElementById("email");
+    var email = document.getElementById("email");
     var mailValid = document.getElementById("mailValid");
   
-    if (emails.value.trim() =="") {
+    if (email.value.trim() =="") {
       mailValid.innerHTML = " Field Required";
       mailValid.style.color = "green";
       return false;
     }
     else {
       var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
-      if(reg.test(emails.value))
+      if(reg.test(email.value))
              {
               mailValid.innerHTML ="Email";
               mailValid.style.color = "";
@@ -143,7 +207,8 @@ function allValidate(e) {
              else
              {
               mailValid.innerHTML = "Invalid email";
-              mailValid.style.color = "black";
+              mailValid.style.color = "red";
+              mailValid.style.fontWeight="bold";
                  return false;
              }
   
@@ -175,22 +240,23 @@ function allValidate(e) {
     else if (password.length < 8) {
       status = false;
       passwordValid.innerHTML = "password must be at least 8 letter long.";
-      passwordValid.style.color = "black";
+      passwordValid.style.color = "red";
+      passwordValid.style.fontWeight="bold";
     }
     else if (!checkForSpecificLetter(password, 'A', 'Z')) {
       status = false;
       passwordValid.innerHTML = "password must have 1 uppercase letter";
-      passwordValid.style.color = "black";
+      passwordValid.style.color = "red";
     }
     else if (!checkForSpecificLetter(password, '0', '9')) {
       status = false;
       passwordValid.innerHTML = "password must have 1 digit";
-      passwordValid.style.color = "black";
+      passwordValid.style.color = "red";
     }
     else if (!checkForSpecialSymbol(password)) {
       status = false;
       passwordValid.innerHTML = "password must have 1 special symbol($,#,@)";
-      passwordValid.style.color = "black";
+      passwordValid.style.color = "red";
     }
     else{
       passwordValid.innerHTML = "";
@@ -215,12 +281,13 @@ function allValidate(e) {
   function matchPassword() {
     var status = true;
     var password = document.getElementById("password").value;
-    var confirmPassword = document.getElementById("confirmpassword").value;
+    var confirmPassword = document.getElementById("confirmPassword").value;
     var confirmPasswordValid = document.getElementById("confirmPasswordValid");   
      if(password != confirmPassword) {  
         status = false;         
         confirmPasswordValid.innerHTML = "password not matched";
-        confirmPasswordValid.style.color = "black";
+        confirmPasswordValid.style.color = "red";
+        confirmPasswordValid.style.fontWeight="bold";
       }         
       else
         confirmPasswordValid.innerHTML = " ";
@@ -239,13 +306,14 @@ function allValidate(e) {
     else {
       var reg = /^[6789][0-9]{9}$/;
       if (reg.test(contact.value)) {
-        contactValid.innerHTML ="Gst No.";
+        contactValid.innerHTML ="Contact No.";
         contactValid.style.color = "";
         // return true;
       }
       else {
-        contactValid.innerHTML = "aadhar number is incorrect";
-        contactValid.style.color = "black";
+        contactValid.innerHTML = "contact number is incorrect";
+        contactValid.style.color = "red";
+        contactValid.style.fontWeight="bold";
         return false;
       }
     }
@@ -264,16 +332,142 @@ function allValidate(e) {
     else {
       var data = street.value;
       for (i = 0; i < data.length; i++) {
-        if ((data.charAt(i) < 'a' || data.charAt(i) > 'z')) {
-          nameValid.innerHTML = "name is incorrect";
-          nameValid.style.color = "black";
+        if ((data.charAt(i) < 'A' || data.charAt(i) > 'Z') && (data.charAt(i) < 'a' || data.charAt(i) > 'z')) {
+          streetValid.innerHTML = "Street is incorrect";
+          streetValid.style.color = "red";
+          streetValid.style.fontWeight="bold";
           return false;
         }
         else {
-          streetValid.innerHTML = "Last Name";
+          streetValid.innerHTML = "Street";
           streetValid.style.color = "";
         }
       }
     }
-      // return true;
+  }
+  function cityValidate(city) {
+    // alert("helooo");
+    var city = document.getElementById("city");
+    var cityValid = document.getElementById("cityValid");
+  
+    if (city.value.trim() == "") {
+      cityValid.innerHTML = "   Field Required";
+      cityValid.style.color = "green";
+      return false;
+    }
+    else {
+      var data = city.value;
+      for (i = 0; i < data.length; i++) {
+        if ((data.charAt(i) < 'A' || data.charAt(i) > 'Z') && (data.charAt(i) < 'a' || data.charAt(i) > 'z')) {
+          cityValid.innerHTML = "City is incorrect";
+          cityValid.style.color = "red";
+          cityValid.style.fontWeight="bold";
+          return false;
+        }
+        else {
+          cityValid.innerHTML = "City ";
+          cityValid.style.color = "";
+        }
+      }
+    }
+  }
+  function stateValidate(state) {
+    // alert("helooo");
+    var state = document.getElementById("state");
+    var stateValid = document.getElementById("stateValid");
+  
+    if (state.value.trim() == "") {
+      stateValid.innerHTML = "   Field Required";
+      stateValid.style.color = "green";
+      return false;
+    }
+    else {
+      var data = state.value;
+      for (i = 0; i < data.length; i++) {
+        if ((data.charAt(i) < 'A' || data.charAt(i) > 'Z') && (data.charAt(i) < 'a' || data.charAt(i) > 'z')) {
+          stateValid.innerHTML = "State is incorrect";
+          stateValid.style.color = "red";
+          stateValid.style.fontWeight="bold";
+          return false;
+        }
+        else {
+          stateValid.innerHTML = "State";
+          stateValid.style.color = "";
+        }
+      }
+    }
+  }
+  function zipcodeValidate(zipcode) {
+    var zipcode = document.getElementById("zipcode");
+    var zipcodeValid = document.getElementById("zipcodeValid");
+    if (zipcode.value.trim() == "") {
+      zipcodeValid.innerHTML = "   Field Required";
+      zipcodeValid.style.color = "green";
+      return false;
+    }
+    else {
+      var reg = /^[0-9]{6}$/;
+      if (reg.test(zipcode.value)) {
+        zipcodeValid.innerHTML ="Zip Code";
+        zipcodeValid.style.color = "";
+        // return true;
+      }
+      else {
+        zipcodeValid.innerHTML = "ZipCode is incorrect";
+        zipcodeValid.style.color = "red";
+        zipcodeValid.style.fontWeight="bold";
+        return false;
+      }
+    }
+  }
+
+
+  function gstNoValidate() {
+    var gst = document.getElementById("gst_number");
+    var gstValid = document.getElementById("gstNoValid");
+  
+    if (gst.value.trim() == "") {
+      gstValid.innerHTML = "   Field Required";
+      gstValid.style.color = "green";
+      return false;
+    }
+    else {
+      var reg = /^[0-9]{15}$/;
+      if (reg.test(gst.value)) {
+        gstValid.innerHTML ="Gst No.";
+        gstValid.style.color = "";
+        return true;
+      }
+      else {
+        gstValid.innerHTML = "gst number is incorrect";
+        gstValid.style.color = "black";
+        return false;
+      }
+    }
+  }
+
+  function licenseNo(){
+    var license = document.getElementById("license_number");
+    var gstValid = document.getElementById("LicenseValid");
+
+    if (license.value.trim() == "") {
+      gstValid.innerHTML = "   Field Required";
+      gstValid.style.color = "green";
+      return false;
+    }
+    else
+    {
+      const reg = /^[A-Z0-9]{6,15}$/;
+      if (reg.test(license.value)) {
+        gstValid.innerHTML ="License No.";
+        gstValid.style.color = "";
+        return true;
+      }
+      else {
+        gstValid.innerHTML = "License number is incorrect";
+        gstValid.style.color = "black";
+        return false;
+      }
+    }
+
   }

@@ -3,18 +3,23 @@ function validateProductForm() {
     var productName = document.getElementById("productName");
     var productPrice = document.getElementById("productPrice");
     var productQuantity = document.getElementById("productPerqty");
-    var productQuantity = document.getElementById("productTotalqty");
+    var productTotalqty = document.getElementById("productTotalqty");
     var brandName = document.getElementById("productBrandname");
     var categoryName = document.getElementById("productCategory");
     var manufacturingDate = document.getElementById("productMfd");
     var expiryDate = document.getElementById("productExpirydate");
     var productDescription = document.getElementById("productDescription");
     var productImage = document.getElementById("productImage");
+    var qty_unit = document.getElementById("qty-unit");
+    var qty_units = document.getElementById("qty-units");
+
+
     var file = productImage.files[0];
 
     var productIdRegex = /^[0-9]+$/;
     var priceRegex = /^\d+(\.\d{1,2})?$/;
-    var quantityRegex = /^\d+\s*[a-z]+$/;
+    // var quantityRegex = /^\d+\s*[a-z]+$/;
+    var quantityRegex=/^[0-9]+$/;
 
     function showErrorMessage(element, message) {
         var errorElement = element.nextElementSibling;
@@ -43,9 +48,9 @@ function validateProductForm() {
         }
     }
 
-    if (!validateField(productId, productIdRegex, "Please enter a valid Product ID (Number only)")) {
-        return false;
-    }
+    // if (!validateField(productId, productIdRegex, "Please enter a valid Product ID (Number only)")) {
+    //     return false;
+    // }
 
     if (productName.value.trim() === "") {
         showErrorMessage(productName, "Please enter a Product Name");
@@ -54,16 +59,14 @@ function validateProductForm() {
         clearErrorMessage(productName);
     }
 
+    if (categoryName.value.trim() === "") {
+        showErrorMessage(categoryName, "Please enter a Category Name");
+        return false;
+    } else {
+        clearErrorMessage(categoryName);
+    }
+
     if (!validateField(productPrice, priceRegex, "Please enter a valid Product Price")) {
-        return false;
-    }
-
-    if (!validateField(productTotalqty, quantityRegex, "Please enter a valid Product Quantity")) {
-        return false;
-    }
-
-    
-    if (!validateField(productQuantity, quantityRegex, "Please enter a valid Product Quantity")) {
         return false;
     }
     if (brandName.value.trim() === "") {
@@ -73,12 +76,32 @@ function validateProductForm() {
         clearErrorMessage(brandName);
     }
 
-    if (categoryName.value.trim() === "") {
-        showErrorMessage(categoryName, "Please enter a Category Name");
+    if (!validateField(productQuantity, quantityRegex, "Please enter a valid Product Quantity")) {
+        return false;
+    }
+
+    if (qty_unit.value.trim() === "") {
+        console.log(qty_unit.value);
+        showErrorMessage(qty_unit, "Please select a unit");
         return false;
     } else {
-        clearErrorMessage(categoryName);
+        clearErrorMessage(qty_unit);
     }
+    
+    if (!validateField(productTotalqty, quantityRegex, "Please enter a valid Product Quantity")) {
+        return false;
+    }
+
+    if (qty_units.value.trim() === "") {
+        console.log(qty_units.value);
+        showErrorMessage(qty_units, "Please select a unit");
+        return false;
+    } else {
+        clearErrorMessage(qty_units);
+    }
+    
+
+   
     if (manufacturingDate.value.trim() === "") {
         showErrorMessage(manufacturingDate, "Please enter a Manufacturing Date");
         return false;
@@ -124,33 +147,6 @@ function validateProductForm() {
         showErrorMessage(productImage, "Please upload an image");
             return false;
         }
-        // if (file.name === "") {
-        //     alert('File name cannot be empty.');
-        //     return false;
-        // }
-
-
+      
     return true;
 }
-
-// var fileInput = document.getElementById('fileInput');
-// var file = fileInput.files[0];
-
-// // Check if a file is selected
-// 
-
-// // Check file type
-// var allowedTypes = ['image/jpeg', 'image/png', 'application/pdf']; // Example types
-// if (!allowedTypes.includes(file.type)) {
-//     alert('Invalid file type. Please select a JPEG, PNG, or PDF file.');
-//     return false;
-// }
-
-// // Check file size (in bytes)
-// var maxSize = 5 * 1024 * 1024; // Example: 5MB
-// if (file.size > maxSize) {
-//     alert('File size exceeds the maximum allowed limit (5MB).');
-//     return false;
-// }
-
-

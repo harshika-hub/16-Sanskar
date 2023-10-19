@@ -98,9 +98,7 @@
     }
 
     .heading {
-      /* margin-top: 5%; */
       font-weight: bold;
-      /* margin-left: 50px; */
       font-size: 48px;
       color: #f47c00;
       text-shadow: 1px 1px 1px black;
@@ -126,11 +124,11 @@
     }
 
     #mission {
-      /* height: 500px; */
       width: 100%;
       padding-bottom: 100px;
-      /* margin-top: -100px; */
-
+      margin-top: 100px;
+      /* background-color: red; */
+      height: 400px;
     }
 
     .missionheading {
@@ -146,159 +144,76 @@
       font-size: 50px;
       margin-left: 110px;
     }
-
-    /* .about-img{
-     margin-bottom: 10px;
-  } */
-
-    /* Custom CSS for your team section */
-
-    h1,
-    p {
-      margin: 0;
-    }
-
-    p {
-      font-size: 16px;
-      margin-top: 5px;
-    }
-
-    @media (max-width: 320px) {
-      #mission {
-        margin-top: 20px;
-      }
-
-      .about-para {
-        margin-top: -90px;
-      }
-
-      .about-text {
-        margin-top: 20px;
-        padding-left: 20px;
-      }
-
-      .col-lg-5 {
-        flex: 100%;
-        /* Full width for smaller screens */
-        max-width: 100%;
-        /* Full width for smaller screens */
-      }
-
-      .col-lg-7.col-md-12.col-12.ps-lg-5.mt-md-5 {
-        flex: 100%;
-        /* Full width for smaller screens */
-        max-width: 100%;
-        /* Full width for smaller screens */
-        padding-left: 0;
-        /* Remove padding for smaller screens */
-        margin-top: 0;
-        /* Remove margin for smaller screens */
-      }
-
-      
-
-      /* Additional responsive styles for other elements if needed */
-    }
-
-    @media screen and (max-width:568px) {
-
-      /* 
-      .carousel-item
-      {
-        width: 100vw;
-        height: auto;
-        background-color: #f47c00;
-        margin: auto;
-      } */
-     
-    
-
-      .about-para {
-        margin-top: 10%;
-        padding-left: 20px;
-        /* margin: auto; */
-
-      }
-
-      .cards-wrapper {
-        display: flex;
-        width: 70%;
-        margin: auto;
-      }
-
-      .card {
-        margin: 0.5em;
-        width: calc(100/3);
-      }
-
-      .image-wrapper {
-        height: 22vw;
-        /* padding: 10px; */
-        margin: 0 auto;
-      }
-
-    }
-
-    @media screen and (max-width:320px) {
-      .card:not(:first-child) {
-        display: none;
-      }
-
-      .img img {
-        margin-top: 10px;
-        width: 100px;
-        margin-left: 0;
-
-      }
-    }
-
-  .image-wrapper img {
-      max-width: 100%;
-      height: 100%;
-    }
-.flip-card {
-  background-color: transparent;
-  width: 300px;
-  height: 300px;
-  perspective: 1000px;
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    font-family:  'Poppins', sans-serif;
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    scroll-padding-top:4rem ;
+    list-style: none;
+    text-decoration: none;
 }
+:root{
+   --main-color:#ff6d46;
+   --second-color:var(--main-color);
+   --text-color :#121011;
+   --bg-color:#fff;
 
-.flip-card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
+   --box-shadow:0 0 16px 1px rgb(14 52 54/15%);
+}
+section{
+    padding:50px 100px;
+}
+img{
+    width:100%;
+}
+body{
+    color:var(--text-color);
+}
+.heading{
   text-align: center;
-  transition: transform 0.6s;
-  transform-style: preserve-3d;
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
-
-.flip-card:hover .flip-card-inner {
-  transform: rotateY(180deg);
+.heading h2{
+  font-size:3rem ;
+  text-transform: uppercase;
 }
-
-.flip-card-front, .flip-card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  /* -webkit-backface-visibility: hidden; */
-  backface-visibility: hidden;
+.customer-container{
+  display:grid;
+  align-items: center;
+  grid-template-columns: repeat(auto-fit,minmax(17rem,auto));
+  gap:1.5rem;
+  margin-top: 2rem;
 }
-
-.flip-card-front {
-  background-color: #bbb;
-  color: black;
+.customer-container .box{
+  padding:20px;
+  box-shadow: var(--box-shadow);
+  border-radius: 0.5rem;
+  text-align: center;
 }
-
-.flip-card-back {
-  background-color: #f47c00;
-  color: white;
-  transform: rotateY(180deg);
+.stars .bx{
+  color:var(--main-color);
 }
-
-.navbar-nav {
-    gap: 5vw;
-  }
+.customer-container .box img{
+  width:270px;
+  height:270px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+.customer-container .box h2{
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.customer-container p{
+  font-size: 0.938rem;
+  margin:0.5rem 0 0.5rem;
+}
+.customer-container .box:hover{
+  background: #f47c00;
+  transition: 0.2s all linear;
+}
 </style>
   
   <%- include('../partials/head'); %>
@@ -478,63 +393,51 @@
       </div>
     </section>
   </div>
-  <!-- -------------team section--------------- -->
-  <div class="container-fluid  p-5">
-  <div class="container" style="margin: auto;">
-    <center>
-      <h1>Our Team</h1>
-    </center>
-    <div class="row " style="padding: 10px;">
-       <div class=" col-sm-12 col-md-4">
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src="images/anjali.jpg" alt="Avatar" style="width:300px;height:300px;">
-            </div>
-            <div class="flip-card-back">
-              <h1>Anjali Bagdi</h1> 
-              <p>Full Stack Developer</p> 
-              <p>We love that guy</p>
-            </div>
-          </div>
+  <section class="customer" id="customer">
+    <div class="heading">
+        <h2>Our Team</h2>
+    </div>
+    <div class="customer-container">
+        <div class="box">
+            <img src="images/rev3.jpg" alt="">
+            <h2>Anjali Bagdi</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio architecto velit sunt perferendis molestiae.</p>
+            <div class="stars">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star-half' ></i>
         </div>
-       </div>
-      
-      <!-- 1 card -->
-      <div class=" col-sm-12 col-md-4">
+        </div>
   
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="images/anjali.jpg" alt="Avatar" style="width:300px;height:300px;">
-          </div>
-          <div class="flip-card-back">
-            <h1>Harshika Pardesi</h1>
-            <p>Full-stack developer</p>
-            <p>We love that guy</p>
-          </div>
+        <div class="box">
+            <img src="images/rev2.jpg" alt="">
+            <h2>Harshika Pardeshi</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio architecto velit sunt perferendis molestiae.</p>
+            <div class="stars">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star-half' ></i>
         </div>
-      </div>
-      </div>
-      <!-- 2 -->
-      <div class=" col-sm-12 col-md-4">
+    </div>
   
-      <div class="flip-card">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <img src="images/anjali.jpg" alt="Avatar" style="width:300px;height:300px;">
-          </div>
-          <div class="flip-card-back">
-            <h1>Preshit Kapse</h1> 
-            <p>Full Stack Developer</p> 
-            <p>We love that guy</p>
-          </div>
+        <div class="box">
+            <img src="images/rev1.jpg" alt="">
+            <h2>Prashit Kapse</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio architecto velit sunt perferendis molestiae.</p>
+            <div class="stars">
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star'></i>
+            <i class='bx bxs-star-half' ></i>
         </div>
-      </div>
+        </div>
     </div>
-    </div>
-    </div>
-  </div>
+  </section>
   
    <!-- footer -->
    <%- include('../partials/footer.ejs'); %>

@@ -16,7 +16,6 @@ var storage=multer.diskStorage({
 
 router.get('/', vregController)
 router.get('/vendor_product', vproductController);
-// router.get('/Vendor_profile', vprofileController);
 router.get('/vendor_profile', vendorprofileController)
 router.get('/update',editprofile)
 router.post('/saveupdate',updateprofile);

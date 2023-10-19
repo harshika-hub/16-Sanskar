@@ -266,8 +266,25 @@
   
                         <div class="mb-4 pb-2">
                           <div class="form-outline form-white">
-                            <input type="text" id="gst_number" name="gst_number" onkeyup="return gstValidate(this)" class="form-control form-control-lg" />
-                            <label class="form-label1" id="gst_number" for="form3Examplea2">GST Number</label>
+
+                            <select name="gst_select" onchange="gstclick()"  class="form-select" id="gstselect" style="border: solid 1px black;" aria-label="Default select example">
+                              <option value="">shop type number</option>
+                              <option value="GST" >GST</option>
+                              <option value="license_number">License Number</option>
+                              <option value="letter" >Letter</option>
+                            
+                            </select>
+                            <!-- <input type="text" id="gst_number" name="gst_number" onkeyup="return gstNoValidate(this)" class="form-control form-control-lg " style="display: none;" /> -->
+                          </div>
+                        </div>
+                        <div class="mb-4 pb-2">
+                          <div class="form-outline form-white">
+                            <input type="text" id="gst_number" name="gst_number" onkeyup="return gstNoValidate(this)" class="form-control form-control-lg " style="display: none;" placeholder="GST" />
+                            <input type="text" id="license_number" name="license_number" onkeyup="return licenseNo(this)" class="form-control form-control-lg "  placeholder="License" style="display: none;" />
+                            <label class="form-label1" id="gstNoValid" for="form3Examplea2" style="display: none;">Gst Number</label>
+                            <label class="form-label1" id="LicenseValid" for="form3Examplea2" style="display: none;">License Number</label>
+
+
                           </div>
                         </div>
                         
@@ -372,7 +389,9 @@
         </div>
       </section>
      </form>
-     <script src="/validation/registerv.js"></script>
 
 </body>
+
+<script src="/validation/registerv.js"></script>
+
 </html>
