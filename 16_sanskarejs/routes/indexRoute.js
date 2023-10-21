@@ -7,10 +7,8 @@ router.get('/blogs',blogController)
 router.get('/become_sell',sellController)
 router.get('/About',aboutController)
 router.get('/Registration',registrationController)
-// router.get('/user_login',loginController)
 router.get('/user_login', (req, res,next) => {
-  // var role = req.params.role;
-  console.log("loooogggggvhbkjnj user");
+  console.log("user Login ");
   const token = req.cookies.jwt;
   if (token) {
       jwt.verify(token, SECRET_KEY, (err, decodedToken) => {
@@ -32,6 +30,5 @@ router.get('/user_login', (req, res,next) => {
 
   // res.render('pages/user_login',{email:"",pass:"",role:role});
 },uProductController);
-// router.post('/checkuser',userLoginController);
 
 export default router

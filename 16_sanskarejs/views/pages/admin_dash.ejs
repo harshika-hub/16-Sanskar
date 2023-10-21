@@ -26,7 +26,7 @@
           overflow-x: hidden;
         }
         
-        .container-fluid {
+        .container-fluids {
           position: relative;
           width: 100%;
         }
@@ -121,7 +121,7 @@
           pointer-events: none;
         }
         
-        .main {
+        .mains {
           position: absolute;
           width: calc(100% - 300px);
           left: 300px;
@@ -129,12 +129,12 @@
           background: var(--white);
           transition: 0.5s;
         }
-        .main.actives {
+        .mains.actives {
           width: calc(100% - 80px);
           left: 80px;
         }
         
-        .topbar {
+        .topbars {
           width: 100%;
           height: 60px;
           display: flex;
@@ -192,11 +192,11 @@
             width: 300px;
             left: 0;
           }
-          .main {
+          .mains {
             width: 100%;
             left: 0;
           }
-          .main.actives {
+          .mains.actives {
             left: 300px;
           }
        
@@ -210,7 +210,7 @@
         
         @media (max-width: 480px) {
        
-          .user {
+          .users {
             min-width: 40px;
           }
           .navigations {
@@ -225,7 +225,7 @@
           .toggles {
             z-index: 10001;
           }
-          .main.actives .toggles {
+          .mains.actives .toggles {
             color: #fff;
             position: fixed;
             right: 0;
@@ -239,30 +239,28 @@
 
 <body>
     <!-- =============== navigations ================ -->
-    <div class="container-fluid">
+    <div class="container-fluids">
       <%- include('../partials/adminav.ejs')%>
 
 
         <!-- ========================= Main ==================== -->
-        <div class="main">
-            <div class="topbar">
+        <div class="mains">
+            <div class="topbars">
                 <div class="toggles">
                     <ion-icon name="menu-outline"></ion-icon>
                 </div>
 
-                <div class="search">
+                <!-- <div class="search">
                     <label>
                         <input type="text" placeholder="Search here">
                         <ion-icon name="search-outline"></ion-icon>
                     </label>
-                </div>
-
-             
+                </div> -->
             </div>
 
               
 
-               <div  id="charts"  style="width: 70%; height: 40vh; margin-left: 10%;" >
+               <div  id="charts"  style="width: 70%; height: 30vh; margin-left: 10%;" >
                 <canvas id="myChart" ></canvas>
               </div>
               <input style="display: none;" type="text" name="vendor" id="vendor" value="<%=vendor%>">
@@ -285,10 +283,10 @@
                       label: '# of Votes',
                       data: [countc, countv, 3, 5],
                       backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(255, 205, 86, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 99, 132, 0.5)',
+                        'rgba(83, 142, 142, 0.5)',
+                        'rgba(255, 205, 86, 0.5)',
+                        'rgba(54, 162, 235, 0.5)',
                        
                       ],
                       borderColor: [
@@ -298,7 +296,7 @@
                         'rgb(54, 162, 235)',
                        
                       ],
-                      borderWidth: 1
+                      borderWidth: 2
                     }]
                   },
                   options: {
@@ -329,11 +327,11 @@
       // Menu toggles
       let toggles = document.querySelector(".toggles");
       let navigations = document.querySelector(".navigations");
-      let main = document.querySelector(".main");
+      let mains = document.querySelector(".mains");
       
       toggles.onclick = function () {
         navigations.classList.toggle("actives");
-        main.classList.toggle("actives");
+        mains.classList.toggle("actives");
       };
       
     </script>

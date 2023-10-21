@@ -1,162 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>16-Sanskar</title>
-  <!-- Bootstrap CSS -->
-  <!-- <link rel="stylesheet" href="style.css"> -->
-
-
-  <!-- <script src="script.js"></script> -->
-  <style>
-    * {
-      margin: 0%;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    .home {
-
-      width: 100%;
-      padding-top: 8%;
-      padding-bottom: 8%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-wrap: wrap;
-      position: relative;
-
-    }
-
-    .content {
-      flex: 1 1 300px;
-
-      padding: 20px;
-    }
-
-    .content h1 {
-      margin-top: 11%;
-      font-weight: bold;
-      margin-left: 7%;
-      font-size: 3rem;
-      color: #f47c00;
-      text-shadow: 1px 1px 1px black;
-    }
-
-    .img {
-      text-align: center;
-    }
-
-    .img img {
-      width: 60vh;
-      animation: up-down 2s ease-in-out infinite alternate-reverse both;
-
-
-    }
-
-    @keyframes up-down {
-      0% {
-        transform: translateY(10px);
-      }
-
-      100% {
-        transform: translateY(-10px);
-      }
-    }
-
-    .content p {
-      margin-left: 3rem;
-
-    }
-
-    .tagline {
-      font-weight: bold;
-      margin-left: 6%;
-      font-size: 2rem;
-      color: #f47c00;
-      text-shadow: 1px 1px 1px black;
-    }
-
-    @media only screen and (max-width: 751px) {
-
-      .img img {
-        animation: none;
-
-      }
-
-    }
-
-    /* ----------------------------home section----------------------------- */
-
-    .card {
-      border: none;
-      border-radius: 35px;
-      box-shadow: 2px 6px 8px 0 rgba(0, 0, 0, 0.18);
-
-    }
-
-    .carousel-inner {
-      padding: 0.5em;
-    }
-
-    @media screen and (min-width:568px) {
-
-
-      .carousel-item {
-        width: 100vw;
-        height: auto;
-        background-color: #f47c00;
-        margin: auto;
-      }
-
-      .cards-wrapper {
-        display: flex;
-        width: 70%;
-        margin: auto;
-      }
-
-      .card {
-        margin: 0.5em;
-        width: calc(100/3);
-      }
-
-      .image-wrapper {
-        height: 22vw;
-        /* padding: 10px; */
-        margin: 0 auto;
-      }
-    }
-
-    @media screen and (max-width:320px) {
-      .card:not(:first-child) {
-        display: none;
-      }
-
-      .img img {
-        width: 40vw;
-      }
-
-      .home {
-        margin-top: 40%;
-      }
-    }
-
-
-    .image-wrapper img {
-      max-width: 100%;
-      height: 100%;
-    }
-  </style>
-  <%- include('../partials/head'); %>
-
-
-</head>
-
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  
+      <!-- Vendor CSS Files -->
+      <link href="/assets/vendor/aos/aos.css" rel="stylesheet">
+      <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+      <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+      <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+      <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+      <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  
+      <link href="/assets/css/style.css" rel="stylesheet">
+  
+      <!-- bootstrap link -->
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 <body>
-
-  <div id="nav-ediv">
+   <!-- navbar Satrt  -->
+   <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
         <a class="ps-5 navbar-brand d-md-none" href="/" align="center"><img src="/images/16-sanskar.png"
@@ -244,613 +116,824 @@
     </nav>
   </div>
 
-  <div style="width: 100%; padding: 1px; "></div>
-  <!--=========================== NAVBAR END ================================================== -->
+<div style="width: 100%; padding: 1px; "></div>
+  <!-- navbar end  -->
 
 
-  <header class="containe-fluidr home">
-    <div class="row">
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center">
 
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-6 order-2 order-lg-1 d-flex content flex-column justify-content-center">
+          <h1 class="mt-5">" जन्म से लेकर मृत्यु तक "</h1>
+          <h2 class="tagline text-dark mt-5">"Guiding Journeys Through Life's Sacred Milestones"</h2>
 
-      <div class="col-lg-6 col-sm-12  col-xs-12  content mt-5">
-
-
-        <h1 class="mt-5">" जन्म से लेकर मृत्यु तक "</h1>
-        <h2 class="tagline text-dark mt-5">"Guiding Journeys Through Life's Sacred Milestones"</h2>
-
-
-        <p class="text-dark fw-bolder ">"16 Sanskar: Guiding Journeys Through Life's Sacred Milestones" is a
-          comprehensive project dedicated to preserving and promoting the ancient Hindu rituals known as the '16
-          Sanskar.'The Hindu religion encompasses a rich tradition of rituals and ceremonies known as Sanskar's, which
-          are designed to mark various stages of life and promote spiritual growth. </p>
-      </div>
-      <div class="col-lg-6 col-sm-12 col-xs-12 ">
-
-        <div class="img">
-
-          <img src="images/havan.png" alt="#">
+          <br>
+          <p class="text-dark fw-bolder ">"16 Sanskar: Guiding Journeys Through Life's Sacred Milestones" is a
+            comprehensive project dedicated to preserving and promoting the ancient Hindu rituals known as the '16
+            Sanskar.'The Hindu religion encompasses a rich tradition of rituals and ceremonies known as Sanskar's, which
+            are designed to mark various stages of life and promote spiritual growth. </p>
         </div>
-
+        <div class="col-lg-6 order-1 order-lg-2 hero-img">
+          <!-- <img src="assets/img/hero-img.svg" class="img-fluid animated" alt=""> -->
+          <img src="/images/havan.png" class="img-fluid animated" alt="">
+        </div>
       </div>
     </div>
-  </header>
 
+  </section><!-- End Hero -->
 
+  <!-- 16-sanskar section start -->
 
-  <!-- -----------------------------home section complete------------------------------------------ -->
-  <section>
+<section id="portfolio" class="portfolio" >
+  <div class="container" data-aos="fade-up">
 
-
-
-    <div id="carouselExampleControls" class="carousel slide d-none d-sm-block " data-bs-ride="carousel"
-      style=" background-color:  #f47c00; ">
-      <p class="heading">Product</p>
-
-      <div class="carousel-inner">
-        <div class="carousel-item active ">
-          <div class="cards-wrapper  container">
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/Garbh-Sanskar.jpg" alt="...">
-              </div>
-
-
-              <div class="card-body">
-                <h5 class="card-title">Garbhadhan</h5>
-                <p class="card-text">Pooja Items like ticks, diyas (oil lamps), flowers, fruits, and sweets, Traditional
-                  Cloth(sari)</p>
-                <h5 class="card-text"> Price:-3000 Rs</h5>
-                <a href="#" class="btn pt-1" style="background-color: #f47c00;color:white;">Find More...</a>
-              </div>
-            </div>
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/jatkarm.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Jatakarman</h5>
-                <p class="card-text">Sandalwood,agarbatti,kapoor,Ghee,diya,flowers,Traditional Cloth</p>
-                <p class="card-text"></p>
-                <h5 class="card-text"> Price:-4000 Rs</h5>
-
-                <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-              </div>
-            </div>
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/Annaprashan-Sanskar.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Annaprashan</h5>
-                <p class="card-text">Puja thali or plate,Milk,Holy water,silver spoon and bowl,Fruits and sweets</p>
-                <h5 class="card-text"> Price:-5000 Rs</h5>
-
-                <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/mundan.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Mundan</h5>
-                <p class="card-text">Sandalwood,agarbatti,kapoor,Traditional Cloth,Puja thali,Yajnopavita,scissors,Red
-                  thread or black thread</p>
-                <h5 class="card-text"> Price:-2000 Rs</h5>
-
-                <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-              </div>
-            </div>
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/karn.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Karnavedha</h5>
-                <p class="card-text">Earrings,Sandalwood,Holy water,Puja thali, agarbatti,kapoor,Traditional Cloth</p>
-                <h5 class="card-text"> Price:-8000 Rs</h5>
-
-                <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-              </div>
-            </div>
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/Upanayanam.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Upanayanam</h5>
-                <p class="card-text">Yajnopavita or Janeu,Sandalwood,Bathing Items,Yajnopavita Manual,Akshata,Metal
-                  Utensils,Havan item</p>
-                <h5 class="card-text"> Price:-2500 Rs</h5>
-                <a href="#" class="btn" style="background-color: #f47c00;  color:white; "> Find More...</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="cards-wrapper">
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/vivah.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Vivah</h5>
-                <p class="card-text">Mangalsutra,Sindoor,Jaimala,Saptapadi,Havan Kund,Sweets and Fruits,Akshata,Puja
-                  Thali</p>
-                <h5 class="card-text"> Price:-7000 Rs</h5>
-                <a href="#" class="btn" style="background-color: #f47c00; color:white;"> Find More...</a>
-              </div>
-            </div>
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/Vanaprastha.jpg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Sannyasa</h5>
-                <p class="card-text">Kashaya Robes,Kamandalu,Bhiksha Patra,Danda,Yajnopavita,Rudraksha Mala,Puja Thali
-                </p>
-                <h5 class="card-text"> Price:-1500 Rs</h5>
-                <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-              </div>
-            </div>
-            <div class="card">
-
-              <div class="image-wrapper">
-                <img src="images/antim-sanskar.jpeg" alt="...">
-              </div>
-
-              <div class="card-body">
-                <h5 class="card-title">Antyesthi</h5>
-                <p class="card-text">Bier,Wood,Ghee,Kapoor,Flowers,Holy Water,Tulsi Leaves,Draping Cloth,Matka>
-                <h5 class="card-text"> Price:-5000 Rs</h5>
-                <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
+    <div class="section-title">
+      <h1>Sixteen Sanskar's</h1>
+      
     </div>
-    <div id="carouselExampleControlSmall" class="carousel slide d-sm-none  " data-bs-ride="carousel"
-      style="background-color: #f47c00; ">
-
-      <h1 class="heading">Product</h1>
-
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="card">
-
-
-            <div class="image-wrapper">
-              <img src="images/Garbh-Sanskar.jpg" alt="...">
-            </div>
-
-
-            <div class="card-body">
-              <h5 class="card-title">Garbhadhan</h5>
-              <p class="card-text">Pooja Items like ticks, diyas (oil lamps), flowers, fruits, and sweets, Traditional
-                Cloth(sari)</p>
-              <h5 class="card-text"> Price:-3000 Rs</h5>
-              <a href="#" class="btn pt-1" style="background-color: #f47c00;color:white;">Find More...</a>
-            </div>
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200" >
+      <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+        <div class="portfolio-wrap">
+          <img src="images/Garbh-Sanskar.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <div class="portfolio-links">
+            <a href="images/mundancombo.jpg"  data-gallery="portfolioGallery" class="portfolio-lightbox" title="Garbhadhaan products"><i class="bi bi-plus"></i></a>
           </div>
-        </div>
-
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/jatkarm.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Jatakarman</h5>
-              <p class="card-text">Sandalwood,agarbatti,kapoor,Ghee,diya,flowers,Traditional Cloth,</p>
-              <p class="card-text"></p>
-              <h5 class="card-text"> Price:-4000 Rs</h5>
-
-              <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/Annaprashan-Sanskar.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Annaprashan</h5>
-              <p class="card-text">Puja thali or plate,Milk,Holy water,silver spoon and bowl,Fruits and sweets</p>
-              <h5 class="card-text"> Price:-5000 Rs</h5>
-
-              <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/mundan.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Mundan</h5>
-              <p class="card-text">Sandalwood,agarbatti,kapoor,Traditional Cloth,Puja thali,Yajnopavita,scissors,Red
-                thread or black thread</p>
-              <h5 class="card-text"> Price:-2000 Rs</h5>
-
-              <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/karn.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Karnavedha</h5>
-              <p class="card-text">Earrings,Sandalwood,Holy water,Puja thali, agarbatti,kapoor,Traditional Cloth</p>
-              <h5 class="card-text"> Price:-8000 Rs</h5>
-
-              <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/Upanayanam.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Upanayanam</h5>
-              <p class="card-text">Yajnopavita or Janeu,Sandalwood,Bathing Items,Yajnopavita Manual,Akshata,Metal
-                Utensils,Havan item</p>
-              <h5 class="card-text"> Price:-2500 Rs</h5>
-              <a href="#" class="btn" style="background-color: #f47c00;  color:white; "> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/vivah.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Vivah</h5>
-              <p class="card-text">Mangalsutra,Sindoor,Jaimala,Saptapadi,Havan Kund,Sweets and Fruits,Akshata,Puja Thali
-              </p>
-              <h5 class="card-text"> Price:-7000 Rs</h5>
-              <a href="#" class="btn" style="background-color: #f47c00; color:white;"> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/Vanaprastha.jpg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Sannyasa</h5>
-              <p class="card-text">Kashaya Robes,Kamandalu,Bhiksha Patra,Danda,Yajnopavita,Rudraksha Mala,Puja Thali
-              </p>
-              <h5 class="card-text"> Price:-1500 Rs</h5>
-              <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="card">
-
-            <div class="image-wrapper">
-              <img src="images/antim-sanskar.jpeg" alt="...">
-            </div>
-
-            <div class="card-body">
-              <h5 class="card-title">Antyesthi</h5>
-              <p class="card-text">Bier,Wood,Ghee,Kapoor,Flowers,Holy Water,Tulsi Leaves,Draping Cloth,Matka>
-              <h5 class="card-text"> Price:-5000 Rs</h5>
-              <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Find More...</a>
-            </div>
+          <div class="portfolio-info">
+            <h4>Garbhadhaan</h4>
           </div>
         </div>
       </div>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlSmall"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlSmall"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-
-
-  </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <!-- Product section complete  -->
-  <div>
-    <h1 class="heading">About Us</h1>
-    <section class="py-3 py-md-5 py-xl-8   "
-      style=" width: 100vw; background-image:url(/images/background2.png); padding: 10px; background-repeat: no-repeat; background-size: cover;">
-
-      <div class="container mt-5">
-        <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
-          <div class="col-12 col-lg-6 col-xl-5">
-            <img class="img-fluid rounded" loading="lazy" src="./images/om2.png" alt="">
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/pumsavana.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/pumsavanacombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="pumsavana products"><i class="bi bi-plus"></i></a>
+           <h1></h1>
           </div>
-          <div class="col-12 col-lg-6 col-xl-7">
-            <div class="row justify-content-xl-center">
-              <div class="col-12 col-xl-11 text-danger mt-5">
-                <h2 class="h1 mb-3 text-white ">Who Are We?</h2>
-                <p class="lead fs-4 text-danger mb-3 text-white ">We help people to build incredible brands and superior
-                  products. Our perspective is to furnish outstanding captivating services.</p>
-                <p class="mb-5 text-white ">16 Sanskar:- Each Sanskar serves a unique purpose and holds significant
-                  meaning,"16-Sanskar" aims to bridge the gap between tradition and modernity </p>
-                <div class="row gy-4 gy-md-0 gx-xxl-5X">
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex">
-                      <div class="me-4 text-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                          class="bi bi-gear-fill" viewBox="0 0 16 16">
-                          <path
-                            d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 class="mb-3 text-white ">Versatile Brand</h4>
-                        <p class="text-danger mb-0 text-white ">We are crafting a digital method that subsists life
-                          across all mediums.</p>
-                      </div>
+          <div class="portfolio-info">
+            <h4>Pumsavana</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+        <div class="portfolio-wrap">
+          <img src="images/simmantonayan.webp" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <div class="portfolio-links">
+            <a href="images/mundancombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Simantonayan product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Simantonayan</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-card">
+        <div class="portfolio-wrap">
+          <img src="images/Jatkarm1.webp" style="height: 25vh; width:25vw" class="img-fluid"  alt="">
+          <div class="portfolio-links">
+            <a href="images/mundancombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="jatkarma products"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Jatakarman</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-card" >
+        <div class="portfolio-wrap">
+          <img src="images/namkaran.jpg" class="img-fluid" style="height: 25vh; width:25vw" style="max-height: 200px;" alt="">
+          <div class="portfolio-links">
+            <a href="images/image3.webp" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Namakaran products"><i class="bi bi-plus"></i></a>
+            <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Namakaran</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-card">
+        <div class="portfolio-wrap">
+          <img src="images/nishkarm6.webp" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/image2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="nishkarmana products"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Nishakarmana </h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-app">
+        <div class="portfolio-wrap">
+          <img src="images/Annaprashan-Sanskar.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/annaprashan.webp" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Anaprashan products"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Anaprashan</h4>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/mundan.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <div class="portfolio-links">
+            <a href="images/mundancombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="chudakaran product"><i class="bi bi-plus"></i></a>
+
+          </div>
+          <div class="portfolio-info">
+            <h4>Chudakaran</h4>
+          </div>
+        </div>
+      </div>
+
+ 
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/karn.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <div class="portfolio-links">
+            <a href="images/image4.webp" data-gallery="portfolioGallery" class="portfolio-lightbox" title="karnavedha products"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Karnavedha</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/upnayan2.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <div class="portfolio-links">
+            <a href="images/images6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="upanayan product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Upanayan</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/Vedarambha.png" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <div class="portfolio-links">
+            <a href="images/image8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="vidhyarambh products"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Vidhayarambh</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/samvartan12.webp" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/images7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="samvartana product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Samavartana</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/vivah.jpg" class="img-fluid" style="height: 25vh; width:25vw" style="max-height: 100vh;" alt="">
+          <div class="portfolio-links">
+            <a href="images/image5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="vivha product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Vivha</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/Vanaprastha.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/images10.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="vanprastha product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Vanaprastha</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/vanaprasth.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/images11.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Sannyasa product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Sannyasa</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-3 col-md-6 portfolio-item filter-web">
+        <div class="portfolio-wrap">
+          <img src="images/antimsanskar.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <div class="portfolio-links">
+            <a href="images/antim-sanskar.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Antyesthi product"><i class="bi bi-plus"></i></a>
+          </div>
+          <div class="portfolio-info">
+            <h4>Antyesthi</h4>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- 16-sanskar section end -->
+
+<section id="product" class="product" >
+  <div class="container1" data-aos="fade-up">
+
+  <div class="section-title" >
+    <h1>Combo Products</h1>
+    
+  </div>
+  <div id="carouselExampleControls" class="carousel slide d-none d-sm-block " data-bs-ride="carousel" style=" background-color:  #f47c00; ">  
+    <div class="carousel-inner">
+          <div class="carousel-item active " >
+         <div class="cards-wrapper  container">
+       <div class="card">  
+    
+      <div class="image-wrapper">
+        <img src="images/Garbh-Sanskar.jpg" alt="...">
+      </div>
+      
+    
+      <div class="card-body">
+        <h5 class="card-title">Garbhadhan</h5>
+        <p class="card-text">Pooja Items like ticks, diyas (oil lamps), flowers, fruits, and sweets, Traditional Cloth(sari)</p>
+        <h5 class="card-text"> Price:-3000 Rs</h5>
+        <a href="#" class="btn pt-1" style="background-color: #f47c00;color:white;">Add To Cart</a>
+      </div>
+    </div>
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/jatkarm.jpg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Jatakarman</h5>
+        <p class="card-text">Sandalwood,agarbatti,kapoor,Ghee,diya,flowers,Traditional Cloth,<br>Puja thali,Yajnopavita</p>
+        <p class="card-text"></p>
+        <h5 class="card-text"> Price:-4000 Rs</h5>
+    
+        <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+      </div>
+    </div>
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/Annaprashan-Sanskar.jpg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Annaprashan</h5>
+        <p class="card-text">Puja thali or plate,Milk,Holy water,silver spoon and bowl,Fruits and sweets</p>
+        <h5 class="card-text"> Price:-5000 Rs</h5>
+    
+        <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+      </div>
+    </div>
+         </div>
+     </div>
+          <div class="carousel-item">
+    <div class="cards-wrapper">
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/mundan.jpg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Mundan</h5>
+        <p class="card-text">Sandalwood,agarbatti,kapoor,Traditional Cloth,Puja thali,Yajnopavita,scissors,Red thread or black thread</p>
+        <h5 class="card-text"> Price:-2000 Rs</h5>
+    
+        <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+      </div>
+    </div>
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/karn.jpg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Karnavedha</h5>
+        <p class="card-text">Earrings,Sandalwood,Holy water,Puja thali, agarbatti,kapoor,Traditional Cloth</p>
+        <h5 class="card-text"> Price:-8000 Rs</h5>
+    
+        <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+      </div>
+    </div>
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/Upanayanam.jpg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Upanayanam</h5>
+        <p class="card-text">Yajnopavita or Janeu,Sandalwood,Bathing Items,Yajnopavita Manual,Akshata,Metal Utensils,Havan item</p>
+        <h5 class="card-text"> Price:-2500 Rs</h5>
+        <a href="#" class="btn"style="background-color: #f47c00;  color:white; "> Add To Cart</a>
+      </div>
+    </div>
+    </div>
+          </div>
+          <div class="carousel-item">
+    <div class="cards-wrapper">
+      <div class="card">
+    
+        <div class="image-wrapper">
+          <img src="images/vivah.jpg"  alt="...">
+        </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Vivah</h5>
+        <p class="card-text">Mangalsutra,Sindoor,Jaimala,Saptapadi,Havan Kund,Sweets and Fruits,Akshata,Puja Thali</p>
+        <h5 class="card-text"> Price:-7000 Rs</h5>
+        <a href="#" class="btn"style="background-color: #f47c00; color:white;"> Add To Cart</a>
+      </div>
+    </div>
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/Vanaprastha.jpg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Sannyasa</h5>
+        <p class="card-text">Kashaya Robes,Kamandalu,Bhiksha Patra,Danda,Yajnopavita,Rudraksha Mala,Puja Thali </p>
+        <h5 class="card-text"> Price:-1500 Rs</h5>
+        <a href="#" class="btn"style="background-color: #f47c00;color:white;"> Add To Cart</a>
+      </div>
+    </div>
+    <div class="card">
+    
+      <div class="image-wrapper">
+        <img src="images/antim-sanskar.jpeg"  alt="...">
+      </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Antyesthi</h5>
+        <p class="card-text">Bier,Wood,Ghee,Kapoor,Flowers,Holy Water,Tulsi Leaves,Draping Cloth,Matka>
+          <h5 class="card-text"> Price:-5000 Rs</h5>
+        <a href="#" class="btn"style="background-color: #f47c00;color:white;"> Add To Cart</a>
+      </div>
+    </div>
+    </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+<div id="carouselExampleControlSmall" class="carousel slide d-sm-none  " data-bs-ride="carousel" style="background-color: #f47c00; ">
+    
+    <h1 class="heading">Product</h1>
+
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <div class="card">
+
+
+        <div class="image-wrapper">
+          <img src="images/Garbh-Sanskar.jpg" alt="...">
+        </div>
+        
+      
+        <div class="card-body">
+          <h5 class="card-title">Garbhadhan</h5>
+          <p class="card-text">Pooja Items like ticks, diyas (oil lamps), flowers, fruits, and sweets, Traditional Cloth(sari)</p>
+          <h5 class="card-text"> Price:-3000 Rs</h5>
+          <a href="#" class="btn pt-1" style="background-color: #f47c00;color:white;">Add To Cart</a>
+        </div>
+      </div>      
+     </div>
+  
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/jatkarm.jpg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Jatakarman</h5>
+          <p class="card-text">Sandalwood,agarbatti,kapoor,Ghee,diya,flowers,Traditional Cloth,<br>Puja thali,Yajnopavita</p>
+          <p class="card-text"></p>
+          <h5 class="card-text"> Price:-4000 Rs</h5>
+      
+          <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+        </div>
+      </div>  
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/Annaprashan-Sanskar.jpg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Annaprashan</h5>
+          <p class="card-text">Puja thali or plate,Milk,Holy water,silver spoon and bowl,Fruits and sweets</p>
+          <h5 class="card-text"> Price:-5000 Rs</h5>
+      
+          <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+        </div>
+      </div>    
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/mundan.jpg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Mundan</h5>
+          <p class="card-text">Sandalwood,agarbatti,kapoor,Traditional Cloth,Puja thali,Yajnopavita,scissors,Red thread or black thread</p>
+          <h5 class="card-text"> Price:-2000 Rs</h5>
+      
+          <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+        </div>
+      </div> 
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/karn.jpg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Karnavedha</h5>
+          <p class="card-text">Earrings,Sandalwood,Holy water,Puja thali, agarbatti,kapoor,Traditional Cloth</p>
+          <h5 class="card-text"> Price:-8000 Rs</h5>
+      
+          <a href="#" class="btn" style="background-color: #f47c00;color:white;"> Add To Cart</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/Upanayanam.jpg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Upanayanam</h5>
+          <p class="card-text">Yajnopavita or Janeu,Sandalwood,Bathing Items,Yajnopavita Manual,Akshata,Metal Utensils,Havan item</p>
+          <h5 class="card-text"> Price:-2500 Rs</h5>
+          <a href="#" class="btn"style="background-color: #f47c00;  color:white; "> Add To Cart</a>
+        </div>
+      </div> 
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/vivah.jpg"  alt="...">
+        </div>
+    
+      <div class="card-body">
+        <h5 class="card-title">Vivah</h5>
+        <p class="card-text">Mangalsutra,Sindoor,Jaimala,Saptapadi,Havan Kund,Sweets and Fruits,Akshata,Puja Thali</p>
+        <h5 class="card-text"> Price:-7000 Rs</h5>
+        <a href="#" class="btn"style="background-color: #f47c00; color:white;"> Add To Cart</a>
+      </div>
+    </div>   
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/Vanaprastha.jpg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Sannyasa</h5>
+          <p class="card-text">Kashaya Robes,Kamandalu,Bhiksha Patra,Danda,Yajnopavita,Rudraksha Mala,Puja Thali </p>
+          <h5 class="card-text"> Price:-1500 Rs</h5>
+          <a href="#" class="btn"style="background-color: #f47c00;color:white;"> Add To Cart</a>
+        </div>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <div class="card">
+
+        <div class="image-wrapper">
+          <img src="images/antim-sanskar.jpeg"  alt="...">
+        </div>
+      
+        <div class="card-body">
+          <h5 class="card-title">Antyesthi</h5>
+          <p class="card-text">Bier,Wood,Ghee,Kapoor,Flowers,Holy Water,Tulsi Leaves,Draping Cloth,Matka>
+            <h5 class="card-text"> Price:-5000 Rs</h5>
+          <a href="#" class="btn"style="background-color: #f47c00;color:white;"> Add To Cart</a>
+        </div>
+      </div> 
+    </div>
+    </div>
+  
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControlSmall" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControlSmall" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div> 
+
+
+</section> 
+<!-- Product section complete  -->
+
+<!-- about start  -->
+<div>
+  <!-- <h1 class="aboutheading">About Us</h1> -->
+  <div class="section-title" >
+    <h1>About Us</h1>
+    
+  </div>
+  <section class="py-3 py-md-5 py-xl-8   "
+    style=" width: 100vw; background-image:url(/images/background2.png); padding: 10px; background-repeat: no-repeat; background-size: cover;">
+
+    <div class="container mt-5">
+      <div class="row gy-3 gy-md-4 gy-lg-0 align-items-lg-center">
+        <div class="col-12 col-lg-6 col-xl-5">
+          <img class="img-fluid rounded" loading="lazy" src="/images/om2.png" alt="">
+        </div>
+        <div class="col-12 col-lg-6 col-xl-7">
+          <div class="row justify-content-xl-center">
+            <div class="col-12 col-xl-11 text-danger mt-5">
+              <h2 class="h1 mb-3 text-white ">Who Are We?</h2>
+              <p class="lead fs-4 text-danger mb-3 text-white ">We help people to build incredible brands and superior
+                products. Our perspective is to furnish outstanding captivating services.</p>
+              <p class="mb-5 text-white ">16 Sanskar:- Each Sanskar serves a unique purpose and holds significant
+                meaning,"16-Sanskar" aims to bridge the gap between tradition and modernity </p>
+              <div class="row gy-4 gy-md-0 gx-xxl-5X">
+                <div class="col-12 col-md-6">
+                  <div class="d-flex">
+                    <div class="me-4 text-danger">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-gear-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="mb-3 text-white ">Versatile Brand</h4>
+                      <p class="text-danger mb-0 text-white ">We are crafting a digital method that subsists life
+                        across all mediums.</p>
                     </div>
                   </div>
-                  <div class="col-12 col-md-6">
-                    <div class="d-flex">
-                      <div class="me-4 text-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
-                          class="bi bi-fire" viewBox="0 0 16 16">
-                          <path
-                            d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <h4 class="mb-3 text-white ">Digital Agency</h4>
-                        <p class="text-danger mb-0 text-white ">We believe in innovation by merging primary with
-                          elaborate ideas.</p>
-                        <a href="/"> <button type="button" class=" mt-5 btn bsb-btn-xl btn-outline-danger rounded-pill">
-                            Know Find More...</button></a>
-
-                      </div>
-                    </div>
-                  </div>
-
                 </div>
+                <div class="col-12 col-md-6">
+                  <div class="d-flex">
+                    <div class="me-4 text-danger">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-fire" viewBox="0 0 16 16">
+                        <path
+                          d="M8 16c3.314 0 6-2 6-5.5 0-1.5-.5-4-2.5-6 .25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16Zm0-1c-1.657 0-3-1-3-2.75 0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5-.179 1-.25 2 1 3 .625.5 1 1.364 1 2.25C11 14 9.657 15 8 15Z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <h4 class="mb-3 text-white ">Digital Agency</h4>
+                      <p class="text-danger mb-0 text-white ">We believe in innovation by merging primary with
+                        elaborate ideas.</p>
+                      <a href="/"> <button type="button" class=" mt-5 btn bsb-btn-xl btn-outline-danger rounded-pill">
+                          Know Find More...</button></a>
+
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </div>
-
-
-  <!-- About Us complete -->
-  <h1 class="heading">F.A.Q</h1>
-
-  <div class="container bg-white mt-5" style="height: 50%;">
-    <div class="accordion accordion-flush" id="accordionFlushExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header mb-5 ml-5" id="flush-headingOne">
-          <button class="accordion-button collapsed fw-bolder text-white text-capitalize"
-            style="background-color: #f47c00;" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-            1. How Do I Create A 16-Sanskar Account?
-          </button>
-        </h2>
-        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body text-capitalize">
-            <p>You Can Create A Customer Or Vendore (Business) Account Online. There’s No Fee To Open An Account, But
-              You’ll Need To Provide A Credit Card umber so that your billing information will be connected to your
-              account. You may see a $1 temporary hold on your credit card during the verification process.</p>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header  mb-5" id="flush-headingTwo">
-          <button class="accordion-button collapsed fw-bolder text-white text-capitalize"
-            style="background-color: #f47c00;" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-            2. How is 16-Sanskar customer service different from retail customer service? </button>
-        </h2>
-        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body text-capitalize">
-            <p>Although virtually every business needs to provide customer support of some type, ecommerce companies
-              face some unique requirements.</p>
-            <ol>
-              <li>
-
-                <b> Availability.</b> Online shoppers typically expect support services to be available 24/7, just as
-                they expect online stores to be available around the clock.
-              </li>
-              <li>
-                <b>Support channels.</b>our businesses must deliver support services through multiple channels like
-                their own websites, social media forums.
-              </li>
-              <li>
-                <b>Responsiveness.</b> In addition to expecting support to be available 24/7, online shoppers expect
-                prompt responses to service requests.
-              </li>
-              <li>
-                <b>Limited connection.</b> Communications can be more difficult in online contexts because support staff
-                can’t interpret customers’ body language, tone, and so on.
-              </li>
-            </ol>
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header mb-5" id="flush-headingThree">
-          <button class="accordion-button collapsed fw-bolder text-white text-capitalize"
-            style="background-color: #f47c00;" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-            3. How can I place an order? ? </button>
-        </h2>
-        <div id="flush-collapseThree" class="accordion-collapse collapse text-capitalize"
-          aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body text-capitalize">
-            You can place an order by browsing our product catalog, selecting the items you want, and adding them to
-            your cart. Once you're ready, proceed to checkout and follow the instructions to complete your purchase.
-          </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header mb-5" id="flush-headingFour">
-          <button class="accordion-button collapsed fw-bolder text-white text-capitalize "
-            style="background-color: #f47c00;" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-            4.What payment methods do you accept?
-        </h2>
-        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body text-capitalize">
-            We accept a variety of payment methods, including credit/debit cards, PayPal, and more. You can see the full
-            list of accepted payment options during the checkout process. </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header mb-5" id="flush-headingFive">
-          <button class="accordion-button collapsed fw-bolder text-white text-capitalize "
-            style="background-color: #f47c00;" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-            5. What is your return policy?
-        </h2>
-        <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body text-capitalize">
-            We have a hassle-free return policy. If you're not satisfied with your purchase, you can return it within 10
-            days of receiving it. Please visit our Returns & Exchanges page for more details. </div>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <h2 class="accordion-header mb-5" id="flush-headingFive">
-          <button class="accordion-button collapsed fw-bolder text-white text-capitalize "
-            style="background-color: #f47c00;" type="button" data-bs-toggle="collapse"
-            data-bs-target="#flush-collapsesix" aria-expanded="false" aria-controls="flush-collapsesix">
-            6. How can I track my order?
-        </h2>
-        <div id="flush-collapsesix" class="accordion-collapse collapse" aria-labelledby="flush-headingsix"
-          data-bs-parent="#accordionFlushExample">
-          <div class="accordion-body text-capitalize">
-            To track your order, simply log in to your account and go to the Order History section. There, you will find
-            a tracking number for your shipment, which you can use on our tracking page or the carrier's website.</div>
-        </div>
-      </div>
-
     </div>
-  </div>
+  </section>
+</div>
+<!-- about end -->
+<!-- faq start -->
+    <!-- ======= F.A.Q Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container" data-aos="fade-up">
 
+        <div class="section-title">
+          <h2>F.A.Q</h2>
+          <h1>Frequently Asked Questions</h1>
+        </div>
 
+        <ul class="faq-list" data-aos="fade-up" data-aos-delay="100">
 
-  <!-- <h1 class="heading">Contact Us</h1> -->
-  <%- include('../partials/footer'); %>
+          <li>
+            <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">1. How Do I Create A 16-Sanskar Account? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                You Can Create A Customer Or Vendore (Business) Account Online. There’s No Fee To Open An Account, But
+                You’ll Need To Provide A Credit Card umber so that your billing information will be connected to your
+                account. You may see a $1 temporary hold on your credit card during the verification process.
+              </p>
+            </div>
+          </li>
 
+          <li>
+            <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">2. How is 16-Sanskar customer service different from retail customer service? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+              <p>Although virtually every business needs to provide customer support of some type, ecommerce companies
+                face some unique requirements.</p>
+              <ol>
+                <li>
+  
+                  <b> Availability.</b> Online shoppers typically expect support services to be available 24/7, just as
+                  they expect online stores to be available around the clock.
+                </li>
+                <li>
+                  <b>Support channels.</b>our businesses must deliver support services through multiple channels like
+                  their own websites, social media forums.
+                </li>
+                <li>
+                  <b>Responsiveness.</b> In addition to expecting support to be available 24/7, online shoppers expect
+                  prompt responses to service requests.
+                </li>
+                <li>
+                  <b>Limited connection.</b> Communications can be more difficult in online contexts because support staff
+                  can’t interpret customers’ body language, tone, and so on.
+                </li>
+              </ol>
+            </div>
+          </li>
 
+          <li>
+            <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">3. How can I place an order ? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                You can place an order by browsing our product catalog, selecting the items you want, and adding them to
+            your cart. Once you're ready, proceed to checkout and follow the instructions to complete your purchase.
+              </p>
+            </div>
+          </li>
 
+          <li>
+            <div data-bs-toggle="collapse" href="#faq4" class="collapsed question"> 4.What payment methods do you accept? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                We accept a variety of payment methods, including credit/debit cards, PayPal, and more. You can see the full
+                list of accepted payment options during the checkout process. 
+              </p>
+            </div>
+          </li>
 
+          <li>
+            <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">5. What is your return policy?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                We have a hassle-free return policy. If you're not satisfied with your purchase, you can return it within 10
+            days of receiving it. Please visit our Returns & Exchanges page for more details.
+              </p>
+            </div>
+          </li>
 
+          <li>
+            <div data-bs-toggle="collapse" href="#faq6" class="collapsed question"> 6. How can I track my order?<i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+            <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+              <p>
+                To track your order, simply log in to your account and go to the Order History section. There, you will find
+                a tracking number for your shipment, which you can use on our tracking page or the carrier's website.
+              </p>
+            </div>
+          </li>
 
+        </ul>
 
+      </div>
+    </section><!-- End F.A.Q Section -->
+<!-- faq end -->
 
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
 
+    <div class="footer-newsletter" style="background-color: #f47c00;">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-lg-6">
+            <h4 style="color: #fff;">Join Our Newsletter</h4>
+            <p style="color: #fff;">Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <form action="" method="post">
+              <input type="email" name="email"><input type="submit" value="Subscribe">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    <div class="footer-top" >
+      <div class="container">
+        <div class="row">
 
+          <div class="col-lg-3 col-md-6 footer-contact">
+            <h3>16-Sanskar</h3>
+            <p>
+              328,2, Shradha Shree colony <br> 
+              Vijay Nagar, Indore 452001<br>
+              Madhya Pradesh <br><br>
+              <strong>Phone:</strong> +1 5589 55488 55<br>
+              <strong>Email:</strong> info@example.com<br>
+            </p>
+          </div>
 
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+            </ul>
+          </div>
 
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Services</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+            </ul>
+          </div>
 
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+            <div class="social-links mt-3">
+              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+          </div>
 
+        </div>
+      </div>
+    </div>
 
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>16-Sanskar</span></strong>. All Rights Reserved
+      </div>
+      <div class="credits">
+        <!-- All the links in the footer should remain intact. -->
+        <!-- You can delete the links only if you purchased the pro version. -->
+        <!-- Licensing information: https://bootstrapmade.com/license/ -->
+        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
+        Designed by <a href="https://bootstrapmade.com/">Codejargon</a>
+      </div>
+    </div>
+  </footer><!-- End Footer -->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Bootstrap JS (optional, for dropdown functionality) -->
-
-
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/aos/aos.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+  
+    <!-- Template Main JS File -->
+    <script src="/assets/js/main.js"></script>
+<!-- Bootstrap JS (optional, for dropdown functionality) -->
 </body>
-
 </html>

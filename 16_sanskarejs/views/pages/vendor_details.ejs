@@ -38,7 +38,7 @@
     overflow-x: hidden;
   }
 
-  .container-fluid {
+  .container-fluids {
     position: relative;
     width: 100%;
   }
@@ -135,7 +135,7 @@
     pointer-events: none;
   }
 
-  .main {
+  .mains {
     position: absolute;
     width: calc(100% - 300px);
     left: 300px;
@@ -144,12 +144,12 @@
     transition: 0.5s;
   }
 
-  .main.actives {
+  .mains.actives {
     width: calc(100% - 80px);
     left: 80px;
   }
 
-  .topbar {
+  .topbars {
     width: 100%;
     height: 60px;
     display: flex;
@@ -209,12 +209,12 @@
       left: 0;
     }
 
-    .main {
+    .mains {
       width: 100%;
       left: 0;
     }
 
-    .main.actives {
+    .mains.actives {
       left: 300px;
     }
 
@@ -229,7 +229,7 @@
 
   @media (max-width: 480px) {
 
-    .user {
+    .users {
       min-width: 40px;
     }
 
@@ -248,7 +248,7 @@
       z-index: 10001;
     }
 
-    .main.actives .toggles {
+    .mains.actives .toggles {
       color: #fff;
       position: fixed;
       right: 0;
@@ -305,96 +305,25 @@
 
 <body>
   <!-- navigation -->
-  <div class="container-fluid">
+  <div class="container-fluids">
     <%- include('../partials/adminav.ejs')%>
 
-    <!-- <div class="navigations">
-      <ul>
-        <li>
-          <a href="#">
-            <span class="icon">
-            </span>
-            <span class="title">16-Sanskar</span>
-          </a>
-        </li>
+   
+    <div class="mains">
 
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="home-outline"></ion-icon>
-            </span>
-            <span class="title">Dashboard</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/Admin_dash/User_details">
-            <span class="icon">
-              <ion-icon name="people-outline"></ion-icon>
-            </span>
-            <span class="title">Customers</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/Admin_dash/Orders">
-            <span class="icon">
-              <ion-icon name="layers-outline"></ion-icon> </span>
-            <span class="title">Orders</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/Admin_dash/Vendor_details">
-            <span class="icon">
-              <ion-icon name="person-outline"></ion-icon>
-            </span>
-            <span class="title">Vendors</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="/Admin_dash/Added_product">
-            <span class="icon">
-              <ion-icon name="download-outline"></ion-icon>
-            </span>
-            <span class="title">Added Product</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="lock-closed-outline"></ion-icon>
-            </span>
-            <span class="title">Password</span>
-          </a>
-        </li>
-
-        <li>
-          <a href="#">
-            <span class="icon">
-              <ion-icon name="log-out-outline"></ion-icon>
-            </span>
-            <span class="title">Sign Out</span>
-          </a>
-        </li>
-      </ul>
-    </div> -->
-    <!-------------------------------------------->
-    <!-- <center>
-      <h1 style="color: #f47c00;margin-left:400px;">Vendor Details</h1>
-    </center> -->
-    <div class="main">
-
-    <div class="topbar">
+    <div class="topbars">
       <div class="toggles">
         <ion-icon name="menu-outline"></ion-icon>
       </div>
       </div>
+
+      <center>
+        <h1 style="color: #f47c00;">Vendor Details</h1>
+  
+      </center>
     <div id="datatable">
       
-    <table id="myTable" class="display nowrap mt-2" style="width:100%" >
+    <table id="myTable" class="display nowrap" style="width:100%" >
       <thead>
         <tr class="row">
           <th class="col-1">Id</th>
@@ -452,11 +381,11 @@
       // Menu toggles
       let toggles = document.querySelector(".toggles");
       let navigations = document.querySelector(".navigations");
-      let main = document.querySelector(".main");
+      let mains = document.querySelector(".mains");
 
       toggles.onclick = function () {
         navigations.classList.toggle("actives");
-        main.classList.toggle("actives");
+        mains.classList.toggle("actives");
       };
 
     </script>

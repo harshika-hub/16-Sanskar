@@ -3,10 +3,12 @@ import jwt from "jsonwebtoken";
 import crypto from "crypto";
 import { otpGen } from "otp-gen-agent";
 import dotenv from "dotenv";
+import Randomstring from"randomstring";
 import { productmodels } from "../model/vendorModal.js";
 import UserRegistration from "../model/indexModal.js";
 import { send } from '../model/mail.model.js'
-import { userReview } from "../model/userModel.js";
+import { userReview,UserCart} from "../model/userModel.js";
+
 
 
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
@@ -19,7 +21,7 @@ let token;
 
 const uProductController = (req, res) => {
 
-    productmodels.find({})
+    productmodels.find({$and: [{ vproduct_status: "Activated" }, { vproduct_type:"single" }] })
 
         .then((data, err) => {
             if (err) {
@@ -31,12 +33,6 @@ const uProductController = (req, res) => {
     // res.render('pages/userProduct');
 }
 export { uProductController }
-
-const ucartController = (req, res) => {
-    res.render('pages/cart');
-    console.log(req.cookies)
-}
-export { ucartController }
 
 // const uprofileController = (req, res) => {
 //     res.render('pages/user_profile');
@@ -197,12 +193,14 @@ const userLoginController = async (req, res, next) => {
         }
         if (!existingUser) {
             // return res.status(400).json({message:"user not registered yet ,please registered here "});
-            res.render('pages/user_login', { msg: "user not registered yet ,please registered here " });
-        } else {
+           return res.render('pages/user_login', { msg: "user not registered yet ,please registered here " });
+        }
+         else {
             const matchPassword = await bcrypt.compare(password, existingUser.password);
             if (!matchPassword) {
                 return res.render('pages/user_login', { msg: "Password Not matched.....Please Enter correct Password " });
             } else {
+                
                 token = jwt.sign(payload, SECRET_KEY, expireTime);
                 res.cookie('jwt', token, { httpOnly: true, maxAge: maxAge });
                 if (!token) {
@@ -295,5 +293,184 @@ export const usanskarController=async(req,res)=>{
 
 }
 
+var fotp ="";
+export const forgotPasswordController = async (req,res)=>{
+      console.log("forget controller");
+      try{
+         const email = req.body.email;
+         const  userData =  await UserRegistration.findOne({email:email});
+         console.log("userData"+userData);
+         if(userData){
+            console.log("================");
+             const randomString = Randomstring.generate();
+             const updateData = await UserRegistration.updateOne({email:email},{$set:{token:randomString}});
+             console.log(""+updateData);
+             console.log(userData.token);
+
+            //  const forgotpassword = {
+            //     token:randomString
+            // }
+            // res.cookie("forgotpassword",forgotpassword);
+             console.log("========================");
+             const {otp} = req.body
+                   console.log("otp"+otp);
+                   if(!otp){
+                      fotp = await otpGen();
+                      console.log(otp);
+                      const mailOption ={
+                          "from" : "anjalibagdi923@gmail.com",
+                           "to"  : email,
+                           "subject":'OTP for Password Reset',
+                           "text": `Your OTP for password reset is ${fotp}`
+                         }
+                         const result= await send(mailOption);
+                         console.log("sended :- "+result);
+                   }
+                   else{
+                      if(!fotp == otp){
+                      return res.render('pages/forgotpassword',{msg:"please Enter valid OTP"});
+                   }else{    
+                       
+                    return res.render("pages/confirm_pass_user",{user_id:userData._id});
+                   }
+                 }
+         }else{
+             res.render('pages/user_login', {msg:'email is not valid'});
+
+         }
+
+      }catch(error){
+         console.log(error.message);
+      }
+      
+}
+
+export const  confirmPasswordController  = async(request,response)=>{
+     
+    try {
+        console.log("**********");
+       const password = request.body.password;
+       const confirmpassword = request.body.confirmpassword;
+       const user_id = request.body.user_id;
+       console.log(password);
+       console.log(confirmpassword);
+       console.log(user_id);
+       const hashedPassword = await bcrypt.hash(password, 10);
+        console.log(hashedPassword);
+       const updatedData = await UserRegistration.findByIdAndUpdate({_id:user_id},{$set:{password:hashedPassword,confirmpassword:confirmpassword,token:''}});
+       response.render('pages/user_login', {msg:'Password Updated Successfully,now you can login here...'});
+
+    } catch (error) {
+        console.log("Error"+error);
+    }
+
+}
+
+const ucartController = async (req, res) => {
+    var email = req.cookies.customer.email;
+    const cdata=  await UserRegistration.findOne({email:email});
+   
+    const result =   await UserCart.find({customer_id:cdata._id});
+
+
+    // console.log(result);
+    if(result)
+    {
+            res.render('pages/cart',{ data : result});
+    }
+   
+}
+export { ucartController }
+
+export const removeUserProduct = async (req,res)=>
+{
+    const id = req.params.id;
+
+    const del= await UserCart.deleteOne({_id:id});
+    // console.log(del);
+
+    var email = req.cookies.customer.email;
+    const cdata= await UserRegistration.findOne({email:email});
+   
+    const result =   await UserCart.find({customer_id:cdata._id});
+
+
+    // console.log(result);
+    if(result)
+    {
+            res.render('pages/cart',{ data : result});
+    }
+   
+}
+export const minus = async (req,res)=>{
+    const pid= req.params.product;
+    const quantity = req.params.quantity;
+    console.log(pid);
+    console.log(quantity);
+    try
+    {
+        
+        const result = await UserCart.updateOne({_id:pid},{ $set: { total_product: quantity}});
+        console.log("quantity -");
+        console.log(result);
+    
+      res.json(result);
+    }
+    catch(error)
+    {
+        console.log(error);
+    }
+    
+    }
+    export const plus = async (req,res)=>{
+        const pid= req.params.product;
+        const quantity = req.params.quantity;
+        console.log(pid);
+    console.log(quantity);
+        
+        try
+        { 
+            const result = await UserCart.updateOne({_id:pid},{ $set: { total_product: quantity}});
+            console.log("quantity +"+result);
+            res.json(result);
+        }
+        catch(error)
+        {
+            console.log(error);
+        }
+    
+        
+    
+        }
+
+        export const addCartController = async (req,res)=>
+        {
+            try
+            {
+                const id = req.params.id;
+                var email = req.cookies.customer.email;
+                // console.log(result);
+                var data =await productmodels.findOne({_id:id});
+                const cdata= await UserRegistration.findOne({email:email});
+               //console.log("UserRegistration data ===========================================================================================");
+              //  console.log(cdata);
+                const result =   new UserCart ({
+                    vendor_id:data.user_id,
+                    product_id:data._id,
+                    product_name:data.vproduct_name,
+                    product_price: data.vproduct_price,
+                    product_image:data.vproduct_imag,
+                    per_product_quntity:data.vproduct_perqty,
+                    product_brand:data.vproduct_brandnamae,
+                    customer_id:cdata._id,
+                }); 
+                await result.save();
+                // console.log(result);
+                res.redirect('/userProduct');
+            }
+            catch(err){
+                console.log("Error while add to cart in data base "+err);
+            }
+        }
 
 

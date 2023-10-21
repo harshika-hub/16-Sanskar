@@ -19,6 +19,7 @@ const registration = new mongoose.Schema({
     gst_number:{type:String,minlength:6,maxlength:15,trim:true},
     aadhar_number:{type:Number,minlength:12,trim:true},
     category:{type:String,trim:true},
+    token:{type:String,default:""},
 
 });
 const Registration = mongoose.model("registration",registration);
@@ -29,8 +30,8 @@ export { Registration};
 
 
 let productSchemas = new mongoose.Schema({
-    vproduct_id: {type:Number,
-        unique:true},
+    // vproduct_id: {type:Number,
+    //     unique:true},
     vproduct_name: String,
     vproduct_price: Number,
     vproduct_perqty: String,
@@ -49,6 +50,8 @@ let productSchemas = new mongoose.Schema({
     },
     vproduct_type:String,
     sanskar:String,
+    vproduct_show:
+    {type: String,default:"Hided"},
 
 });
 export const productmodels = new mongoose.model('vendorproducts', productSchemas);

@@ -13,7 +13,8 @@ const UserregistrationSchema = new mongoose.Schema({
     city:{type:String,required:true,trim:true},
     state:{type:String,required:true,trim:true},
     zipcode:{type:Number,minlength:6,required:true,trim:true},
-    status:{type:String,default:"active"}
+    status:{type:String,default:"active"},
+    token:{type:String,default:""},
 });
 const UserRegistration = mongoose.model("registrations",UserregistrationSchema);
 

@@ -1,5 +1,5 @@
 import express from 'express'
-import { aloginController, avalidateController, authenticate, adashController, auserController, avendorController, aproductController, aorderController, aDeactivateUserController, aLogOutController,adminvendorController } from '../controllers/adminController.js'
+import { aloginController, avalidateController, authenticate, adashController, auserController, avendorController, aproductController, aorderController, aDeactivateUserController, aLogOutController,adminvendorController,productAllow,forgotPasswordController,confirmPasswordController } from '../controllers/adminController.js'
 const router = express.Router();
 
 router.get('/', aloginController);
@@ -15,6 +15,8 @@ router.get('/user_details', auserController);
 router.get('/adminLogout', aLogOutController);
 
 router.post('/deactivateUser/:email', aDeactivateUserController);
-
+router.get('/productShow/:sbtn/:pid',productAllow);
+router.post('/forgot-password',forgotPasswordController);
+router.post('/confirm-password',confirmPasswordController)
 
 export default router 

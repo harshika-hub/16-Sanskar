@@ -27,7 +27,7 @@
     <div id="nav-ediv">
         <nav class="navbar navbar-expand-lg navbar-light text-white">
             <div class="container-fluid">
-                <a class=" navbar-brand d-md-none" href="#"><img src="/images/16-sanskar.png" alt=""
+                <a class=" navbar-brand d-md-none" href="#"><img src="/images/om2.png" alt=""
                         style="width: 120px; height: 50px;"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,17 +48,20 @@
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/Garbhadhaan">1.
                                         Garbhadhaan</a></li>
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/punsavan">2. Punsavan</a></li>
-                                <li><a class="dropdown-item" href="/userProduct/bySanskar/Simantonayan">3. Simantonayan</a></li>
+                                <li><a class="dropdown-item" href="/userProduct/bySanskar/Simantonayan">3.
+                                        Simantonayan</a></li>
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/Jatkarma">4. Jatkarma</a></li>
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/Naamkaran">5. Naamkaran</a>
                                 </li>
 
-                                <li><a class="dropdown-item" href="/userProduct/bySanskar/Nishkramana">6. Nishkramana</a></li>
+                                <li><a class="dropdown-item" href="/userProduct/bySanskar/Nishkramana">6.
+                                        Nishkramana</a></li>
 
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/Annprashan">7. Annprashan</a>
                                 </li>
 
-                                <li><a class="dropdown-item" href="/userProduct/bySanskar/Chaudakaran">8. Chaudakaran</a></li>
+                                <li><a class="dropdown-item" href="/userProduct/bySanskar/Chaudakaran">8.
+                                        Chaudakaran</a></li>
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/Karnavedh">9. Karnavedh</a>
                                 </li>
 
@@ -88,7 +91,7 @@
                         </li>
 
                     </ul>
-                    <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/16-sanskar.png"
+                    <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/om2.png"
                             style="width: 120px; height: 50px; align-items: center;"></a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -139,10 +142,11 @@
                                 </p>
                                 <p class="card-text">Product Price:- <%= data.vproduct_price%>
                                 </p>
-                                <p class="card-text" style="width: 20vw; height: 8vh;">Product Description:- <%= data.vproduct_description%>
+                                <p class="card-text" style="width: 20vw; height: 8vh;">Product Description:- <%=
+                                        data.vproduct_description%>
                                 </p>
-                                <button class="btn text-white "
-                                    style="background-color: #f47c00; margin-left: 80px;">Add to Cart</button>
+                                <a class="btn text-white " style="background-color: #f47c00; margin-left: 80px;  "
+                                    href="/userProduct/addcart/<%= data._id %>">Add To Cart</a>
                                 <button class="btn reviewButton text-white" id="reviewButton<%= index %>"
                                     data-productid="<%=data.vproduct_id%>"
                                     style="background-color: #f47c00; margin-left: 30px;">Review</button>
@@ -161,7 +165,7 @@
                     </div>
                     <% }); %>
                         <% } else { %>
-                            <h1 class="text-center " >There is No product Available</h1>
+                            <h1 class="text-center ">There is No product Available</h1>
                             <% } %>
         </div>
     </div>

@@ -16,6 +16,19 @@
       width: 5%;
       padding: 5px;
     }
+    .animate__fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+}
+
+    .animate__animated {
+    -webkit-animation-duration: 1ms !important;
+    animation-duration: 1ms !important;
+    -webkit-transition-duration: 1ms !important;
+    transition-duration: 1ms !important;
+    -webkit-animation-iteration-count: 1 !important;
+    animation-iteration-count: 1 !important;
+  }
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
@@ -44,7 +57,7 @@
   <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <a class="ps-5 navbar-brand d-md-none" href="/" align="center"><img src="/images/16-sanskar.png"
+        <a class="ps-5 navbar-brand d-md-none" href="/" align="center"><img src="/images/om2.png"
             alt="16-Sanskar-logo" style="width: 120px; height: 50px;"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -104,7 +117,7 @@
 
           </ul>
 
-          <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/16-sanskar.png"
+          <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/om2.png"
               style="width: 120px; height: 50px;"></a>
         </div>
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -154,7 +167,7 @@
         <div class="carousel-item active">
           <img src="/images/garbh-sanskar1.PNG" alt="Garbhadhana" style="height:85vh ; width: 80vw;" class="s-img">
           <div class="carousel-caption">
-            <h3>Garbhadhana: Conception</h3>
+            <h3 class="animate__animated animate__fadeInDown">Garbhadhana: Conception</h3>
             <p class="fw-bolder text-white fs-5">
               Garbhadhana is a sacred ritual that involves the couple seeking blessings for a healthy and virtuous
               child.

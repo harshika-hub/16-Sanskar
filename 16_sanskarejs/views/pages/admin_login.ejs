@@ -14,11 +14,148 @@
     .admin{
       background-image: linear-gradient( #FF6900, #FFC80E);
     }
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+      *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins',sans-serif;
+      }
+      body{
+        background-image: url('/images/registration1.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      ::selection{
+        background-image: linear-gradient(to bottom right, #FF6900, #FFC80E);
+      }
+      #forpassword{
+        max-width: 440px;
+        padding: 0 20px;
+        margin: 100px auto;
+      }
+      .wrapper{
+        width: 100%;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 4px 10px 1px rgba(0,0,0,0.1);
+      }
+      .wrapper .title{
+        height: 90px;
+        background-image: linear-gradient(to bottom right, #FF6900, #FFC80E);
+        border-radius: 5px 5px 0 0;
+        color: #fff;
+        font-size: 30px;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wrapper form{
+        padding: 30px 25px 25px 25px;
+      }
+      .wrapper form .row{
+        height: 45px;
+        margin-bottom: 15px;
+        position: relative;
+      }
+      .wrapper form .row input{
+        height: 100%;
+        width: 100%;
+        outline: none;
+        padding-left: 60px;
+        border-radius: 5px;
+        border: 1px solid #FF6900;
+        font-size: 16px;
+        transition: all 0.3s ease;
+      }
+      form .row input:focus{
+        border-color: #FF6900;
+        box-shadow: inset 0px 0px 2px 2px #fa521a40;
+      }
+      form .row input::placeholder{
+        color: #999;
+      }
+      .wrapper form .row i{
+        position: absolute;
+        width: 47px;
+        height: 100%;
+        color: #fff;
+        font-size: 18px;
+        background-image: linear-gradient(to bottom right, #FF6900, #FFC80E);
+        border: 1px solid #FF6900;
+        border-radius: 5px 0 0 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wrapper form .pass{
+        margin: -8px 0 20px 0;
+      }
+      .wrapper form .pass  a{
+        color: #FF6900;
+        font-size: 17px;
+        text-decoration: none;
+      }
+      .wrapper form .signup-link a{
+        color: #FF6900;
+        font-size: 17px;
+        text-decoration: none;
+      }
+      .wrapper form .pass  a:hover{
+        text-decoration: underline;
+      }
+      .wrapper form .signup-link  a:hover{
+        text-decoration: underline;
+      }
+      .wrapper form .card  a:hover{
+        text-decoration: underline;
+      }
+      .wrapper form .button input{
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        padding-left: 0px;
+        background-image: linear-gradient(to bottom right, #FF6900, #FFC80E);
+        border: 1px solid #FF6900;
+        cursor: pointer;
+      }
+      form .button input:hover{
+        background-image: linear-gradient(to bottom right, #FF6900, #FFC80E);
+      }
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.password-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
   </style>
 
 </head>
 <body>
-  <section class="vh-100 admin"  >
+  <section class="vh-100 admin" id="login" >
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col col-xl-10">
@@ -36,12 +173,6 @@
                 <div class="card-body p-4 p-lg-5 text-black">
   
                   <form action="/adminLogin/admin_validate" method="post">
-  
-                    <!-- <div class="d-flex align-items-center mb-3 pb-1">
-                      <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
-                      <span class="h1 fw-bold mb-0">Logo</span>
-                    </div> -->
-  
                     <h1 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Admin Login</h1>
   
                     <div class="form-outline mb-4">
@@ -53,9 +184,9 @@
                       <input type="password" id="password" name="password" class="form-control form-control-lg" />
                       <label class="form-label" for="password">Password</label>
                     </div>
-  
+                    <div class="pass" onclick="forgotPassword()"><a href="#">Forgot password?</a></div>
                     <div class="pt-1 mb-4">
-                      <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
+                      <button class="btn btn-dark btn-lg btn-block"  type="submit">Login</button>
                     </div>
                     <span style="color: red;"><%=msg%></span>
 
@@ -69,5 +200,50 @@
     </div>
   </section>
   
+  <div class="container" id="forpassword" style="display: none;">
+    <div class="wrapper">
+      <div class="title"><span>Forgot Password</span></div>
+      <form action="/adminLogin/forgot-password" method="post" class="password-form">
+        <div class="card text-center" style="max-width: 380px; margin: 0 auto; border: 2px solid #FF6900; padding: 20px;">
+          <p class="card-text py-2" style="color: #FF6900;">
+            Enter your email address and we'll send you an email with instructions to reset your password.
+          </p>
+          <div class="form-group">
+            <i class="fas fa-user"></i>
+            <input type="email" id="typeEmail" style="border: 1px solid #FF6900;" name="email" class="form-control my-3" placeholder="Enter your email" required />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary" onclick="showOtp()" style=" background-image: linear-gradient(to bottom right, #FF6900, #FFC80E); border: 1px solid #FF6900 ;" id="otp-btn">Send OTP to Verify</button>
+          </div>
+          <div class="form-group" >
+            <input type="text" id="otp" name="otp" style="display: none; border: 1px solid #FF6900;" placeholder="Enter OTP" class="form-control" />
+          </div>
+          <div class="form-group">
+            <button type="submit" class=" btn btn-primary text-center bg-primary" style="display:none; background-image: linear-gradient(to bottom right, #FF6900, #FFC80E); border: 1px solid #FF6900 ;" id="submit">Submit</button>
+          </div>
+          <div class="link d-flex justify-content-between mt-4" >
+            <a style="color: #FF6900;" href="/adminLogin">Login</a>
+            <!-- <a style="color: #FF6900;" href="/vendor_registration">Register</a> -->
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>  
+  <!-- --------------------------- -->
+  
+<script> 
+           function forgotPassword(){
+              document.getElementById("login").style.display= "none";
+              document.getElementById("forpassword").style.display= "block";
+           }
+           function showOtp(){
+            alert("copy");
+            var otpInput=document.getElementById('otp');
+            otpInput.style.display="block";
+            var submit = document.getElementById('submit');
+            submit.style.display ="block";
+  
+  } 
+        </script>
 </body>
 </html>

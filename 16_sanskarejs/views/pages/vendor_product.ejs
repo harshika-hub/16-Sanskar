@@ -211,7 +211,7 @@
   <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <a class=" navbar-brand d-md-none  " href="/"><img src="/images/16-sanskar.png" alt="" align="center"
+        <a class=" navbar-brand d-md-none  " href="/"><img src="/images/om2.png" alt="" align="center"
             style="width: 120px; height: 50px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -230,7 +230,7 @@
               </a>
             </li>
           </ul>
-          <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/16-sanskar.png"
+          <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/om2.png"
               style="width: 120px; height: 50px;"></a>
         </div>
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -263,11 +263,12 @@
     </nav>
   </div>
 
-  <div class="container card-body-all mt-5">
+  <div class="container card-body-all my-5">
+    <h2 align="center" style="color: #f47c00; font-weight: bold; margin-top: 12vh;" class="">Activated  Products</h2>
+
     <div class="card-container d-flex flex-wrap" id="curd-table">
 
-      <%if(item){ item.forEach((data)=>{%>
-
+      <%if(item){ item.forEach((data)=>{  if(data.vproduct_status== "Activated"){%>
         <div class='row gx-2'>
           <div class='col-4'>
             <div class='p-3'>
@@ -300,7 +301,7 @@
                     data-bs-target='#exampleModal-2' class='btn btn-success'
                     style="width: 49%;border: none; background-color:#f47c00;">Edit</button>
 
-                  <a href="/vendor_registration/deleteVendorproduct/<%=data._id%>"> <button type='button'
+                  <a href="/vendor_registration/deleteVendorproduct/Deactivated/<%=data._id%>"> <button type='button'
                       class='btn btn-danger' style="width: 49%;border: none;background-color:black">Delete</button></a>
                 </div>
               </div>
@@ -308,7 +309,7 @@
           </div>
         </div>
 
-        <%})}else{%>
+        <%}})}else{%>
           <h1>Your Added Product Will Display Here</h1>
           <%}%>
 
@@ -316,6 +317,59 @@
     <div class="card-container d-flex flex-wrap" id="sort-table"></div>
   </div>
   <!-- navbar end -->
+
+  <div class="container card-body-all mt-5">
+    <h2 align="center" style="color: #f47c00; font-weight: bold;" class="mt-5">Deactivated  Products</h2>
+
+    <div class="card-container d-flex flex-wrap" id="curd-table">
+
+      <%if(item){ item.forEach((data)=>{ if(data.vproduct_status== "Deactivated"){%>
+        <div class='row gx-2'>
+          <div class='col-4'>
+            <div class='p-3'>
+              <div class='card d-flex card-all'>
+                <div class='card-body' style=" height: 11rem; width: 16rem;">
+                  <span id="ids" class="d-none">
+                    <%=data._id%>
+                  </span>
+                  <h5 class='card-title text-center'><strong>Item No. :- </strong>
+                    <%=data.vproduct_id%>
+                  </h5>
+                  <img src="/uploads/<%=data.vproduct_imag%>" class="card-img-top" alt='Image'
+                    style=" height: 10rem; width: 14rem;">
+                </div>
+                <ul class='list-group list-group-flush'>
+                  <li class='list-group-item'><strong>Product :- </strong>
+                    <%=data.vproduct_name%>
+                  </li>
+                  <li class='list-group-item ' style=" height: 10vh;"><strong>Description :- </strong>
+                    <%=data.vproduct_description%>
+                  </li>
+                  <li class='list-group-item'><strong>Price :- </strong>
+                    <%=data.vproduct_price%>
+                  </li>
+                </ul>
+
+                <div class='card-body text-center'>
+
+                  <button onclick="showContent('<%=data._id%>')" type='button' data-bs-toggle='modal'
+                    data-bs-target='#exampleModal-2' class='btn btn-success'
+                    style="width: 49%;border: none; background-color:#f47c00;">Edit</button>
+
+                  <a href="/vendor_registration/deleteVendorproduct/Activated/<%=data._id%>"> <button type='button'
+                      class='btn btn-danger' style="width: 49%;border: none;background-color:black">Active</button></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <%}})}%>
+
+    </div>
+    <div class="card-container d-flex flex-wrap" id="sort-table"></div>
+  </div>
+
 
   <!-- Add Module Start -->
   <div class="modal fade" id="addDataModal" tabindex="-1" aria-labelledby="addDataModal" aria-hidden="true">

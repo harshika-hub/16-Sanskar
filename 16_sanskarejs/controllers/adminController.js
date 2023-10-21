@@ -5,6 +5,7 @@ import crypto from 'crypto';
 
 import { Registration, productmodels } from '../model/vendorModal.js';
 import UserRegistration from "../model/indexModal.js";
+// import productmodels from '../model/vendorModal.js';
 
 dotenv.config();
 const secret_key = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
@@ -43,7 +44,7 @@ export const avalidateController = async (req, res,) => {
                             password: data.password,
                             role: data.role
                         }
-                        const expiry = { expiresIn: "1h" }
+                        const expiry = { expiresIn: "5h" }
                         const token = jwt.sign(payloads,
                             secret_key,
                             expiry
@@ -65,7 +66,6 @@ export const avalidateController = async (req, res,) => {
     }
 
 }
-
 export const authenticate = (async (req, res, next) => {
     // const token=req.body.token||req.query.token||req.headers["x-access-token"];
     const token = req.cookies.jw;
@@ -85,8 +85,6 @@ export const authenticate = (async (req, res, next) => {
             next();
         }
     });
-
-
 });
 
 const adashController = async (req, res) => {
@@ -112,8 +110,6 @@ const adashController = async (req, res) => {
 
         });
 
-
-
     // res.render('pages/admin_dash');
 }
 export { adashController }
@@ -136,8 +132,15 @@ const avendorController = (req, res) => {
 }
 export { avendorController }
 
-const aproductController = (req, res) => {
-    res.render('pages/added_product');
+const aproductController = async(req, res) => {
+    try{
+        var data=await productmodels.find({ vproduct_status: "Activated" });
+        res.render('pages/added_product',{data:data});
+    }catch(err){
+        console.log("Error occured while loading product for admin"+err);
+
+    }
+    
 }
 export { aproductController }
 
@@ -201,3 +204,94 @@ const adminvendorController=async(req,res)=>{
     }
 }
 export{adminvendorController}
+
+export const productAllow=async(req,res)=>{
+    console.log("inside show Admin P")
+    const pid=req.params.pid;
+    const pshow=req.params.sbtn;
+    console.log(pid+" "+pshow)
+    var data=await productmodels.findByIdAndUpdate(pid,{vproduct_show:pshow}).then((data,err)=>{
+        if(err){
+            console.log("Error in admin controller while allowing product"+err);
+        }else{
+            res.json(data);
+        }
+    })
+
+
+
+}
+
+var fotp ="";
+export const forgotPasswordController = async (req,res)=>{
+      console.log("forget controller");
+      try{
+         const email = req.body.email;
+         const  userData =  await UserRegistration.findOne({email:email});
+         console.log("userData"+userData);
+         if(userData){
+            console.log("================");
+             const randomString = Randomstring.generate();
+             const updateData = await UserRegistration.updateOne({email:email},{$set:{token:randomString}});
+             console.log(""+updateData);
+             console.log(userData.token);
+
+            //  const forgotpassword = {
+            //     token:randomString
+            // }
+            // res.cookie("forgotpassword",forgotpassword);
+             console.log("========================");
+             const {otp} = req.body
+                   console.log("otp"+otp);
+                   if(!otp){
+                      fotp = await otpGen();
+                      console.log(otp);
+                      const mailOption ={
+                          "from" : "anjalibagdi923@gmail.com",
+                           "to"  : email,
+                           "subject":'OTP for Password Reset',
+                           "text": `Your OTP for password reset is ${fotp}`
+                         }
+                         const result= await send(mailOption);
+                         console.log("sended :- "+result);
+                   }
+                   else{
+                      if(!fotp == otp){
+                      return res.render('pages/forgotpassword',{msg:"please Enter valid OTP"});
+                   }else{    
+                       
+                    return res.render("pages/confirm_pass_admin",{user_id:userData._id});
+                   }
+                 }
+         }else{
+             res.render('pages/admin_login', {msg:'email is not valid'});
+
+         }
+
+      }catch(error){
+         console.log(error.message);
+      }
+      
+}
+
+
+export const  confirmPasswordController  = async(request,response)=>{
+     
+    try {
+        console.log("**********");
+       const password = request.body.password;
+       const confirmpassword = request.body.confirmpassword;
+       const user_id = request.body.user_id;
+       console.log(password);
+       console.log(confirmpassword);
+       console.log(user_id);
+       const hashedPassword = await bcrypt.hash(password, 10);
+        console.log(hashedPassword);
+       const updatedData = await UserRegistration.findByIdAndUpdate({_id:user_id},{$set:{password:hashedPassword,confirmpassword:confirmpassword,token:''}});
+       response.render('pages/admin_login', {msg:'Password Updated Successfully,now you can login here...'});
+
+    } catch (error) {
+        console.log("Error"+error);
+    }
+
+}

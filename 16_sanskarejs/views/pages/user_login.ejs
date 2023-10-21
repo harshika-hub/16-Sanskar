@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Login Form</title> 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+     <%- include("../partials/head"); %>
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
       *{
@@ -25,7 +25,7 @@
       .container{
         max-width: 440px;
         padding: 0 20px;
-        margin: 170px auto;
+        margin: 100px auto;
       }
       .wrapper{
         width: 100%;
@@ -64,7 +64,7 @@
       }
       form .row input:focus{
         border-color: #FF6900;
-        box-shadow: inset 0px 0px 2px 2px rgba(26,188,156,0.25);
+        box-shadow: inset 0px 0px 2px 2px #fa521a40;
       }
       form .row input::placeholder{
         color: #999;
@@ -85,12 +85,23 @@
       .wrapper form .pass{
         margin: -8px 0 20px 0;
       }
-      .wrapper form .pass a{
+      .wrapper form .pass  a{
         color: #FF6900;
         font-size: 17px;
         text-decoration: none;
       }
-      .wrapper form .pass a:hover{
+      .wrapper form .signup-link a{
+        color: #FF6900;
+        font-size: 17px;
+        text-decoration: none;
+      }
+      .wrapper form .pass  a:hover{
+        text-decoration: underline;
+      }
+      .wrapper form .signup-link  a:hover{
+        text-decoration: underline;
+      }
+      .wrapper form .card  a:hover{
         text-decoration: underline;
       }
       .wrapper form .button input{
@@ -105,25 +116,42 @@
       form .button input:hover{
         background-image: linear-gradient(to bottom right, #FF6900, #FFC80E);
       }
-      .wrapper form .signup-link{
-        text-align: center;
-        margin-top: 20px;
-        font-size: 17px;
-      }
-      .wrapper form .signup-link a{
-        color: #FF6900;
-        text-decoration: none;
-      }
-      form .signup-link a:hover{
-        text-decoration: underline;
-      }
+.card {
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.btn-primary {
+  width: 100%;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.wrapper {
+  width: 100%;
+  max-width: 400px;
+}
+
+.password-form {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
       </style>
   </head>
   <body>
-    <div class="container">
+    <div class="container" id="login">
       <div class="wrapper">
         <div class="title"><span>User Login</span></div>
-        <form action="/userProduct/checkuser" method="post">
+        
+        <form action="/userProduct/checkuser" method="post" >
           <div class="row">
             <i class="fas fa-user"></i>
             <input type="text" name="email" placeholder="Email or Phone" required>
@@ -132,14 +160,64 @@
             <i class="fas fa-lock"></i>
             <input type="password" name="password" placeholder="Password" required>
           </div>
-          <div class="pass"><a href="#">Forgot password?</a></div>
+          <div class="pass" onclick="forgotPassword()"><a href="#">Forgot password?</a></div>
           <div class="row button">
             <input type="submit" value="Login">
           </div>
           <span style="font-weight: bold; color: red;"><%= msg%></span>
-          <div class="signup-link">Not a member? <a href="/Registration">Signup now</a></div>
+          <div class="signup-link" >Not a member? <a href="/Registration">Signup now</a></div>
         </form>
       </div>
     </div>
+
+<div class="container" id="forpassword" style="display: none;">
+  <div class="wrapper">
+    <div class="title"><span>Forgot Password</span></div>
+    <form action="/userProduct/forgot-password" method="post" class="password-form">
+      <div class="card text-center" style="max-width: 380px; margin: 0 auto; border: 2px solid #FF6900; padding: 20px;">
+        <p class="card-text py-2" style="color: #FF6900;">
+          Enter your email address and we'll send you an email with instructions to reset your password.
+        </p>
+        <div class="form-group">
+          <i class="fas fa-user"></i>
+          <input type="email" id="typeEmail" style="border: 1px solid #FF6900;" name="email" class="form-control my-3" placeholder="Enter your email" required />
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary" onclick="showOtp()" style=" background-image: linear-gradient(to bottom right, #FF6900, #FFC80E); border: 1px solid #FF6900 ;" id="otp-btn">Send OTP to Verify</button>
+        </div>
+        <div class="form-group" >
+          <input type="text" id="otp" name="otp" style="display: none; border: 1px solid #FF6900;" placeholder="Enter OTP" class="form-control" />
+        </div>
+        <div class="form-group">
+          <button type="submit" class=" btn btn-primary text-center bg-primary" style="display:none; background-image: linear-gradient(to bottom right, #FF6900, #FFC80E); border: 1px solid #FF6900 ;" onclick="confirmPassword()" id="submit">Submit</button>
+        </div>
+        <div class="link d-flex justify-content-between mt-4" >
+          <a style="color: #FF6900;" href="/user_login">Login</a>
+          <a style="color: #FF6900;" href="/Registration">Register</a>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>  
+<!-- --------------------------- -->
+
+        <script>
+         function forgotPassword(){
+            document.getElementById("login").style.display= "none";
+            document.getElementById("forpassword").style.display= "block";
+         }
+         function showOtp(){
+          alert("copy");
+          var otpInput=document.getElementById('otp');
+          otpInput.style.display="block";
+          var submit = document.getElementById('submit');
+          submit.style.display ="block";
+
+} 
+function confirmPassword(){
+            document.getElementById("conpassword").style.display= "block";
+            document.getElementById("forpassword").style.display= "none";
+         }
+      </script>
   </body>
 </html>

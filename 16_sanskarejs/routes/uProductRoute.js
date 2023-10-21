@@ -1,6 +1,6 @@
 import express from 'express'
 const router=express.Router()
-import { uProductController,ucartController,uprofileController,edituserprofile,updateuserprofile,userCancelController,userRegistrationController,userLoginController,authenticateJWT, authorizeUser,ureviewProductController,ucomboController,usanskarController } from '../controllers/uProductController.js'
+import { uProductController,ucartController,uprofileController,edituserprofile,updateuserprofile,userCancelController,userRegistrationController,userLoginController,authenticateJWT, authorizeUser,ureviewProductController,ucomboController,usanskarController,forgotPasswordController,confirmPasswordController,removeUserProduct,addCartController,plus,minus} from '../controllers/uProductController.js'
 // import { ucart } from '../controllers/uProductController.js'
 router.get('/',uProductController);
 router.post('/addData',userRegistrationController)
@@ -24,6 +24,13 @@ router.get('/logout', (req, res) => {
 router.post('/reviewProduct',ureviewProductController);
 router.get('/comboProduct',ucomboController)
 router.get('/bySanskar/:sanskar',usanskarController)
+router.post('/forgot-password',forgotPasswordController);
+router.post('/confirm-password',confirmPasswordController);
+
+router.get('/addcart/:id',addCartController);
+router.get('/removeUserProduct/:id',removeUserProduct);
+router.get('/minus/:product/:quantity',minus);
+router.get('/plus/:product/:quantity',plus);
 
 export default router
 
