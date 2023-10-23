@@ -15,6 +15,15 @@
             font-style: italic;
             text-align: center;
         }
+
+        
+.hover-element {
+  transition: box-shadow 0.3s;
+}
+
+.hover-element:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
     </style>
 
     <%- include("../partials/head"); %>
@@ -27,7 +36,7 @@
     <div id="nav-ediv">
         <nav class="navbar navbar-expand-lg navbar-light text-white">
             <div class="container-fluid">
-                <a class=" navbar-brand d-md-none" href="#"><img src="/images/om2.png" alt=""
+                <a class=" navbar-brand d-md-none" href="#"><img class="scale-text"  src="/images/om2.png" alt=""
                         style="width: 120px; height: 50px;"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -91,7 +100,7 @@
                         </li>
 
                     </ul>
-                    <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/om2.png"
+                    <a class="navbar-brand d-none d-md-block" href="/"><img class="scale-text"  src="/images/om2.png"
                             style="width: 120px; height: 50px; align-items: center;"></a>
                 </div>
                 <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -120,34 +129,34 @@
 
     <div class="container " style="margin-top: 15vh;">
         <h2 align="center" style="color: #f47c00; font-weight: bold;" class="mt-5">User Products</h2>
-        <div class="row row-cols-1 row-cols-md-3 mt-5">
+        <div class="row row-cols-1 row-cols-md-6 mt-5">
             <% if (item && item.length) { %>
                 <% item.forEach((data, index)=> { %>
                     <!-- Render data here -->
-                    <div class="col-4 mb-4">
+                    <div class="col-lg-3 col-md-6 col-sm-6 mb-4 hover-element">
                         <div class="card ">
                             <img src="/uploads/<%=data.vproduct_imag%>" class="card-img-top" alt="Product 1"
-                                style="height: 25vh; width: 26vw;">
+                                style="height: 22vh;">
                             <div class="card-body">
                                 <center>
-                                    <span style="font-size: 25px; color: #f47c00;">Product Id:-</span>
+                                    <!-- <span style="font-size: 25px; color: #f47c00;">Product Id:-</span>
                                     <span style="font-size: 25px; ">
                                         <%=data._id%>
                                     </span>
                                     <input type="hidden" id="productId<%= index %>" name="productId"
-                                        style="border: none;" value="<%=data.vproduct_id%>" disabled>
+                                        style="border: none;" value="<%=data.vproduct_id%>" disabled> -->
                                 </center>
                                 <br>
                                 <p class="card-text">Product Name:- <%=data.vproduct_name%>
                                 </p>
                                 <p class="card-text">Product Price:- <%= data.vproduct_price%>
                                 </p>
-                                <p class="card-text" style="width: 20vw; height: 8vh;">Product Description:- <%=
+                                <p class="card-text" style=" height: 8vh;">Product Description:- <%=
                                         data.vproduct_description%>
                                 </p>
-                                <a class="btn text-white " style="background-color: #f47c00; margin-left: 80px;  "
+                                <a class="btn text-white " style="background-color: #f47c00; margin-left: 5vw;  "
                                     href="/userProduct/addcart/<%= data._id %>">Add To Cart</a>
-                                <button class="btn reviewButton text-white" id="reviewButton<%= index %>"
+                                <!-- <button class="btn reviewButton text-white" id="reviewButton<%= index %>"
                                     data-productid="<%=data.vproduct_id%>"
                                     style="background-color: #f47c00; margin-left: 30px;">Review</button>
                                 <form action="/userproduct/reviewProduct" method="post">
@@ -159,15 +168,18 @@
                                     <button class="btn" type="submit" id="submitButton<%= index %>"
                                         style="display: none; margin-left: 150px; margin-top: 10px;background-color: #f47c00;"
                                         disabled>Submit</button>
-                                </form>
+                                </form> -->
                             </div>
                         </div>
                     </div>
                     <% }); %>
-                        <% } else { %>
-                            <h1 class="text-center ">There is No product Available</h1>
-                            <% } %>
+                        
         </div>
+        <% } else { %>
+            <center>
+            <h1 class=" ">There is No product Available</h1>
+        </center>
+            <% } %>
     </div>
     </div>
     <script>

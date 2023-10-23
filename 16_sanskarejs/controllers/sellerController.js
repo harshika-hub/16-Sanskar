@@ -13,7 +13,7 @@ import { productmodels, Registration } from '../model/vendorModal.js';
 import { NONAME } from 'dns';
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 dotenv.config();
-const maxAge = (8 * 24 * 60 * 60);
+const maxAge = (1* 24 * 60 * 60 * 1000); //take time in ms
 export default jwt;
 let payload = {};
 let token;
@@ -234,7 +234,7 @@ export const vAddproductController = async (req, res, next) => {
     console.log(req.file.filename + " file");
     try {
         const product = await productmodels.create({
-            vproduct_id: productId,
+            // vproduct_id: productId,
             vproduct_name: productName,
             vproduct_price: productPrice,
             vproduct_perqty: productPerqty,

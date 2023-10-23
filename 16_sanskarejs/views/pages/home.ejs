@@ -4,6 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      
+    .scale-text:hover {
+  animation: scale 2s alternate infinite;
+}
+
+@keyframes scale {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.5); }
+}
+.typewriter-text {
+  overflow: hidden;
+  border-right: .15em solid black;
+  white-space: nowrap;
+  animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100%; }
+}
+.hover-element {
+  transition: box-shadow 0.3s;
+}
+
+.hover-element:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+    </style>
   
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
@@ -31,7 +62,7 @@
    <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <a class="ps-5 navbar-brand d-md-none" href="/" align="center"><img src="/images/16-sanskar.png"
+        <a class="ps-5 navbar-brand d-md-none " href="/" align="center"><img class="scale-text" src="/images/16_sanskar_logo.png"
             alt="16-Sanskar-logo" style="width: 120px; height: 50px;"></a>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -91,8 +122,8 @@
 
 
           </ul>
-
-          <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/16-sanskar.png"
+-
+          <a class="navbar-brand d-none d-md-block scale-text" href="/"><img src="/images/16_sanskar_logo.png"
               style="width: 120px; height: 50px;"></a>
         </div>
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -127,7 +158,7 @@
       <div class="row gy-4">
         <div class="col-lg-6 order-2 order-lg-1 d-flex content flex-column justify-content-center">
           <h1 class="mt-5">" जन्म से लेकर मृत्यु तक "</h1>
-          <h2 class="tagline text-dark mt-5">"Guiding Journeys Through Life's Sacred Milestones"</h2>
+          <h2 class="tagline text-dark mt-5 typewriter-text">"Guiding Journeys Through Life's Sacred Milestones"</h2>
 
           <br>
           <p class="text-dark fw-bolder ">"16 Sanskar: Guiding Journeys Through Life's Sacred Milestones" is a
@@ -136,13 +167,16 @@
             are designed to mark various stages of life and promote spiritual growth. </p>
         </div>
         <div class="col-lg-6 order-1 order-lg-2 hero-img">
-          <!-- <img src="assets/img/hero-img.svg" class="img-fluid animated" alt=""> -->
           <img src="/images/havan.png" class="img-fluid animated" alt="">
+
+          
+
         </div>
       </div>
     </div>
 
-  </section><!-- End Hero -->
+  </section>
+  <!-- End Hero -->
 
   <!-- 16-sanskar section start -->
 
@@ -153,10 +187,10 @@
       <h1>Sixteen Sanskar's</h1>
       
     </div>
-    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200" >
+    <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="150" >
       <div class="col-lg-3 col-md-6 portfolio-item filter-app">
         <div class="portfolio-wrap">
-          <img src="images/Garbh-Sanskar.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <img src="images/Garbh-Sanskar.jpg" class="img-fluid" style="height: 25vh; width:27em" alt="">
           <div class="portfolio-links">
             <a href="images/mundancombo.jpg"  data-gallery="portfolioGallery" class="portfolio-lightbox" title="Garbhadhaan products"><i class="bi bi-plus"></i></a>
           </div>
@@ -168,7 +202,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/pumsavana.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/pumsavana.jpg" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/pumsavanacombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="pumsavana products"><i class="bi bi-plus"></i></a>
            <h1></h1>
@@ -181,7 +215,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-app">
         <div class="portfolio-wrap">
-          <img src="images/simmantonayan.webp" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <img src="images/simmantonayan.webp" class="img-fluid" style="height: 25vh; width:27em" alt="">
           <div class="portfolio-links">
             <a href="images/mundancombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Simantonayan product"><i class="bi bi-plus"></i></a>
           </div>
@@ -193,7 +227,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-card">
         <div class="portfolio-wrap">
-          <img src="images/Jatkarm1.webp" style="height: 25vh; width:25vw" class="img-fluid"  alt="">
+          <img src="images/Jatkarm1.webp" style="height: 25vh; width:27em" class="img-fluid"  alt="">
           <div class="portfolio-links">
             <a href="images/mundancombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="jatkarma products"><i class="bi bi-plus"></i></a>
           </div>
@@ -205,7 +239,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-card" >
         <div class="portfolio-wrap">
-          <img src="images/namkaran.jpg" class="img-fluid" style="height: 25vh; width:25vw" style="max-height: 200px;" alt="">
+          <img src="images/namkaran.jpg" class="img-fluid" style="height: 25vh; width:27em" style="max-height: 200px;" alt="">
           <div class="portfolio-links">
             <a href="images/image3.webp" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Namakaran products"><i class="bi bi-plus"></i></a>
             <a href="portfolio-details.html" title="More Details"><i class="bi bi-link"></i></a>
@@ -218,7 +252,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-card">
         <div class="portfolio-wrap">
-          <img src="images/nishkarm6.webp" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/nishkarm6.webp" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/image2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="nishkarmana products"><i class="bi bi-plus"></i></a>
           </div>
@@ -230,7 +264,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-app">
         <div class="portfolio-wrap">
-          <img src="images/Annaprashan-Sanskar.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/Annaprashan-Sanskar.jpg" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/annaprashan.webp" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Anaprashan products"><i class="bi bi-plus"></i></a>
           </div>
@@ -243,7 +277,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/mundan.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <img src="images/mundan.jpg" class="img-fluid" style="height: 25vh; width:27em" alt="">
           <div class="portfolio-links">
             <a href="images/mundancombo.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="chudakaran product"><i class="bi bi-plus"></i></a>
 
@@ -257,7 +291,7 @@
  
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/karn.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <img src="images/karn.jpg" class="img-fluid" style="height: 25vh; width:27em" alt="">
           <div class="portfolio-links">
             <a href="images/image4.webp" data-gallery="portfolioGallery" class="portfolio-lightbox" title="karnavedha products"><i class="bi bi-plus"></i></a>
           </div>
@@ -269,7 +303,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/upnayan2.jpg" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <img src="images/upnayan2.jpg" class="img-fluid" style="height: 25vh; width:27em" alt="">
           <div class="portfolio-links">
             <a href="images/images6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="upanayan product"><i class="bi bi-plus"></i></a>
           </div>
@@ -281,7 +315,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/Vedarambha.png" class="img-fluid" style="height: 25vh; width:25vw" alt="">
+          <img src="images/Vedarambha.png" class="img-fluid" style="height: 25vh; width:27em" alt="">
           <div class="portfolio-links">
             <a href="images/image8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="vidhyarambh products"><i class="bi bi-plus"></i></a>
           </div>
@@ -293,7 +327,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/samvartan12.webp" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/samvartan12.webp" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/images7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="samvartana product"><i class="bi bi-plus"></i></a>
           </div>
@@ -305,7 +339,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/vivah.jpg" class="img-fluid" style="height: 25vh; width:25vw" style="max-height: 100vh;" alt="">
+          <img src="images/vivah.jpg" class="img-fluid" style="height: 25vh; width:27em" style="max-height: 100vh;" alt="">
           <div class="portfolio-links">
             <a href="images/image5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="vivha product"><i class="bi bi-plus"></i></a>
           </div>
@@ -317,7 +351,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/Vanaprastha.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/Vanaprastha.jpg" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/images10.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="vanprastha product"><i class="bi bi-plus"></i></a>
           </div>
@@ -329,7 +363,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/vanaprasth.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/vanaprasth.jpg" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/images11.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Sannyasa product"><i class="bi bi-plus"></i></a>
           </div>
@@ -341,7 +375,7 @@
 
       <div class="col-lg-3 col-md-6 portfolio-item filter-web">
         <div class="portfolio-wrap">
-          <img src="images/antimsanskar.jpg" style="height: 25vh; width:25vw" class="img-fluid" alt="">
+          <img src="images/antimsanskar.jpg" style="height: 25vh; width:27em" class="img-fluid" alt="">
           <div class="portfolio-links">
             <a href="images/antim-sanskar.jpeg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Antyesthi product"><i class="bi bi-plus"></i></a>
           </div>
@@ -841,7 +875,7 @@
 <!-- faq end -->
 
   <!-- ======= Footer ======= -->
-  <footer id="footer">
+  <!-- <footer id="footer">
 
     <div class="footer-newsletter" style="background-color: #f47c00;">
       <div class="container">
@@ -886,11 +920,10 @@
           <div class="col-lg-3 col-md-6 footer-links">
             <h4>Our Services</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Online Products</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Combo Products</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="#">Blogs</a></li>
             </ul>
           </div>
 
@@ -915,18 +948,17 @@
         &copy; Copyright <strong><span>16-Sanskar</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/ninestars-free-bootstrap-3-theme-for-creative/ -->
-        Designed by <a href="https://bootstrapmade.com/">Codejargon</a>
+             Designed by <a href="https://bootstrapmade.com/">Codejargon</a>
       </div>
     </div>
-  </footer><!-- End Footer -->
+
+  </footer>End Footer -->
+  <%- include('../partials/footer.ejs'); %>
+
 
     <!-- Vendor JS Files -->
     <script src="/assets/vendor/aos/aos.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> -->
     <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
     <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
     <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>

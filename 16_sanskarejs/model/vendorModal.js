@@ -51,7 +51,7 @@ let productSchemas = new mongoose.Schema({
     vproduct_type:String,
     sanskar:String,
     vproduct_show:
-    {type: String,default:"Hided"},
+    {type: String,default:" "},
 
 });
 export const productmodels = new mongoose.model('vendorproducts', productSchemas);

@@ -211,7 +211,7 @@
   <div id="nav-ediv">
     <nav class="navbar navbar-expand-lg navbar-light">
       <div class="container-fluid">
-        <a class=" navbar-brand d-md-none  " href="/"><img src="/images/om2.png" alt="" align="center"
+        <a class=" navbar-brand d-md-none  " href="/"><img class="scale-text"  src="/images/om2.png" alt="" align="center"
             style="width: 120px; height: 50px;"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -230,7 +230,7 @@
               </a>
             </li>
           </ul>
-          <a class="navbar-brand d-none d-md-block" href="/"><img src="/images/om2.png"
+          <a class="navbar-brand d-none d-md-block" href="/"><img class="scale-text"  src="/images/om2.png"
               style="width: 120px; height: 50px;"></a>
         </div>
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
@@ -268,7 +268,7 @@
 
     <div class="card-container d-flex flex-wrap" id="curd-table">
 
-      <%if(item){ item.forEach((data)=>{  if(data.vproduct_status== "Activated"){%>
+      <%if(item){ item.forEach((data,index)=>{  if(data.vproduct_status== "Activated"){%>
         <div class='row gx-2'>
           <div class='col-4'>
             <div class='p-3'>
@@ -278,7 +278,7 @@
                     <%=data._id%>
                   </span>
                   <h5 class='card-title text-center'><strong>Item No. :- </strong>
-                    <%=data.vproduct_id%>
+                    <%=index+1%>
                   </h5>
                   <img src="/uploads/<%=data.vproduct_imag%>" class="card-img-top" alt='Image'
                     style=" height: 10rem; width: 14rem;">
@@ -293,9 +293,12 @@
                   <li class='list-group-item'><strong>Price :- </strong>
                     <%=data.vproduct_price%>
                   </li>
+                
                 </ul>
+               
 
                 <div class='card-body text-center'>
+
 
                   <button onclick="showContent('<%=data._id%>')" type='button' data-bs-toggle='modal'
                     data-bs-target='#exampleModal-2' class='btn btn-success'
@@ -304,6 +307,12 @@
                   <a href="/vendor_registration/deleteVendorproduct/Deactivated/<%=data._id%>"> <button type='button'
                       class='btn btn-danger' style="width: 49%;border: none;background-color:black">Delete</button></a>
                 </div>
+                <%if(data.vproduct_show=="Hided"){%>
+                  <span class="text-danger">Admin Rejected this product</span> 
+                  <%}else if(data.vproduct_show==" "){%>
+                    <span class="text-primary">Admin Not reviewed this product yet </span> 
+                    <%}%>
+
               </div>
             </div>
           </div>
@@ -348,6 +357,7 @@
                   <li class='list-group-item'><strong>Price :- </strong>
                     <%=data.vproduct_price%>
                   </li>
+               
                 </ul>
 
                 <div class='card-body text-center'>
@@ -644,7 +654,7 @@
         .then(async (res) => await res.json())
         .then((data) => {
           console.log(data);
-          id.value = data.data.vproduct_id;
+          id.value = data.data._id;
           pname.value = data.data.vproduct_name;
           pprice.value = data.data.vproduct_price;
           pdesc.innerHTML = data.data.vproduct_description;

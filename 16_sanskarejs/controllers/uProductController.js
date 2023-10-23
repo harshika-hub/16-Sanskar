@@ -21,7 +21,9 @@ let token;
 
 const uProductController = (req, res) => {
 
-    productmodels.find({$and: [{ vproduct_status: "Activated" }, { vproduct_type:"single" }] })
+    productmodels.find({$and: [{ vproduct_status: "Activated" },
+     { vproduct_type:"single" },
+     { vproduct_show: "Shown" }] })
 
         .then((data, err) => {
             if (err) {
@@ -270,7 +272,7 @@ export const ureviewProductController = async (request,response)=>{
 }
 export const ucomboController= async(req,res)=>{
     try{
-        const data=await productmodels.find({$and:[{vproduct_type:'combo'},{vproduct_status:'Activated'}]});
+        const data=await productmodels.find({$and:[{vproduct_type:'combo'},{vproduct_status:'Activated'}, { vproduct_show: "Shown" }]});
         res.render('pages/userProduct',{item:data});
 
     }catch(err){
@@ -282,7 +284,7 @@ export const ucomboController= async(req,res)=>{
 export const usanskarController=async(req,res)=>{
     try{
         var sanskar=req.params.sanskar;
-        var data=await productmodels.find({sanskar:sanskar});
+        var data=await productmodels.find({$and:[{sanskar:sanskar}, { vproduct_show: "Shown" },{ vproduct_status: "Activated" }]});
         res.render('pages/userProduct',{item:data});
 
     }catch(err){
