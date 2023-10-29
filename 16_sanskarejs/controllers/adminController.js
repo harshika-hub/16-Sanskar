@@ -71,7 +71,7 @@ export const authenticate = (async (req, res, next) => {
     const token = req.cookies.jw;
     console.log(token);
     console.log("Secret*** " + secret_key);
-    if (!token) {
+    if (!token) {           
         return res.render('pages/admin_login', { msg: "Token is required" });
     }
     const decoded = jwt.verify(token, secret_key, (err, payloads) => {
@@ -184,6 +184,7 @@ export const aLogOutController = (req, res) => {
     console.log("Admin logout")
     res.cookie('jw', '', { httpOnly: true, maxAge: 1 });
     res.cookie('adminLogin','');
+    res.clearCookie('adminLogin');
     res.render('pages/admin_login', { msg: "LogOut Succefully" });
 }
 

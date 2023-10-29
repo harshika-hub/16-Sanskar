@@ -239,6 +239,7 @@ export const vAddproductController = async (req, res, next) => {
             vproduct_price: productPrice,
             vproduct_perqty: productPerqty,
             vproduct_totalqty: productTotalqty,
+            vproduct_margin:25,
             vproduct_brandnamae: productBrandname,
             vproduct_category: productCategory,
             vproduct_mfd: productMfd,

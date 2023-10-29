@@ -135,7 +135,7 @@ body{
    
  
 .navbar-nav {
-  gap: 8vw;
+  gap: 6vw;
 } 
     
     @media screen and (min-width: 768px) {

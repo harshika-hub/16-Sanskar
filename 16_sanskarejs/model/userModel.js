@@ -15,6 +15,7 @@ const userCartSchema = new mongoose.Schema({
     product_id: String,
     product_quantity:Number,
     product_price:Number,
+    per_product_price:Number,
     product_orderdate:Date,
     product_deleverydate:Date,
     product_image:String,
@@ -26,3 +27,11 @@ const userCartSchema = new mongoose.Schema({
 });
 const UserCart = mongoose.model("userCartSchema",userCartSchema);
 export { UserCart};
+
+const placeOrderSchema = new mongoose.Schema({
+    cart_id :[Object],
+    total_price:Number,
+    order_Date:{type:Date,default:Date.now}
+})
+const placeOrder = mongoose.model("placeorder",placeOrderSchema);
+export {placeOrder};

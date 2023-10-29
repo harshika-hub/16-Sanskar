@@ -41,6 +41,7 @@ let productSchemas = new mongoose.Schema({
     vproduct_expirydate: Date,
     vproduct_description: String,
     vproduct_totalqty: String,
+    vproduct_margin:Number,
     vproduct_imag:{type:String,require:true},
     user_id: Object,
     vendor_categoryid: Number,

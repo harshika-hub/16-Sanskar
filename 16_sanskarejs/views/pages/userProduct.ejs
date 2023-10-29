@@ -48,10 +48,11 @@
                             <a class="nav-link text-white" href="/blogs">Blog <i class="fa fa-pencil-square-o"
                                     aria-hidden="true"></i></a>
                         </li>
+                        
                         <li class="nav-item dropdown ">
                             <a class="nav-link text-white dropdown-toggle" href="#" id="navbarDropdown" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Sanskar's-List
+                                Sanskar's-Products
                             </a>
                             <ul class="dropdown-menu " aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="/userProduct/bySanskar/Garbhadhaan">1.
@@ -103,8 +104,12 @@
                     <a class="navbar-brand d-none d-md-block" href="/"><img class="scale-text"  src="/images/om2.png"
                             style="width: 120px; height: 50px; align-items: center;"></a>
                 </div>
-                <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
+                <div class="collapse navbar-collapse justify-content-around g-0" id="navbarNav">
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="/userProduct/user_product">Products <i class="fa fa-product-hunt" aria-hidden="true"></i>
+                            </a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link text-white" href="/userProduct/user_profile">User Profile <i
                                     class="fa fa-user" aria-hidden="true"></i></a>
@@ -149,10 +154,9 @@
                                 <br>
                                 <p class="card-text">Product Name:- <%=data.vproduct_name%>
                                 </p>
-                                <p class="card-text">Product Price:- <%= data.vproduct_price%>
+                                <p class="card-text">Product Price:- <%=(data.vproduct_price*data.vproduct_margin)%>
                                 </p>
-                                <p class="card-text" style=" height: 8vh;">Product Description:- <%=
-                                        data.vproduct_description%>
+                                <p class="card-text" style=" height: 8vh;">Product Description:- <%=data.vproduct_description%>
                                 </p>
                                 <a class="btn text-white " style="background-color: #f47c00; margin-left: 5vw;  "
                                     href="/userProduct/addcart/<%= data._id %>">Add To Cart</a>
