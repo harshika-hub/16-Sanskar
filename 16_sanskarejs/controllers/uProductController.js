@@ -7,13 +7,21 @@ import Randomstring from "randomstring";
 import { productmodels } from "../model/vendorModal.js";
 import UserRegistration from "../model/indexModal.js";
 import { send } from '../model/mail.model.js'
-import { userReview, UserCart, placeOrder } from "../model/userModel.js";
+import paypal from 'paypal-rest-sdk'
+import { userReview, UserCart, placeOrder, customerPayment } from "../model/userModel.js";
 
 
+const { PAYPAL_MODE, PAYPAL_CLIENT_KEY, PAYPAL_SECRET_KEY } = process.env;
+console.log(PAYPAL_MODE);
+paypal.configure({
+    'mode': PAYPAL_MODE, //sandbox or live
+    'client_id': PAYPAL_CLIENT_KEY,
+    'client_secret': PAYPAL_SECRET_KEY
+});
 
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 dotenv.config();
-const maxAge = (8 * 24 * 60 * 60 * 1000);
+const maxAge = (1 * 24 * 60 * 60 * 1000);
 
 export default jwt;
 let payload = {};
@@ -199,7 +207,7 @@ const userLoginController = async (req, res, next) => {
                         email: email,
                         role: "customer"
                     }
-                    res.cookie("customer", customer);
+                    res.cookie("customer", customer, { maxAge: maxAge });
                     res.redirect("userToken");
 
                 }
@@ -355,6 +363,21 @@ export const confirmPasswordController = async (request, response) => {
 
 }
 const ucartController = async (req, res) => {
+    var email = req.cookies.customer.email;
+    const cdatas=  await UserRegistration.findOne({email:email});
+
+    const resu =   await UserCart.find({customer_id:cdatas._id});
+    for(var i=0;i<resu.length;i++)
+    {
+        var vd=await productmodels.findOne({_id:resu[i].product_id});
+        if(parseInt(vd.vproduct_totalqty)<resu[i].total_product)
+        {
+            await UserCart.updateOne({_id:resu[i]._id},{$set:{total_product:parseInt(vd.vproduct_totalqty)
+
+            }})
+        }
+    }
+
     console.log('ucartcontroller')
     var email = req.cookies.customer.email;
     const cdata = await UserRegistration.findOne({ email: email });
@@ -389,7 +412,7 @@ export const removeUserProduct = async (req, res) => {
     const result = await UserCart.find({ customer_id: cdata._id });
     // console.log(result);
     if (result) {
-        res.render('pages/cart', { data: result, totalBill: totalBill });
+        res.render('pages/cart', { data: result, totalBill: "" });
     }
 
 }
@@ -439,7 +462,7 @@ export const addCartController = async (req, res) => {
         const cdata = await UserRegistration.findOne({ email: email });
         //console.log("UserRegistration data ===========================================================================================");
         //  console.log(cdata);
-        var pm = (data.vproduct_price * 125 / 100);
+        var pm = Math.floor(data.vproduct_price * 125 / 100);
         const result = new UserCart({
             vendor_id: data.user_id,
             product_id: data._id,
@@ -459,39 +482,219 @@ export const addCartController = async (req, res) => {
         console.log("Error while add to cart in data base " + err);
     }
 }
-//     export const placeOrderController = async (req,res)=>{
-//         console.log("place order controller");
-//    }
-export const confirmOrderController = async (req, res) => {
+export const placeOrderController = async (req,res)=>{
+    console.log("place order controller");
+    try {
+       const customer =  req.params.customer;
+
+
+       const result =  await UserCart.find({
+        $and:[{customer_id:customer},
+              {order:"No"}]
+         })
+       var data = result
+       var totalBill = 0;
+       if (result) { 
+           data.forEach((item, index) => { 
+           if (item.order == "No") { 
+           totalBill += item.product_price;
+           }
+           })
+           console.log("total bill in placecontroller ",totalBill);
+           // res.render('pages/cart', {data:result,totalBill:totalBill});
+       }
+       console.log(data)
+       var cartsid =[];
+       for(var i=0;i<data.length;i++){
+           cartsid.push(data[i]._id);
+       }
+       res.json({placeorder:data,totalbill:totalBill})
+    } catch (error) {
+       console.log("error"+error);
+    }
+}
+
+export const confirmOrderController = async(req,res)=>{
     console.log("confirmorder controller");
     try {
-        const customer = req.params.customer;
-        const totalbill = req.params.totalbill;
-        const cartId = req.params.cartId;
+        const customer =  req.params.customer;
+        const totalbill= req.params.totalbill;
+        const cartId= req.params.id;
+        console.log(customer);
         console.log(cartId);
-        console.log(totalbill);
-        const data = await UserCart.find({ customer_id: customer })
-        var cartsid = [];
-        for (var i = 0; i < data.length; i++) {
-            cartsid.push(data[i]._id);
+        const result =  await UserCart.find({customer_id:customer})
+        var data = result
+        var totalBill = 0;
+        if (result) { 
+            data.forEach((item, index) => { 
+            if (item.order == "No") { 
+            totalBill += parseInt( item.per_product_price) * parseInt(item.total_product);
+            }
+            })
+            console.log("totalbill "+totalBill);
+            // res.render('pages/cart', {data:result,totalBill:totalBill});
         }
-        const result = new placeOrder({
-            cart_id: cartsid,
-            total_price: totalbill,
-            date: Date.now()
-        })
-        await result.save();
-
-        const placeorder = await placeOrder.findOne({ _id: result._id })
-        if (cartId) {
-            return res.render('pages/generate_bill', { orders: placeorder, data: data });
-        }
-        else {
-            console.log("jai shree ram")
-            console.log(placeorder);
-            res.json({ placeorder: placeorder })
-        }
-    } catch (error) {
-        console.log("error" + error);
+            var cartsid =[];
+            for(var i=0;i<data.length;i++){
+                cartsid.push(data[i]._id);
+            }
+            const result1=  new placeOrder({
+                cart_id : cartsid, 
+                total_price:totalBill,
+                date:Date.now()
+            }) 
+            await result1.save();
+        
+            const placeorder = await placeOrder.findOne({ _id: result1._id })   
+            
+            if(cartId){
+                console.log(placeorder);
+                console.log(result);
+                return res.render('pages/generate_bill', {orders:placeorder,data:result});
+            }
+            else{
+                console.log("jai shree ram")
+                console.log(placeorder);
+                res.json({placeorder:placeorder})
+            }    
+    }catch (error) {
+       console.log("error"+error);
     }
+}
+
+export const upayController = async (req, res) => {
+
+    try {
+        var email = req.cookies.customer.email;
+        const cdata = await UserRegistration.findOne({ email: email });
+        console.log(cdata);
+        const uresult = await UserCart.find({ $and: [{ customer_id: cdata._id }, { order: "No" }] });
+        console.log("cart data ", uresult);
+        var cartarray = [];
+        var total = 0;
+        for (var i = 0; i < uresult.length; i++) {
+            cartarray[i] = {};
+            cartarray[i].name = uresult[i].product_name;
+            cartarray[i].sku = uresult[i]._id;
+            cartarray[i].price = uresult[i].per_product_price;
+            cartarray[i].currency = "USD"
+            cartarray[i].quantity = uresult[i].total_product;
+            total += uresult[i].product_price;
+        }
+        console.log("cartArray", cartarray);
+
+        const create_payment_json = {
+            "intent": "sale",
+            "payer": {
+                "payment_method": "paypal"
+            },
+            "redirect_urls": {
+                "return_url": "http://localhost:3000/userProduct/paysuccess",
+                "cancel_url": "http://localhost:3000/userProduct/paycancel"
+            },
+            "transactions": [{
+                "item_list": {
+                    "items": cartarray
+                },
+                "amount": {
+                    "currency": "USD",
+                    "total": total
+                },
+                "description": "Products from 16-Sanskar"
+            }]
+        };
+
+        paypal.payment.create(create_payment_json, function (error, payment) {
+            if (error) {
+                throw error;
+            } else {
+                for (let i = 0; i < payment.links.length; i++) {
+                    if (payment.links[i].rel === 'approval_url') {
+                        res.redirect(payment.links[i].href);
+                    }
+                }
+            }
+        });
+
+    } catch (error) {
+        console.log(error.message);
+    }
+
+}
+
+
+export const successPay = async (req, res) => {
+
+    try {
+        var email = req.cookies.customer.email;
+        const cdata = await UserRegistration.findOne({ email: email });
+        const uresult = await UserCart.find({
+            $and: [
+                { customer_id: cdata._id },
+                { order: "No" }
+            ]
+        });
+        const updateResult = await UserCart.updateMany(
+            {
+                $and: [
+                    { customer_id: cdata._id },
+                    { order: "No" }
+                ]
+            },
+            {
+                $set: { order: "Yes" }
+            }
+        );
+
+        var total = 0;
+        for (var i = 0; i < uresult.length; i++) {
+
+            total += uresult[i].product_price;
+        }
+        const payerId = req.query.PayerID;
+        const paymentId = req.query.paymentId;
+
+        const execute_payment_json = {
+            "payer_id": payerId,
+            "transactions": [{
+                "amount": {
+                    "currency": "USD",
+                    "total": total
+                }
+            }]
+        };
+
+        paypal.payment.execute(paymentId, execute_payment_json, function (error, payment) {
+            if (error) {
+                console.log(error.response);
+                throw error;
+            } else {
+                console.log("payment execute--------------------- ", JSON.stringify(payment));
+                // var paydate = Date.now();
+                // var paytable = customerPayment.create({
+                //     pay_customer_id: cdata._id,
+                //     pay_account: "851245",
+
+                // });
+
+                res.render("pages/paysuccess");
+            }
+        });
+
+    } catch (error) {
+        console.log(error.message);
+    }
+
+}
+
+export const cancelPay = async (req, res) => {
+
+    try {
+
+        res.render('pages/paycancel');
+
+    } catch (error) {
+        console.log(error.message);
+    }
+
 }

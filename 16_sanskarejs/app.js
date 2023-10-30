@@ -21,7 +21,7 @@ app.use(express.static('public'));
 app.use('/adminLogin', admin)
 app.use('/userProduct', usProduct);
 app.use('/vendor_registration', seller);
-app.use('/', index)
+app.use('/', index);
 
 
 app.listen(port, ()=>{

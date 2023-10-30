@@ -4,8 +4,9 @@ import multer from 'multer';
 import path from 'path';
 import {vendorcreate, vregController,vproductController,vprofileController,vendorprofileController,
     editprofile,updateprofile,cancelVendorContrller,vAddproductController,vEditproductController,
-    vUpdatproductController,vDeleteproductController,authenticateJWT,authorizeUser,jwt,SECRET_KEY,forgotPasswordController,confirmPasswordController,
-     vendoreloginController } from '../controllers/sellerController.js'
+    vUpdatproductController,vDeleteproductController,authenticateJWT,authorizeUser,jwt,SECRET_KEY,
+    forgotPasswordController,confirmPasswordController, vendoreloginController } 
+    from '../controllers/sellerController.js';
 
 var storage=multer.diskStorage({
     destination:'./public/uploads'
@@ -23,7 +24,6 @@ router.get('/vendor_profile', vendorprofileController)
 router.get('/update',editprofile);
 router.post('/saveupdate',updateprofile);
 router.get('/cancelVendor',cancelVendorContrller);
-
 router.post('/addVendorproduct',upload,vAddproductController,vproductController);
 router.get('/editVendorproduct/:id', vEditproductController);
 router.post('/updateVendorproduct',upload, vUpdatproductController,vproductController);
@@ -37,13 +37,13 @@ router.post('/confirm-password',confirmPasswordController);
 
 router.get('/vendor_login',(req, res,next) => {
   // var role = req.params.role;
-  console.log("loooogggggvhbkjnj user");
+  console.log("Vendor Login");
   const token = req.cookies.jwt;
   if (token) {
       jwt.verify(token, SECRET_KEY, (err, decodedToken) => {
           console.log(decodedToken);
           if (err) {
-              console.log("err", err);
+              console.log("err in decoded token", err);
               res.render("pages/vendor_login",{msg:""});
           } else {
               console.log("else models user");
@@ -53,7 +53,7 @@ router.get('/vendor_login',(req, res,next) => {
           }
       });
   } else {
-      console.log("lll");
+      console.log("lll Vendor login else");
       res.render("pages/vendor_login",{msg:" "});
   }
 

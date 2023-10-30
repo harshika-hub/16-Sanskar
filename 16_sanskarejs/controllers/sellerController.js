@@ -169,7 +169,7 @@ const vendoreloginController = async (req, res) => {
                         email: email,
                         role: existingUser.role,
                     }
-                    res.cookie('vendor', vdata);
+                    res.cookie('vendor', vdata,{maxAge:maxAge});
 
                     res.redirect("vendorToken");
                 }

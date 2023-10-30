@@ -154,7 +154,7 @@
                                 <br>
                                 <p class="card-text">Product Name:- <%=data.vproduct_name%>
                                 </p>
-                                <p class="card-text">Product Price:- <%=(data.vproduct_price*data.vproduct_margin)%>
+                                <p class="card-text">Product Price:- <%=Math.floor(data.vproduct_price*(data.vproduct_margin+100)/100)%>
                                 </p>
                                 <p class="card-text" style=" height: 8vh;">Product Description:- <%=data.vproduct_description%>
                                 </p>

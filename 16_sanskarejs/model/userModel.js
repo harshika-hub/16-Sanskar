@@ -35,3 +35,12 @@ const placeOrderSchema = new mongoose.Schema({
 })
 const placeOrder = mongoose.model("placeorder",placeOrderSchema);
 export {placeOrder};
+
+export const customerPayment=new mongoose.Schema({
+    pay_customer_id:Object,
+    pay_mode:{type:String,default:'Online'},
+    pay_account_no:String,
+    pay_date:String,
+    pay_transaction:{type:String,default:'debit'}
+ 
+});
