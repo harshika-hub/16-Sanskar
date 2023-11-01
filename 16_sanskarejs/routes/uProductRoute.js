@@ -7,7 +7,7 @@ import {
     addCartController, plus, minus,confirmOrderController, upayController, successPay, cancelPay,placeOrderController
 } from '../controllers/uProductController.js'
 // import { ucart } from '../controllers/uProductController.js'
-router.get('/', uProductController);
+router.get('/',authenticateJWT, uProductController);
 router.get('/user_product', uProductController);
 router.post('/addData', userRegistrationController);
 router.post('/checkuser', userLoginController);

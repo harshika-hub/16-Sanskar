@@ -198,7 +198,7 @@ function allValidate(e) {
       return false;
     }
     else {
-      var reg = /^\w+([\.-])?\w*@[a-z]*([\.][a-z]{2,3})+$/;
+      var reg = /^\w+([\.-])?\w\d*@[a-z]*([\.][a-z]{2,3})+$/;
       if(reg.test(email.value))
              {
               mailValid.innerHTML ="Email";

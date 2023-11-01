@@ -13,7 +13,7 @@ import { productmodels, Registration } from '../model/vendorModal.js';
 import { NONAME } from 'dns';
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 dotenv.config();
-const maxAge = (1* 24 * 60 * 60 * 1000); //take time in ms
+const maxAge = (5* 24 * 60 * 60 * 1000); //take time in ms
 export default jwt;
 let payload = {};
 let token;

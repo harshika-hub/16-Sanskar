@@ -83,10 +83,10 @@
         <div class="collapse navbar-collapse justify-content-around" id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Sign In <i class="fa fa-sign-in" aria-hidden="true"></i></a>
+              <a class="nav-link text-white" href="/userProduct">Products <i class="fa fa-sign-in" aria-hidden="true"></i></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="#">Sign Up <i class="fa fa-user" aria-hidden="true"></i></a>
+              <a class="nav-link text-white" href="/userProduct/user_profile">User Profile <i class="fa fa-user" aria-hidden="true"></i></a>
             </li>
           </ul>
         </div>
@@ -105,51 +105,69 @@
     <div class="row row-cols-1 row-cols-md-2">
 
       <!-- Product 1 -->
-      <% data.forEach((item,index)=>{%>
-        <% if(item.order=="No") {%>
-        
-        <div class="col-md-3 col-12">
+      <% data.forEach((item,index)=>{ %>
+        <% if(item.order=="No" ) {%>
+          <div class="col-md-3 col-12">
             <div class="card">
-                <img src="/uploads/<%=item.product_image%>" class="card-img-top" style="height: 48vh;" alt="Product 1">
-                <div class="card-body">
-                    <h4 class="card-title">Name: <%=item.product_name%></h4>
-                    <h5 class="card-text">Price: <%=item.product_price%></h5>
-                    <h5 class="card-text">Brand: <%=item.product_brand%></h5>
-                    <div class="input-group mb-3">
-                      <span>Quantity</span>
-                      <button type="button" class="minus"id="minus<%= index%>" style="border: none; padding: 5px; margin:  0 5px;  background-color: transparent;" ><i class="fa fa-minus" aria-hidden="true"></i></i></button>
-                      <span id="qun<%= index %>" style="text-align: center; margin: 0 5px; margin-top: 3px;"><%=item.total_product%></span>
-                      <button type="button"  class="plus" id="plus<%= index%>" style="border: none; padding: 5px; margin: 0 5px;  background-color: transparent;"><i class="fa fa-plus" aria-hidden="true"></i></button>
-                      <span style="display: none; color: red;" id="msg<%= index %>">Product can be Zero</span>
-                      
 
-                       <input type="text" value="<%=item.customer_id%><%= index %>" id="customer"  hidden >
-                       <input type="text" value="<%=item._id%>" id="product<%= index %>"  hidden >     
-                    </div>
-                    <a class="btn" style="background-color: #f47c00;" href="/userProduct/removeUserProduct/<%= item._id %>">Remove</a>
+
+
+              <img src="/uploads/<%=item.product_image%>" class="card-img-top" style="height: 48vh;" alt="Product 1">
+              <div class="card-body">
+
+                <h4 class="card-title">Name: <%=item.product_name%></h4>
+                <h5 class="card-text" id="product_price<%= index%>" >Price: <%=item.product_price%> </h5>
+                <h5 class="card-text">Brand: <%=item.product_brand%>
+                </h5>
+                <div class="input-group mb-3">
+                  <span>Quantity</span>
+                  <button type="button" class="minus" id="minus<%= index%>"style="border: none; padding: 5px; margin:  0 5px;  background-color: transparent;"><i class="fa fa-minus" aria-hidden="true"></i></button>
+                  <span id="qun<%= index %>" style="text-align: center; margin: 0 5px; margin-top: 3px;"> <%=item.total_product%></span>
+                  <button type="button" class="plus" id="plus<%= index%>"style="border: none; padding: 5px; margin: 0 5px;  background-color: transparent;"><i class="fa fa-plus" aria-hidden="true"></i></button>
+                  <span style="display: none; color: red;" id="msg<%= index %>">Product can be Zero</span>
+
+
+                  <input type="text" value="<%=item.customer_id%><%= index %>" id="customer" hidden>
+                  <input type="text" value="<%=item._id%>" id="product<%= index %>" hidden>
+                  <input type="text" value=" <%=item.per_product_price%>" id="price<%= index %>" hidden>
                 </div>
+                <a class="btn" style="background-color: #f47c00;"
+                  href="/userProduct/removeUserProduct/<%= item._id %>">Remove</a>
+              </div>
             </div>
-        </div> 
-        <%}%>
-        <% }) %> 
+          </div>
+
+          <%}%>
+            <% }) %>
     </div>
 </div>
+<%if(data.length!=0){%>
+
 <div class=" d-flex justify-content-center mb-5">
 <button class="btn btn-danger text-white text-decoration-none  text-center px-5 placeorder" data-bs-toggle="modal" data-bs-target="#exampleModal" ><a href="#" >Place Order</a></button>
 </div>
+<%}else{%>
+  <h1 align="center" style="margin-top: 10%; color: red;">Your Cart is empty</h1>
+  <%}%>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
+
     <div class="modal-content" >
       <div class="modal-header" style="background-color: #f47c00;">
+
         <h3 style="color: whitesmoke; font-weight: bold;" class="modal-title" id="exampleModalLabel">Place Order</h2>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>    
     </div>
+
     <div class="modal-content">
       <div class="modal-header">
       <h3>your cart items</h3>
       </div>  
       <div class="modal-body" >
+        <%if(data.length!=0){%>
+
         <% data.forEach((item, index) => { %>
           <% if (item.order == "No") { %>
             <div class="card mb-3"  style="background-color: #fef8f5; border: none;">
@@ -183,7 +201,8 @@
               </div>
             </div>
           <% } %>
-        <% }) %>
+        <% })} %>
+
         <hr>
         <span style="margin-left: 550px; font-size: 25px;">Total Bill : </span>
         <input type="text" id="totalbill" value="">
@@ -220,6 +239,7 @@
 
       </div>                    
       <div class="modal-footer">
+        <%if(data.length!=0){%>
         <% data.forEach((item,index)=>{ %>
           <% if (item.order == "No") { %>
         <input type="hidden" id="customerId" value="<%= item.customer_id%>" >
@@ -227,7 +247,7 @@
         <% }) %>
         <button type="button" class="btn btn-secondary"><a href="/userProduct/generate_bill/<%= data[0].customer_id%>/<%=data[0]._id%>">Pay</a></button>
         <button type="button" data-bs-toggle="modal" data-bs-dismiss="modal" data-bs-target="#confirmModal"  class="btn btn-primary">Cancel</button>    
-  
+  <%}%>
       </div>
     </div>
   </div>
@@ -329,63 +349,152 @@ document.querySelectorAll('.payment').forEach((button,index)=>{
     });
 });
 
-  document.querySelectorAll('.minus').forEach((button, index) => {
-            button.addEventListener('click', async function () {
-              var quantity= document.getElementById('qun'+index);
-              // const reviewInput = document.getElementById('reviewInput' + index);
-              var msg=document.getElementById('msg'+index);
+  // document.querySelectorAll('.minus').forEach((button, index) => {
+  //           button.addEventListener('click', async function () {
+  //             var quantity= document.getElementById('qun'+index);
+  //             // const reviewInput = document.getElementById('reviewInput' + index);
+  //             var msg=document.getElementById('msg'+index);
 
-              var cust =document.getElementById('product'+index);
-              const product=cust.value;
+  //             var cust =document.getElementById('product'+index);
+  //             const product=cust.value;
 
-              if(parseInt(quantity.innerHTML)>=1)
-              {
+  //             if(parseInt(quantity.innerHTML)>=1)
+  //             {
               
-                quantity.innerHTML= parseInt(quantity.innerHTML)-1;
-                try{
+  //               quantity.innerHTML= parseInt(quantity.innerHTML)-1;
+  //               try{
 
-                var data=await fetch(`/userProduct/minus/${product}/${parseInt(quantity.innerHTML)}`, { method: 'get' })
-                   }
-                  catch(error)
-                  {
-                    console.log(error)
-                  }
+  //               var data=await fetch(`/userProduct/minus/${product}/${parseInt(quantity.innerHTML)}`, { method: 'get' })
+  //                  }
+  //                 catch(error)
+  //                 {
+  //                   console.log(error)
+  //                 }
 
-              }
-               else{
-                      if(quantity.innerHTML<1)
-                       {
-                      msg.style.display='block';
-                       }
-                     else{
-                        msg.style.display='none';
-                          }
-                    }  
+  //             }
+  //              else{
+  //                     if(quantity.innerHTML<1)
+  //                      {
+  //                     msg.style.display='block';
+  //                      }
+  //                    else{
+  //                       msg.style.display='none';
+  //                         }
+  //                   }  
                    
-            });
-        });
-        document.querySelectorAll('.plus').forEach((button, index) => {
-            button.addEventListener('click',async function () {
-              var quantity= document.getElementById('qun'+index);
-              var msg=document.getElementById('msg'+index); 
-              var cust =document.getElementById('product'+index);
-              const product=cust.value;
+  //           });
+  //       });
+  //       document.querySelectorAll('.plus').forEach((button, index) => {
+  //           button.addEventListener('click',async function () {
+  //             var quantity= document.getElementById('qun'+index);
+  //             var msg=document.getElementById('msg'+index); 
+  //             var cust =document.getElementById('product'+index);
+  //             const product=cust.value;
              
-              quantity.innerHTML=parseInt(quantity.innerHTML)+1;
-              msg.style.display='none';
-              try
-        {
+  //             quantity.innerHTML=parseInt(quantity.innerHTML)+1;
+  //             msg.style.display='none';
+  //             try
+  //       {
 
-        var data =await fetch(`/userProduct/plus/${product}/${parseInt(quantity.innerHTML)}`, { mehod: 'get' })
-      }
-      catch(error)
-      {
-   console.log(error)
-      }
+  //       var data =await fetch(`/userProduct/plus/${product}/${parseInt(quantity.innerHTML)}`, { mehod: 'get' })
+  //     }
+  //     catch(error)
+  //     {
+  //  console.log(error)
+  //     }
               
 
+  //           });
+  //       });
+
+  document.querySelectorAll('.minus').forEach((button, index) => {
+      button.addEventListener('click', async function () {
+        var quantity = document.getElementById('qun' + index);
+        // const reviewInput = document.getElementById('reviewInput' + index);
+        var msg = document.getElementById('msg' + index);
+        var cust = document.getElementById('product' + index);
+        const product = cust.value;
+        var price1 = document.getElementById('price' + index);
+
+
+        var show = document.getElementById('product_price'+ index);
+
+        var price2 = parseInt(price1.value);
+
+        
+        
+        console.log(price);
+        //console.log(typeof price);        
+        if (parseInt(quantity.innerHTML) > 1) {
+          quantity.innerHTML = parseInt(quantity.innerHTML) - 1;
+          var price = price2 * parseInt(quantity.innerHTML);
+           show.innerHTML='Price : '+price;
+
+          try {
+            var data = await fetch(`/userProduct/minus/${product}/${parseInt(quantity.innerHTML)}/${price}`, { mehod: 'get' })
+          }
+          catch (error) {
+            console.log(error)
+          }
+        }
+        else {
+          if (quantity.innerHTML < 1) {
+            msg.style.display = 'block';
+          }
+          else {
+            msg.style.display = 'none';
+          }
+        }
+      });
+    });3
+
+    document.querySelectorAll('.plus').forEach((button, index) => {
+      button.addEventListener('click', async function () {
+        var quantity = document.getElementById('qun' + index);
+        var msg = document.getElementById('msg' + index);
+        var cust = document.getElementById('product' + index);
+        const product = cust.value;
+        var show = document.getElementById('product_price'+ index);
+
+
+        // quantity.innerHTML = parseInt(quantity.innerHTML) + 1;
+        msg.style.display = 'none';
+        var price1 = document.getElementById('price' + index);
+        var price2 = parseInt(price1.value);
+       
+        var price = price2 *( parseInt(quantity.innerHTML)+1);
+    
+        try {
+          // price * parseInt(quantity.innerHTML);
+          //  var results =await fetch(`/userProduct/plus/${product}/${parseInt(quantity.innerHTML)}/${price}`, { mehod: 'get' })
+          await fetch(`/userProduct/plus/${product}/${parseInt(quantity.innerHTML)+1}/${price}`, { mehod: 'get' })
+            .then(response => response.json())
+            .then(data => {
+              console.log(data.vdata);
+              if (parseInt(data.vdata.vproduct_totalqty) > parseInt(quantity.innerHTML)) {
+                quantity.innerHTML = parseInt(quantity.innerHTML) + 1;
+                show.innerHTML='Price : '+price;
+
+
+              } else if(parseInt(data.vdata.vproduct_totalqty) < parseInt(quantity.innerHTML)) {
+                console.log("in else");
+                // quantity.innerHTML=parseInt(data.vdata.vproduct_totalqty)
+                alert("quantity is not available");
+              }
+
+            })
+            .catch(error => {
+              console.error('Error:', error);
             });
-        });
+
+        }
+        catch (error) {
+          console.log(error)
+        }
+
+
+      });
+    });
 </script>
 
 </body>

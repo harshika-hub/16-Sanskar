@@ -21,7 +21,7 @@ paypal.configure({
 
 const SECRET_KEY = process.env.JWT_SECRET || crypto.randomBytes(32).toString('hex');
 dotenv.config();
-const maxAge = (1 * 24 * 60 * 60 * 1000);
+const maxAge = (5 * 24 * 60 * 60 * 1000);
 
 export default jwt;
 let payload = {};
@@ -127,6 +127,7 @@ const userRegistrationController = async (req, res, next) => {
             }
             const r = await send(mdata);
             console.log("sended :- " + r)
+            console.log('otp in user registration '+votp)
 
 
         } else {

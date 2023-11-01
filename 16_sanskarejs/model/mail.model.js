@@ -15,6 +15,6 @@ export const send=(data)=>{
         if(err)
         console.log("Err while sending mail "+err);
     else
-    console.log("Successfully sended "+info);
+    console.log("Successfully sended ",info);
     })
 }
